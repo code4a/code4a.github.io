@@ -1,0 +1,482 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>蒋彦涛的个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="code4a">
+    
+
+    
+    <meta name="description" content="Write Change Share">
+<meta property="og:type" content="website">
+<meta property="og:title" content="蒋彦涛的个人博客">
+<meta property="og:url" content="http://code4a.xyz/index.html">
+<meta property="og:site_name" content="蒋彦涛的个人博客">
+<meta property="og:description" content="Write Change Share">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蒋彦涛的个人博客">
+<meta name="twitter:description" content="Write Change Share">
+<meta name="twitter:creator" content="@jiangyantao">
+<link rel="publisher" href="+jiangyantao8">
+
+    
+    <link rel="alternative" href="/atom.xml" title="蒋彦涛的个人博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="蒋彦涛的个人博客" title="蒋彦涛的个人博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="蒋彦涛的个人博客">蒋彦涛的个人博客</a></h1>
+				<h2 class="blog-motto">Code 4 Android / ...</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">关于 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:code4a.xyz">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/12/hexo-help-page/" title="hexo help page" itemprop="url">hexo help page</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+jiangyantao8?rel=author" title="code4a" target="_blank" itemprop="author">code4a</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-11T16:11:45.000Z" itemprop="datePublished"> 发表于 2015-11-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="在Mac上安装hexo打造个人博客">在Mac上安装hexo打造个人博客</h2><blockquote>
+<p>我起初用的是jekyll ＋ github pages的方式建立个人博客，也是一直用的这种方式维护，<br>略微有些强迫症的我总觉得这种方式不是很满意，而且整个主题也是修改的<br><a href="http://yongyuan.name" target="_blank" rel="external">http://yongyuan.name</a>的模版，其中大部分细节自己也不是很清楚该怎么处理<br>，所以并不是很适合自己的style。后来看到啦 <strong><a href="http://www.aswifter.com/" target="_blank" rel="external">阳春面</a></strong> 的博客觉得主题和模版<br>都很棒，并且在手机上也可以自适应，非常的棒，所以就一眼相中啦，刚好这段时间，我又将自己的<a href="https://github.com/code4s" target="_blank" rel="external">github</a>的用户名改了一下<br>，导致原有的博客也无法使用，所以就直接用了 <strong><a href="http://www.aswifter.com/" target="_blank" rel="external">阳春面</a></strong> 的这种方式重新建立个人博客</p>
+</blockquote>
+<h4 id="问题一：安装node-js">问题一：安装node.js</h4><h5 id="1-_根据_Hexo官方文档_进行配置遇到了一些问题，在此做些纪录避免再次遇到时还需要花费大量时间去搜索问题。">1. 根据 <strong><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo官方文档</a></strong> 进行配置遇到了一些问题，在此做些纪录避免再次遇到时还需要花费大量时间去搜索问题。</h5><blockquote>
+<p>文档中通过nvm的方式安装node.js 而安装nvm的两种方式curl和wget尝试均失败啦，第一种是下载依赖总是失败，<br>第二种wget这个前提需要安装wget，而wget也是需要提前安装一些依赖，尝试好久，还是失败。最后没办法直接<br>从 <strong><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></strong> 网站下载pkg进行安装，此时node 和 npm 都成功安装，省去不少麻烦。</p>
+</blockquote>
+<h4 id="问题二：安装hexo">问题二：安装hexo</h4><h5 id="1-_此时使用_npm_install_-g_hexo-cli_会出现权限相关的问题，根据出现的问题google，baidu给出的方案都是无法解决">1. 此时使用 <code>npm install -g hexo-cli</code> 会出现权限相关的问题，根据出现的问题google，baidu给出的方案都是无法解决</h5><p>  最终在<strong><a href="https://github.com/hexojs/hexo/issues/913" target="_blank" rel="external">hexojs/hexo</a></strong> 中尝试成功. 使用 <code>sudo npm install -g -unsafe-perm hexo</code> 安装成功！随即将容易出现的几个点标记一下，防止下次再犯，也可帮助出现同样问题的童鞋尽快找到答案。</p>
+<h3 id="所有的问题回头看看也没有什么太复杂的，万事开头难。遇到问题需要的还是耐心，有耐心终会找打解决方案！">所有的问题回头看看也没有什么太复杂的，万事开头难。遇到问题需要的还是耐心，有耐心终会找打解决方案！</h3><h3 id="参考致谢">参考致谢</h3><ol>
+<li><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">Jark’s Blog如何使用 Jacman 主题</a></li>
+<li><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">HelloDog Jacman基于Pacman修改的Hexo主题</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/12/hexo-help-page/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/12/hexo-help-page/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/11/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+jiangyantao8?rel=author" title="code4a" target="_blank" itemprop="author">code4a</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-11T13:44:55.000Z" itemprop="datePublished"> 发表于 2015-11-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/11/hello-world/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/11/11/hello-world/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="code4a" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wsgzao.github.io/" target="_blank" title="HelloDog">HelloDog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.aswifter.com/" target="_blank" title="APP开发者">APP开发者</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://audiebantzhan.github.io/" target="_blank" title="audiebant">audiebant</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+<div class="doubanshow">
+<p class="asidetitle">豆瓣秀</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/jiangyantao/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2771215675&verifier=628a25ff&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/isprots" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/code4a" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jiangyantao" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/jiangyantao" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		<a href="https://www.douban.com/people/jiangyantao" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/code4s" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/+jiangyantao8?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:jiangyantao8@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="code4a">code4a</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"code4a"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F10a6f47c8748e79b467735e352158e22' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

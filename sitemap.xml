@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://code4a.xyz/about/index.html</loc>
+    <lastmod>2015-11-11T16:39:59.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://code4a.xyz/2015/11/12/hexo-help-page/</loc>
+    <lastmod>2015-11-11T16:18:22.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://code4a.xyz/2015/11/11/hello-world/</loc>
+    <lastmod>2015-11-11T13:44:55.000Z</lastmod>
+  </url>
+  
+</urlset>
