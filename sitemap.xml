@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://code4a.xyz/chessbook/index.html</loc>
+    <lastmod>2015-11-13T15:48:19.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://code4a.xyz/opensrc/index.html</loc>
+    <lastmod>2015-11-13T15:44:31.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://code4a.xyz/life/index.html</loc>
+    <lastmod>2015-11-13T15:29:58.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://code4a.xyz/cheats/index.html</loc>
+    <lastmod>2015-11-13T15:13:40.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://code4a.xyz/about/index.html</loc>
     <lastmod>2015-11-13T14:32:46.000Z</lastmod>
   </url>
