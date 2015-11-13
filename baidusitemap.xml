@@ -3,13 +3,14 @@
 
 
     
+    
   <url>
-    <loc>http://code4a.xyz/2015/11/13/music-163/</loc>
-    <lastmod>2015-11-13T12:43:35.000Z</lastmod>
+    <loc>http://code4a.xyz/2015/11/12/hexo-help-page/</loc>
+    <lastmod>2015-11-13T13:33:14.000Z</lastmod>
     <data>
         <display>
-        <title>music 163</title>
-        <pubTime>2015-11-12T16:44:45.000Z</pubTime>
+        <title>Hexo + github创建个人博客</title>
+        <pubTime>2015-11-11T16:11:45.000Z</pubTime>
         
         <tag>hexo</tag>
          
@@ -20,14 +21,13 @@
     </url>
 
     
-    
   <url>
-    <loc>http://code4a.xyz/2015/11/12/hexo-help-page/</loc>
-    <lastmod>2015-11-12T15:41:29.000Z</lastmod>
+    <loc>http://code4a.xyz/2015/11/13/music-163/</loc>
+    <lastmod>2015-11-13T13:32:37.000Z</lastmod>
     <data>
         <display>
-        <title>hexo help page</title>
-        <pubTime>2015-11-11T16:11:45.000Z</pubTime>
+        <title>添加网易云音乐</title>
+        <pubTime>2015-11-12T16:44:45.000Z</pubTime>
         
         <tag>hexo</tag>
          
