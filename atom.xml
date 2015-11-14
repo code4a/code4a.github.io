@@ -3,9 +3,9 @@
   <title><![CDATA[蒋彦涛的个人博客]]></title>
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://code4a.xyz/"/>
+  <link href="http://www.code4a.com/"/>
   <updated>2015-11-13T13:32:37.000Z</updated>
-  <id>http://code4a.xyz/</id>
+  <id>http://www.code4a.com/</id>
   
   <author>
     <name><![CDATA[code4a]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[添加网易云音乐]]></title>
-    <link href="http://code4a.xyz/2015/11/13/music-163/"/>
-    <id>http://code4a.xyz/2015/11/13/music-163/</id>
+    <link href="http://www.code4a.com/2015/11/13/music-163/"/>
+    <id>http://www.code4a.com/2015/11/13/music-163/</id>
     <published>2015-11-12T16:44:45.000Z</published>
     <updated>2015-11-13T13:32:37.000Z</updated>
     <content type="html"><![CDATA[<h3 id="为个人博客添加网易云音乐">为个人博客添加网易云音乐</h3><h4 id="首先进入到网易云音乐">首先进入到<a href="http://music.163.com/" target="_blank" rel="external">网易云音乐</a></h4><h4 id="然后可以创建新的歌单，也可使用已有的歌单">然后可以创建新的歌单，也可使用已有的歌单</h4><p><img src="http://code4a.github.io/bimg/music-163-picture1.png" alt="music-163-picture1"></p>
@@ -28,14 +28,14 @@
     <![CDATA[<h3 id="为个人博客添加网易云音乐">为个人博客添加网易云音乐</h3><h4 id="首先进入到网易云音乐">首先进入到<a href="http://music.163.com/" target="_blank" rel="external">网易云音乐</a></h4]]>
     </summary>
     
-      <category term="hexo" scheme="http://code4a.xyz/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.code4a.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hexo + github创建个人博客]]></title>
-    <link href="http://code4a.xyz/2015/11/12/hexo-help-page/"/>
-    <id>http://code4a.xyz/2015/11/12/hexo-help-page/</id>
+    <link href="http://www.code4a.com/2015/11/12/hexo-help-page/"/>
+    <id>http://www.code4a.com/2015/11/12/hexo-help-page/</id>
     <published>2015-11-11T16:11:45.000Z</published>
     <updated>2015-11-13T13:33:14.000Z</updated>
     <content type="html"><![CDATA[<h2 id="在Mac上安装hexo打造个人博客">在Mac上安装hexo打造个人博客</h2><blockquote>
@@ -59,14 +59,14 @@
 <p>我起初用的是jekyll ＋ github pages的方式建立个人博客，也是一直用的这种方式维护，<br>略微有些强迫症的我总觉得这种方式不是很满意]]>
     </summary>
     
-      <category term="hexo" scheme="http://code4a.xyz/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.code4a.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://code4a.xyz/2015/11/11/hello-world/"/>
-    <id>http://code4a.xyz/2015/11/11/hello-world/</id>
+    <link href="http://www.code4a.com/2015/11/11/hello-world/"/>
+    <id>http://www.code4a.com/2015/11/11/hello-world/</id>
     <published>2015-11-11T13:44:55.000Z</published>
     <updated>2015-11-11T13:44:55.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
