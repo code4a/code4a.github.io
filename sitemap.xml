@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.code4a.com/opensrc/index.html</loc>
+    <lastmod>2015-11-15T09:52:34.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.code4a.com/2015/11/15/WheelView-Android/</loc>
+    <lastmod>2015-11-15T09:47:33.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.code4a.com/about/index.html</loc>
     <lastmod>2015-11-14T06:43:43.000Z</lastmod>
   </url>
@@ -9,11 +19,6 @@
   <url>
     <loc>http://www.code4a.com/chessbook/index.html</loc>
     <lastmod>2015-11-13T15:48:19.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.code4a.com/opensrc/index.html</loc>
-    <lastmod>2015-11-13T15:44:31.000Z</lastmod>
   </url>
   
   <url>
