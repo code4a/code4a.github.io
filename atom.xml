@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2015-11-16T15:35:16.000Z</updated>
+  <updated>2015-11-16T15:50:40.000Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.code4a.com/2015/11/16/better-java/"/>
     <id>http://www.code4a.com/2015/11/16/better-java/</id>
     <published>2015-11-16T13:04:04.000Z</published>
-    <updated>2015-11-16T15:35:16.000Z</updated>
+    <updated>2015-11-16T15:50:40.000Z</updated>
     <content type="html"><![CDATA[<h2 id="教你编写现代化的java程式">教你编写现代化的java程式</h2><blockquote>
 <p>Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。</p>
 </blockquote>
@@ -126,7 +126,7 @@
         <span class="keyword">throw</span> e;
     }
 }
-</code></pre><p><img src="http://code4a.github.io/bimg/better-java-picture1" alt="ImmuTable-by-default"></p>
+</code></pre><p><img src="http://code4a.github.io/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
 </li>
 </ul>
 <h4 id="Avoid_lots_of_Util_Classes(避免使用大量工具类)">Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
@@ -137,7 +137,7 @@
 }
 </code></pre></li>
 </ul>
-<p><img src="http://code4a.github.io/bimg/better-java-picture2" alt="ImmuTable-by-default"></p>
+<p><img src="http://code4a.github.io/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
 <pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Thrower</span> </span>{
     <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">throwIfCondition</span><span class="params">(<span class="keyword">boolean</span> condition, String msg)</span> </span>{
         <span class="comment">// ...</span>
@@ -146,7 +146,7 @@
 </code></pre><ul>
 <li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义">这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
 </ul>
-<h4 id="格式化">格式化</h4><p><img src="http://code4a.github.io/bimg/better-java-picture3" alt="ImmuTable-by-default"></p>
+<h4 id="格式化">格式化</h4><p><img src="http://code4a.github.io/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
 <h4 id="javaDoc">javaDoc</h4><ul>
 <li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using_examples">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
 </ul>
