@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2015-11-16T15:50:40.000Z</updated>
+  <updated>2016-03-10T16:56:14.000Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[RxJava学习笔记(一)]]></title>
+    <link href="http://www.code4a.com/2016/03/10/RxJava-Study-first/"/>
+    <id>http://www.code4a.com/2016/03/10/RxJava-Study-first/</id>
+    <published>2016-03-10T15:31:02.000Z</published>
+    <updated>2016-03-10T16:56:14.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>由于目前工作比较安逸，成了温水青蛙，长期以往的惰性，导致了好多新知识还停留在听过的阶段，作为一个软件工程师来说，这是致命的缺点.<br>为了重拾原有的拼劲和热情，所以自己决定做出改变，就以当下比较流程的RxJava的学习去转变！丰富自己技能的同时，也养成坚持写博客的习惯！</p>
+</blockquote>
+<ul>
+<li><p><strong><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava项目地址</a></strong></p>
+</li>
+<li><p>关于RxJava的简介和优点可以参考</p>
+</li>
+<li><p><strong><a href="http://mrfu.me/android/2015/11/11/Getting_Started_with_RxJava_and_Android/" target="_blank" rel="external">RxJava 入门</a></strong></p>
+</li>
+</ul>
+<h3 id="1-准备工作">1.准备工作</h3><blockquote>
+<p>工欲善其事，必先利其器</p>
+</blockquote>
+<p>  a.首先打开Android Studio创建项目，然后根据RxJava的Readme中描述在AS中的使用方法</p>
+<p>  Example for Gradle:</p>
+<pre><code><span class="keyword">compile</span> <span class="string">'io.reactivex:rxjava:x.y.z'</span>
+</code></pre><p>  b.然后再项目的Module的根目录<code>build.gradle</code>文件中添加项目依赖，查看Github中Release分支中看到的RxJava版本为1.1.1, 所以最终添加的内容</p>
+<pre><code><span class="keyword">compile</span> <span class="string">'io.reactivex:rxjava:1.1.1'</span>
+</code></pre><p>  然后点击上边的出现的 <code>Sync Now</code> 等待依赖下载完成，即准备工作完成</p>
+<h3 id="2-牛刀小试">2.牛刀小试</h3><blockquote>
+<p>敲码百变，其义自现</p>
+</blockquote>
+<p>  a.Hello Wrold</p>
+<ul>
+<li><p>先创建Observable</p>
+<pre><code>rx.Observable&lt;String&gt; myObservable = rx.Observable.create(
+      new rx.Observable.OnSubscribe&lt;String&gt;() {
+          <span class="variable">@Override</span>
+          public void call(rx.Subscriber&lt;? super String&gt; <span class="sub"><span class="keyword">sub</span>) {</span>
+              <span class="sub"><span class="keyword">sub</span>.onNext("Hello, world!");</span>
+              <span class="sub"><span class="keyword">sub</span>.onCompleted();</span>
+          }
+      }
+);
+</code></pre></li>
+<li><p>Observable发送“Hello,world!”消息然后完成。接着创建Subscriber来消费这个数据：</p>
+<pre><code><span class="literal">rx</span><span class="built_in">.</span>Subscriber&lt;<span class="built_in">String</span>&gt; mySubscriber = <span class="literal">new</span> <span class="literal">rx</span><span class="built_in">.</span>Subscriber&lt;<span class="built_in">String</span>&gt;() {
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onNext(<span class="built_in">String</span> s) {
+        <span class="keyword">Log</span><span class="built_in">.</span>i(<span class="built_in">TAG</span>, <span class="string">" s -&gt; "</span> + s);
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onCompleted() {
+        <span class="keyword">Log</span><span class="built_in">.</span>i(<span class="built_in">TAG</span>, <span class="string">" onCompleted() "</span>);
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onErr<span class="subst">or</span>(Throwable e) {
+    }
+};
+</code></pre></li>
+<li><p>上面代码所做的工作就是打印由Observable发送的字符串。现在我们有了myObservable和mySubscriber，就可以通过subscribe()函数把两者关联起来：</p>
+<pre><code><span class="tag">myObservable</span><span class="class">.subscribe</span>(<span class="tag">mySubscriber</span>);
+</code></pre></li>
+<li><p>当订阅完成，myObservable将调用subscriber的onNext()和onComplete()函数，最终mySubscriber打印“Hello, world!”然后终止。</p>
+<pre><code><span class="number">03</span>-<span class="number">10</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">42.784</span> <span class="number">4249</span>-<span class="number">4249</span>/com.code4a I/HiddenTitleActivity:  s -&gt; Hello, world!
+<span class="number">03</span>-<span class="number">10</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">42.784</span> <span class="number">4249</span>-<span class="number">4249</span>/com.code4a I/HiddenTitleActivity:  onCompleted() 
+</code></pre></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>由于目前工作比较安逸，成了温水青蛙，长期以往的惰性，导致了好多新知识还停留在听过的阶段，作为一个软件工程师来说，这是致命的缺点.<br>为了重拾原有的拼劲和热情，所以自己决定做出改变，就以当下比较流程的RxJava的学习去转变！丰富自己技能的同时，]]>
+    </summary>
+    
+      <category term="RxJava" scheme="http://www.code4a.com/tags/RxJava/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Better Java(一)]]></title>
