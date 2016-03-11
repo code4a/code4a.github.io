@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2016-03-10T16:56:14.000Z</updated>
+  <updated>2016-03-11T10:56:57.000Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,204 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[NanoHTTPD Simple Use]]></title>
+    <link href="http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/"/>
+    <id>http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/</id>
+    <published>2016-03-11T10:22:51.000Z</published>
+    <updated>2016-03-11T10:56:57.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="使用NanoHTTPD在Android上建立本地服务器">使用NanoHTTPD在Android上建立本地服务器</h2><blockquote>
+<p>因为项目需求，需要在Android端的Service上实现一个简单的服务器，方便客户端发送Http请求，完成对应的自动化流程，<br>通过查阅相关资料，最终决定采用NanoHTTPD</p>
+</blockquote>
+<ul>
+<li><h4 id="NanoHTTPD项目地址"><a href="https://github.com/NanoHttpd/nanohttpd" target="_blank" rel="external">NanoHTTPD项目地址</a></h4></li>
+</ul>
+<p>在 <strong><a href="https://github.com/NanoHttpd/nanohttpd/releases" target="_blank" rel="external">releases</a></strong> 界面下载nanohttpd-2.2.0.jar导入eclipse的工程中，因为目前的项目是迭代早期的项目，而且也并未往Android Studio上迁移，在AS上的依赖可以参考项目的  <strong><a href="https://github.com/NanoHttpd/nanohttpd/blob/master/README.md" target="_blank" rel="external">Readme</a></strong> 进行配置</p>
+<p>使用起来非常的简单，服务端的代码实现如下：</p>
+<h4 id="1-_单独的类集成NanoHTTPD">1. 单独的类集成NanoHTTPD</h4><pre><code><span class="keyword">package</span> com.cmcc.receiver.transfer;
+
+<span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;
+<span class="keyword">import</span> java.util.Map;
+<span class="keyword">import</span> java.util.Set;
+
+<span class="keyword">import</span> android.os.Handler;
+<span class="keyword">import</span> android.os.Message;
+<span class="keyword">import</span> android.<span class="built_in">text</span>.TextUtils;
+<span class="keyword">import</span> android.util.Log;
+
+<span class="keyword">import</span> com.cmcc.receiver.consts.Constants;
+
+<span class="keyword">import</span> fi.iki.elonen.NanoHTTPD;
+
+<span class="keyword">public</span> class WiMoTransferServer extends NanoHTTPD {
+
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_SERVER_PORT = <span class="number">8080</span>;
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = WiMoTransferServer.class.getSimpleName();
+
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NOTHING = <span class="string">"/favicon.ico"</span>;
+
+  <span class="comment">// ip:8080/cmd=set_interent&amp;target_ssid=WiMO-<span class="label">xxxx&amp;password=12345678</span></span>
+  <span class="comment">// cmd=set_interent&amp;target_ssid=netgear54&amp;password=11111111</span>
+
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> REQUEST_ROOT = <span class="string">"/"</span>;
+
+  <span class="keyword">private</span> Handler mHander;
+
+  <span class="keyword">public</span> WiMoTransferServer(Handler mHandler) {
+      <span class="keyword">super</span>(DEFAULT_SERVER_PORT);
+      <span class="keyword">this</span>.mHander = mHandler;
+  }
+
+  @Override
+  <span class="keyword">public</span> Response serve(IHTTPSession session) {
+      <span class="comment">// TODO Auto-generated method stub</span>
+      Log.i(TAG, <span class="string">"IHTTPSession : -&gt; "</span> + session.getMethod() + <span class="string">" , uri : -&gt; "</span> + session.getUri());
+      Response response = <span class="keyword">super</span>.serve(session);
+      <span class="keyword">String</span> uriStr = session.getUri();
+      <span class="keyword">switch</span> (session.getMethod()) {
+      <span class="keyword">case</span> GET:
+          <span class="keyword">if</span> (NOTHING.equals(uriStr) || REQUEST_ROOT.equals(uriStr)) {
+              Log.i(TAG, <span class="string">"request url = "</span> + NOTHING);
+              response = response404(session, uriStr);
+          } <span class="keyword">else</span> <span class="keyword">if</span> (!TextUtils.isEmpty(uriStr) &amp;&amp; uriStr.contains(Constants.EQUAL)) {
+              Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap = parseURLRequest(uriStr);
+              checkParamsResult(paramsMap);
+              <span class="keyword">String</span> cmdResult = paramsMap.<span class="built_in">get</span>(Constants.CMD);
+              Log.i(TAG, <span class="string">" cmdResult -&gt; "</span> + cmdResult);
+              <span class="keyword">if</span> (!TextUtils.isEmpty(cmdResult) &amp;&amp; Constants.SETINTERNET.equals(cmdResult)) {
+                  <span class="keyword">String</span> targetSSID = paramsMap.<span class="built_in">get</span>(Constants.TARGETSSID);
+                  <span class="keyword">String</span> pwd = paramsMap.<span class="built_in">get</span>(Constants.PWD);
+                  Log.i(TAG, <span class="string">"targetSSID = "</span> + targetSSID + <span class="string">" ,password = "</span> + pwd);
+                  Message msg = mHander.obtainMessage(Constants.MSG_CONNECT_TARGET_AP);
+                  msg.obj = targetSSID + Constants.SPLIT + pwd;
+                  mHander.sendMessage(msg);
+              }
+              response = responseSuccess();
+          }
+
+          <span class="comment">// default:</span>
+          <span class="comment">// Log.i(TAG, "request method is not GET");</span>
+          <span class="comment">// response = response404(session, uriStr);</span>
+          <span class="comment">// break;</span>
+      }
+      <span class="keyword">return</span> response;
+  }
+
+  <span class="keyword">public</span> <span class="keyword">void</span> checkParamsResult(Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap) {
+      Set&lt;<span class="keyword">String</span>&gt; keySet = paramsMap.keySet();
+      <span class="keyword">for</span> (<span class="keyword">String</span> <span class="variable">key</span> : keySet) {
+          <span class="keyword">String</span> value = paramsMap.<span class="built_in">get</span>(<span class="variable">key</span>);
+          Log.i(TAG, <span class="string">"params_Key: -&gt; "</span> + <span class="variable">key</span> + <span class="string">" ,params_Value: -&gt; "</span> + value);
+      }
+  }
+
+  <span class="comment">/**
+   * 解析出url参数中的键值对 如
+   * "ip:8080/cmd=set_interent&amp;target_ssid=WiMO-xxxx&amp;password=12345678"，
+   * 解析出cmd:set_interent,target_ssid:WiMO-xxxx,password:12345678存入map中
+   *
+   * @param URL
+   *            url地址
+   * @return url请求参数部分
+   */</span>
+  <span class="keyword">public</span> Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; parseURLRequest(<span class="keyword">String</span> URL) {
+      Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; mapRequest = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt;();
+
+      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
+
+      <span class="keyword">String</span> strUrlParam = truncateUrlPage(URL);
+      <span class="keyword">if</span> (strUrlParam == <span class="keyword">null</span>) {
+          <span class="keyword">return</span> mapRequest;
+      }
+      <span class="comment">// 每个键值为一组</span>
+      arrSplit = strUrlParam.<span class="built_in">split</span>(<span class="string">"[&amp;]"</span>);
+      <span class="keyword">for</span> (<span class="keyword">String</span> strSplit : arrSplit) {
+          <span class="keyword">String</span>[] arrSplitEqual = <span class="keyword">null</span>;
+          arrSplitEqual = strSplit.<span class="built_in">split</span>(<span class="string">"[=]"</span>);
+
+          <span class="comment">// 解析出键值</span>
+          <span class="keyword">if</span> (arrSplitEqual.length &gt; <span class="number">1</span>) {
+              <span class="comment">// 正确解析</span>
+              mapRequest.put(arrSplitEqual[<span class="number">0</span>], arrSplitEqual[<span class="number">1</span>]);
+
+          } <span class="keyword">else</span> {
+              <span class="keyword">if</span> (arrSplitEqual[<span class="number">0</span>] != <span class="string">""</span>) {
+                  <span class="comment">// 只有参数没有值，不加入</span>
+                  mapRequest.put(arrSplitEqual[<span class="number">0</span>], <span class="string">""</span>);
+              }
+          }
+      }
+      <span class="keyword">return</span> mapRequest;
+  }
+
+  <span class="comment">/**
+   * 去掉url中的路径，留下请求参数部分
+   *
+   * @param strURL
+   *            url地址
+   * @return url请求参数部分
+   */</span>
+  <span class="keyword">public</span> <span class="keyword">String</span> truncateUrlPage(<span class="keyword">String</span> strURL) {
+      <span class="keyword">String</span> strAllParam = <span class="keyword">null</span>;
+      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
+
+      strURL = strURL.<span class="built_in">trim</span>().toLowerCase();
+
+      <span class="keyword">if</span> (strURL.contains(<span class="string">"[?]"</span>)) {
+          arrSplit = strURL.<span class="built_in">split</span>(<span class="string">"[?]"</span>);
+          <span class="keyword">if</span> (strURL.length() &gt; <span class="number">1</span>) {
+              <span class="keyword">if</span> (arrSplit.length &gt; <span class="number">1</span>) {
+                  <span class="keyword">if</span> (arrSplit[<span class="number">1</span>] != <span class="keyword">null</span>) {
+                      strAllParam = arrSplit[<span class="number">1</span>];
+                  }
+              }
+          }
+      } <span class="keyword">else</span> <span class="keyword">if</span> (strURL.startsWith(REQUEST_ROOT)) {
+          strAllParam = strURL.substring(strURL.indexOf(REQUEST_ROOT) + <span class="number">1</span>);
+          Log.i(TAG, <span class="string">" strAllParam substring result : -&gt; "</span> + strAllParam);
+      } <span class="keyword">else</span> {
+          strAllParam = strURL;
+      }
+
+      <span class="keyword">return</span> strAllParam;
+  }
+
+  <span class="keyword">public</span> Response responseSuccess() {
+      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"Success!"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
+      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
+  }
+
+  <span class="keyword">public</span> Response response404(IHTTPSession session, <span class="keyword">String</span> url) {
+      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"Sorry, Can't Found "</span> + url + <span class="string">" !"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
+      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
+  }
+}
+</code></pre><h4 id="2-_在service中初始化WiMoTransferServer对象">2. 在service中初始化WiMoTransferServer对象</h4><pre><code><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">initWebServer</span><span class="params">()</span> </span>{
+    mWiMoTransferServer = <span class="keyword">new</span> WiMoTransferServer(mHandler);
+    <span class="keyword">try</span> {
+        mWiMoTransferServer.start();
+    } <span class="keyword">catch</span> (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><p>  在需要初始化server的地方调用该方法，在需要停止服务的地方调用</p>
+<pre><code>mWiMoTransferServer.<span class="literal">stop</span>();
+</code></pre><h4 id="3-_然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应">3. 然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应</h4>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="使用NanoHTTPD在Android上建立本地服务器">使用NanoHTTPD在Android上建立本地服务器</h2><blockquote>
+<p>因为项目需求，需要在Android端的Service上实现一个简单的服务器，方便客户端发送Http请求，完成对]]>
+    </summary>
+    
+      <category term="NanoHTTPD" scheme="http://www.code4a.com/tags/NanoHTTPD/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[RxJava学习笔记(一)]]></title>
