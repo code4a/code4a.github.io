@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2016-03-16T08:05:53.000Z</updated>
+  <updated>2017-10-23T05:19:29.092Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,95 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Beyond Compare for Mac 无限试用方法]]></title>
+    <link href="http://www.code4a.com/2017/10/23/beyond-compare-for-mac-install-free-use/"/>
+    <id>http://www.code4a.com/2017/10/23/beyond-compare-for-mac-install-free-use/</id>
+    <published>2017-10-23T04:37:44.000Z</published>
+    <updated>2017-10-23T05:19:29.092Z</updated>
+    <content type="html"><![CDATA[<h2 id="Beyond_Compare_For_Mac">Beyond Compare For Mac</h2><h3 id="Beyond_Compare_下载试用原理">Beyond Compare 下载试用原理</h3><h4 id="在Beyond_Compare官网下载最新的_Beyond_Compare">在<a href="http://www.scootersoftware.com/download.php" target="_blank" rel="external">Beyond Compare官网</a>下载最新的 Beyond Compare</h4><h5 id="解压后,_把_Beyond_Compare_复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入_Beyond_Compare_应用程序的_MacOS_目录下(/Applications/Beyond_Compare-app/Contents/MacOS)">解压后, 把 <code>Beyond Compare</code> 复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入 <code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</h5><h5 id="原理：">原理：</h5><p><code>BCompare</code> 是应用程序启动的程序. 只要在启动的时候删除 <code>registry.dat</code> (<code>Library/Application Support/Beyond Compare/registry.dat</code>)注册信息就好了.<br>为此可以在该目录下添加一个批处理文件用来处理这个操作.</p>
+<h5 id="具体操作如下:">具体操作如下:</h5><ol>
+<li>将主启动程序 <code>BCompare</code> 重命名为 <code>BCompare.real</code></li>
+<li><p>在同级目录下新建一个脚本文件,命名为 <code>BCompare</code>,这样 <code>BCompare</code> 在启动的时候就会执行该脚本文件,注意记得 <code>chmod a+x BCompare</code></p>
+<ul>
+<li><p>使用文本编辑工具(如：<code>Sublime Text</code>)新建一个文件，在里面写如下代码，第一行是注明解释器，第二行是删除注册信息，第三行是启动真正的主程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">rm <span class="string">"/Users/<span class="variable">$(whoami)</span>/Library/Application Support/Beyond Compare/registry.dat"</span></span><br><span class="line"><span class="string">"`dirname "</span><span class="variable">$0</span><span class="string">"`"</span>/BCompare.real <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>* 然后保存文件到名称为<span class="escape">`B</span>Compare.sh<span class="escape">`到</span><span class="escape">`B</span>eyond Compare<span class="escape">` </span>应用程序的 <span class="escape">`M</span>acOS<span class="escape">` </span>目录下(<span class="escape">`/</span>Applications/Beyond Compare.app/Contents/MacOS<span class="escape">`)</span>
+* 重新打开该文件查看是否有多余内容，如果有删除掉，保存关闭软件，然后选中该文件<span class="escape">`C</span>ommand + i<span class="escape">`显</span>示文件简介，去掉<span class="escape">`.</span>sh<span class="escape">`后</span>缀
+* 最后在终端使用 cd 命令进入 <span class="escape">`M</span>acOS<span class="escape">` </span>目录，执行 <span class="escape">`c</span>hmod <span class="literal">a</span>+x BCompare<span class="escape">`
+</span>
+&lt;!--￼<span class="number">1</span>--&gt;
+
+
+* 这样我们每次打开软件的时候，都会先自动删掉注册信息，也就是永久免费试用了
+</code></pre><h2 id="参考致谢">参考致谢</h2><p><a href="http://www.seidea.com/" target="_blank" rel="external">Seidea</a>的<a href="http://www.seidea.com/2017/03/23/beyond-compare-for-mac-%E6%97%A0%E9%99%90%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" target="_blank" rel="external">Beyond Compare for Mac 无限试用方法</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Beyond_Compare_For_Mac">Beyond Compare For Mac</h2><h3 id="Beyond_Compare_下载试用原理">Beyond Compare 下载试用原理</h3><h4 id="在Beyond_Compare官]]>
+    </summary>
+    
+      <category term="tools" scheme="http://www.code4a.com/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://www.code4a.com/2017/10/23/hello-world/"/>
+    <id>http://www.code4a.com/2017/10/23/hello-world/</id>
+    <published>2017-10-23T03:16:51.158Z</published>
+    <updated>2015-11-11T13:44:55.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[创建hexo新文章笔记]]></title>
+    <link href="http://www.code4a.com/2017/10/23/create-new-blog-method/"/>
+    <id>http://www.code4a.com/2017/10/23/create-new-blog-method/</id>
+    <published>2017-10-23T02:50:55.000Z</published>
+    <updated>2017-10-23T04:33:59.657Z</updated>
+    <content type="html"><![CDATA[<h2 id="创建我的新文章">创建我的新文章</h2><blockquote>
+<p>好记性不如烂笔头，好长时间不更新博客了，连更新的流程和方法都忘记了，所以时下记得很清楚的东西，还是要用文本记录下来，方便日后忘记再次查看！</p>
+</blockquote>
+<h3 id="命令行进入到blog文件夹根目录">命令行进入到blog文件夹根目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 自己的路径/blog/</span><br></pre></td></tr></table></figure>
+<h3 id="通过hexo命令创建新博文">通过hexo命令创建新博文</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"博文名称"</span> <span class="comment"><span class="markdown">/<span class="strong">** 创建新的博文 **</span>/</span></span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">hexo <span class="keyword">new</span> post <span class="string">"博文名称"</span></span><br></pre></td></tr></table></figure>
+<h3 id="编辑博文">编辑博文</h3><p>通过上边的代码会将新的博文创建在<code>source/_posts/</code> 的文件夹下，然后进入到<code>路径/blog/source/_posts</code>目录下，找到刚刚创建的“博文名称.md”使用 <code>markdown</code>工具进行编辑博客内容。不知道<code>markdow</code>格式的可以参考<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown语法说明</a>对比书写自己的博文</p>
+<h3 id="编辑生成静态博客">编辑生成静态博客</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">// 或者</span><br><span class="line">hexo generate /<span class="keyword">*</span><span class="keyword">*</span> 生成一套静态网页 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
+<p>生成的博客内容就在当前路径的 <code>public</code>目录下</p>
+<h3 id="本地预览完整博客内容">本地预览完整博客内容</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">// 或者</span><br><span class="line">hexo server /<span class="keyword">*</span><span class="keyword">*</span> 在本地建立 Server ，提供访问和浏览 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
+<p>浏览器访问地址 <code>http://0.0.0.0:4000/</code></p>
+<h3 id="上传到github">上传到github</h3><p>可以通过github desktop提交变更到github仓库，等待一会编译通过，新的文章就更新进去了</p>
+<p>也可以通过命令行进行提交。<br>使用BCompare 对比两个目录的差异，进行更新<br>然后通过命令行进行提交</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . <span class="comment">// # 将所有修改过的工作文件提交暂存区</span></span><br><span class="line">git commit -m “the commit message<span class="string">"</span></span><br><span class="line">git push origin master <span class="preprocessor"># 将本地主分支推到远程主分支</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3><p>更多详细的配置内容可以参考以下链接<br><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a><br><a href="https://ninghao.net/blog/1412" target="_blank" rel="external">使用 Hexo 生成一套静态博客网页</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="创建我的新文章">创建我的新文章</h2><blockquote>
+<p>好记性不如烂笔头，好长时间不更新博客了，连更新的流程和方法都忘记了，所以时下记得很清楚的东西，还是要用文本记录下来，方便日后忘记再次查看！</p>
+</blockquote>
+<h3 id=]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://www.code4a.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[RxJava Study two]]></title>
@@ -1224,28 +1313,6 @@ import java.util.List;
     </summary>
     
       <category term="hexo" scheme="http://www.code4a.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://www.code4a.com/2015/11/11/hello-world/"/>
-    <id>http://www.code4a.com/2015/11/11/hello-world/</id>
-    <published>2015-11-11T13:44:55.000Z</published>
-    <updated>2015-11-11T13:44:55.000Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
-    </summary>
     
   </entry>
   
