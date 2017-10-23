@@ -1,1084 +1,1597 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <!--
-        © Material Theme
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.2.6 -->
-
-    <!-- Title -->
-    
-    <title>
-        
-        蒋彦涛的个人博客
-    </title>
-
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-
-    <!-- Meta & Info -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="code4a">
-    <meta name="description" content="Write Change Share">
-    <meta name="keywords" content="Android">
-
-    <!--iOS -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-title" content="Title">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="480">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="蒋彦涛的个人博客">
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://www.code4a.com">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="蒋彦涛的个人博客">
-    <meta property="og:description" content="Write Change Share">
-
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-
-    <!-- Import CSS -->
-    <link rel="stylesheet" href="/css/material.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.min.css" type="text/css">
-    <!-- Config CSS -->
 
 
-<!-- Other Styles -->
-<style>
-    body, html {
-        font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蒋彦涛的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Write Change Share">
+<meta property="og:type" content="website">
+<meta property="og:title" content="蒋彦涛的个人博客">
+<meta property="og:url" content="http://www.code4a.com/index.html">
+<meta property="og:site_name" content="蒋彦涛的个人博客">
+<meta property="og:description" content="Write Change Share">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蒋彦涛的个人博客">
+<meta name="twitter:description" content="Write Change Share">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
-
-    a {
-        color: #00838F;
-    }
-
-    .mdl-card__media,
-    #search-label,
-    #search-form-label:after,
-    #scheme-Paradox .hot_tags-count,
-    #scheme-Paradox .sidebar_archives-count,
-    #scheme-Paradox .sidebar-colored .sidebar-header,
-    #scheme-Paradox .sidebar-colored .sidebar-badge{
-        background-color: #0097A7 !important;
-    }
-
-    /* Sidebar User Drop Down Menu Text Color */
-    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-        color: #0097A7 !important;
-    }
-
-    #post_entry-right-info,
-    .sidebar-colored .sidebar-nav li:hover > a,
-    .sidebar-colored .sidebar-nav li:hover > a i,
-    .sidebar-colored .sidebar-nav li > a:hover,
-    .sidebar-colored .sidebar-nav li > a:hover i,
-    .sidebar-colored .sidebar-nav li > a:focus i,
-    .sidebar-colored .sidebar-nav > .open > a,
-    .sidebar-colored .sidebar-nav > .open > a:hover,
-    .sidebar-colored .sidebar-nav > .open > a:focus,
-    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-        color: #0097A7 !important;
-    }
-
-    .toTop {
-        background: #757575 !important;
-    }
-
-    .material-layout .material-post>.material-nav,
-    .material-layout .material-index>.material-nav,
-    .material-nav a {
-        color: #757575;
-    }
-
-    #scheme-Paradox .MD-burger-layer {
-        background-color: #757575;
-    }
-
-    #scheme-Paradox #post-toc-trigger-btn {
-        color: #757575;
-    }
-
-    .post-toc a:hover {
-        color: #00838F;
-        text-decoration: underline;
-    }
-</style>
+  };
+</script>
 
 
-<!-- Theme Background Related-->
 
-    <style>
-        body{
-            background-color: #F5F5F5;
-        }
-
-        /* blog_info bottom background */
-        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-            background-color: #fff;
-        }
-    </style>
+  <link rel="canonical" href="http://www.code4a.com/"/>
 
 
 
 
-<!-- Fade Effect -->
 
-    <style>
-        .fade {
-            transition: all 800ms linear;
-            -webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            -o-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
-            opacity: 1;
-        }
-
-        .fade.out{
-            opacity: 0;
-        }
-    </style>
+  <title>蒋彦涛的个人博客 - Code 4 Android / ...</title>
+  
 
 
-    <script src="/js/jquery.min.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="/css/highlight/solarized-white.css" type="text/css">
 
-    <!-- UC Browser Compatible-->
-    <script>
-        var agent = navigator.userAgent.toLowerCase();
-        if(agent.indexOf('ucbrowser')>0) {
-            document.write('<link rel="stylesheet" href="/css/uc.css" type="text/css">');
-            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-        }
-    </script>
 
-    <!-- Custom Head -->
-    
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?10a6f47c8748e79b467735e352158e22";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+  
+  
     
-        <body id="scheme-Paradox">
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
+  
 
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
 
-                    <!-- Top Anchor -->
-                    <div id="top"></div>
-
-                    
-                        <!-- Hamburger Button -->
-                        <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
-                        </button>
-                    
-
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-        <!-- Paradox Header -->
-        <!-- Daily pic -->
-<div class="mdl-card daily-pic mdl-cell mdl-cell--8-col index-top-block">
 
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="http://www.code4a.com">
-        
-            
-                You can do it, I can do it!<br>孤独，是生命的常态，是生命圆满的开始！
-            
-        
-        </a></p>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蒋彦涛的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code 4 Android / ...</h1>
+      
+  </div>
 
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>code4a</strong>
-        </div>
-    </div>
-</div>
-
-        <!-- Blog info -->
-<div class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-
-    <!-- Search -->
-    
-    <!-- Google -->
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-        <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-            <i class="material-icons mdl-color-text--white" role="presentation">search</i>
-        </label>
-
-        <form autocomplete="off" id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-            <input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-            <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
-
-            <input type="hidden" name="sitesearch" value="http://www.code4a.com">
-        </form>
-    </div>
-
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="http://www.code4a.com">
-            <img src="/img/logo.png" alt="logo" />
-        </a>
-    </div>
-
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>蒋彦涛的个人博客</strong>
-        </div>
-        <div class="section-spacer"></div>
-
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-                <a class="index_share-link" href="/chessbook" title="琴谱">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        琴谱
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/opensrc" title="宝典">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        宝典
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/cheats" title="秘籍">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        秘籍
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/life" title="软文">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        软文
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/about" title="关于我">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        关于我
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/links" title="友情链接">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        友情链接
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/tags" title="标签">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        标签
-                    </li>
-                </a>
-            
-        </ul>
-
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-
-            
-                <a class="index_share-link" href="/atom.xml">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        文章 RSS
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=蒋彦涛的个人博客&url=http://www.code4a.com/&pic=&searchPic=false&style=simple" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到微博
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=蒋彦涛的个人博客&url=http://www.code4a.com/&via=code4a" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Twitter
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://www.code4a.com//index.html" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Facebook
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://plus.google.com/share?url=http://www.code4a.com/" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Google+
-                    </li>
-                </a>
-            
-
-            
-
-            
-
-            
-        </ul>
-    </div>
-</div>
-
-    
-    <div class="locate-thumbnail-symbol"></div>
-
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/10/23/beyond-compare-for-mac-install-free-use/">Beyond Compare for Mac 无限试用方法</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Beyond Compare For Mac
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/10/23/beyond-compare-for-mac-install-free-use/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="code4a's avatar">
-            </div>
-            <div>
-                <strong>code4a</strong>
-                <span>10月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/10/23/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo</...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/10/23/hello-world/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="code4a's avatar">
-            </div>
-            <div>
-                <strong>code4a</strong>
-                <span>10月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/10/23/create-new-blog-method/">创建hexo新文章笔记</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            创建我的新文章
-好记性不如烂笔头，好长时间不更新博客了，连更新的流程和方法都忘记...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/10/23/create-new-blog-method/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="code4a's avatar">
-            </div>
-            <div>
-                <strong>code4a</strong>
-                <span>10月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/03/16/RxJava-Study-two/">RxJava Study two</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/03/16/RxJava-Study-two/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="code4a's avatar">
-            </div>
-            <div>
-                <strong>code4a</strong>
-                <span>3月 16, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2016/03/11/NanoHTTPD-Simple-Use/">使用NanoHTTPD在Android上建立本地服务器</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            使用NanoHTTPD在Android上建立本地服务器
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/03/11/NanoHTTPD-Simple-Use/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="code4a's avatar">
-            </div>
-            <div>
-                <strong>code4a</strong>
-                <span>3月 11, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-                <!-- Comment Number -->
-                &nbsp;|&nbsp;
-                <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="" data-count-type="comments"></span>
-                </span>
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
-</script>
-
-    
-</div>
-
-
-                    
-                        <!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay"></div>
-
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
-    <div id="sidebar-main">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
-
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-        <i class="material-icons">clear_all</i>
-        <span class="mdl-button__ripple-container">
-            <span class="mdl-ripple">
-            </span>
-        </span>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
     </button>
-
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="code4a's avatar">
-    </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        jiangyantao8@gmail.com
-        <b class="caret"></b>
-    </a>
+  </div>
 </div>
 
+<nav class="site-nav">
+  
 
-        <!-- Sidebar Navigation  -->
-        <ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
             
-                <li>
-                    <a href="/about" target="_blank" title="Email Me">
-                        <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        Email Me
-                    </a>
-                </li>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-        </ul>
-    </li>
-
-    <!-- Homepage -->
-    <li id="sidebar-first-li">
-        <a href="/" target="_self">
-            <i class="material-icons sidebar-material-icons">home</i>
             主页
-        </a>
-    </li>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-琴谱">
+          <a href="/chessbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            琴谱
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-宝典">
+          <a href="/opensrc/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            宝典
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-秘籍">
+          <a href="/cheats/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            秘籍
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-软文">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            软文
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
 
-    <!-- I'm Feeling Lucky -->
-    <!--
-    <li class="dropdown">
-        <a href="" target="_self">
-            <i class="material-icons sidebar-material-icons">explore</i>
-             sidebar.imlucky
-        </a>
-    </li>
-    -->
+      
+    </ul>
+  
 
-    <!-- Archives  -->
-    <li class="dropdown">
-        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-            <i class="material-icons sidebar-material-icons">inbox</i>
-             归档
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-            <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/03/">三月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/11/">十一月 2015<span class="sidebar_archives-count">4</span></a>
-        </ul>
-    </li>
+  
+</nav>
 
-    <!-- Categories  -->
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/10/23/beyond-compare-for-mac-install-free-use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/beyond-compare-for-mac-install-free-use/" itemprop="url">Beyond Compare for Mac 无限试用方法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T12:37:44+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
 
-    <!-- Divider -->
-    <li class="divider"></li>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Beyond_Compare_For_Mac">Beyond Compare For Mac</h2><h3 id="Beyond_Compare_下载试用原理">Beyond Compare 下载试用原理</h3><h4 id="在Beyond_Compare官网下载最新的_Beyond_Compare">在<a href="http://www.scootersoftware.com/download.php" target="_blank" rel="external">Beyond Compare官网</a>下载最新的 Beyond Compare</h4><h5 id="解压后,_把_Beyond_Compare_复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入_Beyond_Compare_应用程序的_MacOS_目录下(/Applications/Beyond_Compare-app/Contents/MacOS)">解压后, 把 <code>Beyond Compare</code> 复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入 <code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</h5><h5 id="原理：">原理：</h5><p><code>BCompare</code> 是应用程序启动的程序. 只要在启动的时候删除 <code>registry.dat</code> (<code>Library/Application Support/Beyond Compare/registry.dat</code>)注册信息就好了.<br>为此可以在该目录下添加一个批处理文件用来处理这个操作.</p>
+<h5 id="具体操作如下:">具体操作如下:</h5><ol>
+<li>将主启动程序 <code>BCompare</code> 重命名为 <code>BCompare.real</code></li>
+<li><p>在同级目录下新建一个脚本文件,命名为 <code>BCompare</code>,这样 <code>BCompare</code> 在启动的时候就会执行该脚本文件,注意记得 <code>chmod a+x BCompare</code></p>
+<ul>
+<li><p>使用文本编辑工具(如：<code>Sublime Text</code>)新建一个文件，在里面写如下代码，第一行是注明解释器，第二行是删除注册信息，第三行是启动真正的主程序。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">rm <span class="string">"/Users/<span class="variable">$(whoami)</span>/Library/Application Support/Beyond Compare/registry.dat"</span></span><br><span class="line"><span class="string">"`dirname "</span><span class="variable">$0</span><span class="string">"`"</span>/BCompare.real <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后保存文件到名称为<code>BCompare.sh</code>到<code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</p>
+</li>
+<li>重新打开该文件查看是否有多余内容，如果有删除掉，保存关闭软件，然后选中该文件<code>Command + i</code>显示文件简介，去掉<code>.sh</code>后缀</li>
+<li><p>最后在终端使用 cd 命令进入 <code>MacOS</code> 目录，执行 <code>chmod a+x BCompare</code></p>
+  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /Applications/Beyond\ <span class="keyword">Compare</span>.<span class="keyword">app</span>/Contents/MacOS/</span><br><span class="line">chmod a+x BCompare</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样我们每次打开软件的时候，都会先自动删掉注册信息，也就是永久免费试用了</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考致谢">参考致谢</h2><p><a href="http://www.seidea.com/" target="_blank" rel="external">Seidea</a>的<a href="http://www.seidea.com/2017/03/23/beyond-compare-for-mac-%E6%97%A0%E9%99%90%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" target="_blank" rel="external">Beyond Compare for Mac 无限试用方法</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
-    <!-- Pages  -->
-  	
-        <li>
-            <a href="/chessbook" title="琴谱">
-                
-                    <i class="material-icons sidebar-material-icons">keyboard</i>
-                
-                琴谱
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/opensrc" title="宝典">
-                
-                    <i class="material-icons sidebar-material-icons">computer</i>
-                
-                宝典
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/cheats" title="秘籍">
-                
-                    <i class="material-icons sidebar-material-icons">book</i>
-                
-                秘籍
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/life" title="软文">
-                
-                    <i class="material-icons sidebar-material-icons">note</i>
-                
-                软文
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/about" title="关于我">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                关于我
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/links" title="友情链接">
-                
-                    <i class="material-icons sidebar-material-icons">link</i>
-                
-                友情链接
-            </a>
-        </li>
-  	
-        <li>
-            <a href="/tags" title="标签">
-                
-                    <i class="material-icons sidebar-material-icons">bookmark</i>
-                
-                标签
-            </a>
-        </li>
-  	
+    
+      
 
-    <!-- Article Numebr  -->
-    <li>
-        <a href="/archives">
-            文章总数
-            <span class="sidebar-badge">10</span>
-        </a>
-    </li>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/10/23/create-new-blog-method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/create-new-blog-method/" itemprop="url">创建hexo新文章笔记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T10:50:55+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/23/create-new-blog-method/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/23/create-new-blog-method/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="创建我的新文章">创建我的新文章</h2><blockquote>
+<p>好记性不如烂笔头，好长时间不更新博客了，连更新的流程和方法都忘记了，所以时下记得很清楚的东西，还是要用文本记录下来，方便日后忘记再次查看！</p>
+</blockquote>
+<h3 id="命令行进入到blog文件夹根目录">命令行进入到blog文件夹根目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 自己的路径/blog/</span><br></pre></td></tr></table></figure>
+<h3 id="通过hexo命令创建新博文">通过hexo命令创建新博文</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"博文名称"</span> <span class="comment"><span class="markdown">/<span class="strong">** 创建新的博文 **</span>/</span></span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">hexo <span class="keyword">new</span> post <span class="string">"博文名称"</span></span><br></pre></td></tr></table></figure>
+<h3 id="编辑博文">编辑博文</h3><p>通过上边的代码会将新的博文创建在<code>source/_posts/</code> 的文件夹下，然后进入到<code>路径/blog/source/_posts</code>目录下，找到刚刚创建的“博文名称.md”使用 <code>markdown</code>工具进行编辑博客内容。不知道<code>markdow</code>格式的可以参考<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown语法说明</a>对比书写自己的博文</p>
+<h3 id="编辑生成静态博客">编辑生成静态博客</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">// 或者</span><br><span class="line">hexo generate /<span class="keyword">*</span><span class="keyword">*</span> 生成一套静态网页 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
+<p>生成的博客内容就在当前路径的 <code>public</code>目录下</p>
+<h3 id="本地预览完整博客内容">本地预览完整博客内容</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">// 或者</span><br><span class="line">hexo server /<span class="keyword">*</span><span class="keyword">*</span> 在本地建立 Server ，提供访问和浏览 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
+<p>浏览器访问地址 <code>http://0.0.0.0:4000/</code></p>
+<h3 id="上传到github">上传到github</h3><p>可以通过github desktop提交变更到github仓库，等待一会编译通过，新的文章就更新进去了</p>
+<p>也可以通过命令行进行提交。<br>使用BCompare 对比两个目录的差异，进行更新<br>然后通过命令行进行提交</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . <span class="comment">// # 将所有修改过的工作文件提交暂存区</span></span><br><span class="line">git commit -m “the commit message<span class="string">"</span></span><br><span class="line">git push origin master <span class="preprocessor"># 将本地主分支推到远程主分支</span></span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3><p>更多详细的配置内容可以参考以下链接<br><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a><br><a href="https://ninghao.net/blog/1412" target="_blank" rel="external">使用 Hexo 生成一套静态博客网页</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2016/03/16/RxJava-Study-two/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/16/RxJava-Study-two/" itemprop="url">RxJava Study two</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-16T16:05:53+08:00">
+                2016-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RxJava/" itemprop="url" rel="index">
+                    <span itemprop="name">RxJava</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/16/RxJava-Study-two/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/RxJava-Study-two/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/11/NanoHTTPD-Simple-Use/" itemprop="url">使用NanoHTTPD在Android上建立本地服务器</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-11T18:22:51+08:00">
+                2016-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/11/NanoHTTPD-Simple-Use/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/NanoHTTPD-Simple-Use/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用NanoHTTPD在Android上建立本地服务器">使用NanoHTTPD在Android上建立本地服务器</h2><blockquote>
+<p>因为项目需求，需要在Android端的Service上实现一个简单的服务器，方便客户端发送Http请求，完成对应的自动化流程，<br>通过查阅相关资料，最终决定采用NanoHTTPD</p>
+</blockquote>
+<ul>
+<li><h4 id="NanoHTTPD项目地址"><a href="https://github.com/NanoHttpd/nanohttpd" target="_blank" rel="external">NanoHTTPD项目地址</a></h4></li>
+</ul>
+<p>在 <strong><a href="https://github.com/NanoHttpd/nanohttpd/releases" target="_blank" rel="external">releases</a></strong> 界面下载nanohttpd-2.2.0.jar导入eclipse的工程中，因为目前的项目是迭代早期的项目，而且也并未往Android Studio上迁移，在AS上的依赖可以参考项目的  <strong><a href="https://github.com/NanoHttpd/nanohttpd/blob/master/README.md" target="_blank" rel="external">Readme</a></strong> 进行配置</p>
+<p>使用起来非常的简单，服务端的代码实现如下：</p>
+<h4 id="1-_单独的类集成NanoHTTPD">1. 单独的类集成NanoHTTPD</h4><pre><code><span class="keyword">package</span> com.cmcc.receiver.transfer;
+
+<span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;
+<span class="keyword">import</span> java.util.Map;
+<span class="keyword">import</span> java.util.Set;
+
+<span class="keyword">import</span> android.os.Handler;
+<span class="keyword">import</span> android.os.Message;
+<span class="keyword">import</span> android.<span class="built_in">text</span>.TextUtils;
+<span class="keyword">import</span> android.util.Log;
+
+<span class="keyword">import</span> com.cmcc.receiver.consts.Constants;
+
+<span class="keyword">import</span> fi.iki.elonen.NanoHTTPD;
+
+<span class="keyword">public</span> class WiMoTransferServer extends NanoHTTPD {
+
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_SERVER_PORT = <span class="number">8080</span>;
+  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = WiMoTransferServer.class.getSimpleName();
+
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NOTHING = <span class="string">"/favicon.ico"</span>;
+
+  <span class="comment">// ip:8080/cmd=set_interent&amp;target_ssid=WiMO-<span class="label">xxxx&amp;password=12345678</span></span>
+  <span class="comment">// cmd=set_interent&amp;target_ssid=netgear54&amp;password=11111111</span>
+
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> REQUEST_ROOT = <span class="string">"/"</span>;
+
+  <span class="keyword">private</span> Handler mHander;
+
+  <span class="keyword">public</span> WiMoTransferServer(Handler mHandler) {
+      <span class="keyword">super</span>(DEFAULT_SERVER_PORT);
+      <span class="keyword">this</span>.mHander = mHandler;
+  }
+
+  @Override
+  <span class="keyword">public</span> Response serve(IHTTPSession session) {
+      <span class="comment">// TODO Auto-generated method stub</span>
+      Log.i(TAG, <span class="string">"IHTTPSession : -&gt; "</span> + session.getMethod() + <span class="string">" , uri : -&gt; "</span> + session.getUri());
+      Response response = <span class="keyword">super</span>.serve(session);
+      <span class="keyword">String</span> uriStr = session.getUri();
+      <span class="keyword">switch</span> (session.getMethod()) {
+      <span class="keyword">case</span> GET:
+          <span class="keyword">if</span> (NOTHING.equals(uriStr) || REQUEST_ROOT.equals(uriStr)) {
+              Log.i(TAG, <span class="string">"request url = "</span> + NOTHING);
+              response = response404(session, uriStr);
+          } <span class="keyword">else</span> <span class="keyword">if</span> (!TextUtils.isEmpty(uriStr) &amp;&amp; uriStr.contains(Constants.EQUAL)) {
+              Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap = parseURLRequest(uriStr);
+              checkParamsResult(paramsMap);
+              <span class="keyword">String</span> cmdResult = paramsMap.<span class="built_in">get</span>(Constants.CMD);
+              Log.i(TAG, <span class="string">" cmdResult -&gt; "</span> + cmdResult);
+              <span class="keyword">if</span> (!TextUtils.isEmpty(cmdResult) &amp;&amp; Constants.SETINTERNET.equals(cmdResult)) {
+                  <span class="keyword">String</span> targetSSID = paramsMap.<span class="built_in">get</span>(Constants.TARGETSSID);
+                  <span class="keyword">String</span> pwd = paramsMap.<span class="built_in">get</span>(Constants.PWD);
+                  Log.i(TAG, <span class="string">"targetSSID = "</span> + targetSSID + <span class="string">" ,password = "</span> + pwd);
+                  Message msg = mHander.obtainMessage(Constants.MSG_CONNECT_TARGET_AP);
+                  msg.obj = targetSSID + Constants.SPLIT + pwd;
+                  mHander.sendMessage(msg);
+              }
+              response = responseSuccess();
+          }
+
+          <span class="comment">// default:</span>
+          <span class="comment">// Log.i(TAG, "request method is not GET");</span>
+          <span class="comment">// response = response404(session, uriStr);</span>
+          <span class="comment">// break;</span>
+      }
+      <span class="keyword">return</span> response;
+  }
+
+  <span class="keyword">public</span> <span class="keyword">void</span> checkParamsResult(Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap) {
+      Set&lt;<span class="keyword">String</span>&gt; keySet = paramsMap.keySet();
+      <span class="keyword">for</span> (<span class="keyword">String</span> <span class="variable">key</span> : keySet) {
+          <span class="keyword">String</span> value = paramsMap.<span class="built_in">get</span>(<span class="variable">key</span>);
+          Log.i(TAG, <span class="string">"params_Key: -&gt; "</span> + <span class="variable">key</span> + <span class="string">" ,params_Value: -&gt; "</span> + value);
+      }
+  }
+
+  <span class="comment">/**
+   * 解析出url参数中的键值对 如
+   * "ip:8080/cmd=set_interent&amp;target_ssid=WiMO-xxxx&amp;password=12345678"，
+   * 解析出cmd:set_interent,target_ssid:WiMO-xxxx,password:12345678存入map中
+   *
+   * @param URL
+   *            url地址
+   * @return url请求参数部分
+   */</span>
+  <span class="keyword">public</span> Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; parseURLRequest(<span class="keyword">String</span> URL) {
+      Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; mapRequest = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt;();
+
+      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
+
+      <span class="keyword">String</span> strUrlParam = truncateUrlPage(URL);
+      <span class="keyword">if</span> (strUrlParam == <span class="keyword">null</span>) {
+          <span class="keyword">return</span> mapRequest;
+      }
+      <span class="comment">// 每个键值为一组</span>
+      arrSplit = strUrlParam.<span class="built_in">split</span>(<span class="string">"[&amp;]"</span>);
+      <span class="keyword">for</span> (<span class="keyword">String</span> strSplit : arrSplit) {
+          <span class="keyword">String</span>[] arrSplitEqual = <span class="keyword">null</span>;
+          arrSplitEqual = strSplit.<span class="built_in">split</span>(<span class="string">"[=]"</span>);
+
+          <span class="comment">// 解析出键值</span>
+          <span class="keyword">if</span> (arrSplitEqual.length &gt; <span class="number">1</span>) {
+              <span class="comment">// 正确解析</span>
+              mapRequest.put(arrSplitEqual[<span class="number">0</span>], arrSplitEqual[<span class="number">1</span>]);
+
+          } <span class="keyword">else</span> {
+              <span class="keyword">if</span> (arrSplitEqual[<span class="number">0</span>] != <span class="string">""</span>) {
+                  <span class="comment">// 只有参数没有值，不加入</span>
+                  mapRequest.put(arrSplitEqual[<span class="number">0</span>], <span class="string">""</span>);
+              }
+          }
+      }
+      <span class="keyword">return</span> mapRequest;
+  }
+
+  <span class="comment">/**
+   * 去掉url中的路径，留下请求参数部分
+   *
+   * @param strURL
+   *            url地址
+   * @return url请求参数部分
+   */</span>
+  <span class="keyword">public</span> <span class="keyword">String</span> truncateUrlPage(<span class="keyword">String</span> strURL) {
+      <span class="keyword">String</span> strAllParam = <span class="keyword">null</span>;
+      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
+
+      strURL = strURL.<span class="built_in">trim</span>().toLowerCase();
+
+      <span class="keyword">if</span> (strURL.contains(<span class="string">"[?]"</span>)) {
+          arrSplit = strURL.<span class="built_in">split</span>(<span class="string">"[?]"</span>);
+          <span class="keyword">if</span> (strURL.length() &gt; <span class="number">1</span>) {
+              <span class="keyword">if</span> (arrSplit.length &gt; <span class="number">1</span>) {
+                  <span class="keyword">if</span> (arrSplit[<span class="number">1</span>] != <span class="keyword">null</span>) {
+                      strAllParam = arrSplit[<span class="number">1</span>];
+                  }
+              }
+          }
+      } <span class="keyword">else</span> <span class="keyword">if</span> (strURL.startsWith(REQUEST_ROOT)) {
+          strAllParam = strURL.substring(strURL.indexOf(REQUEST_ROOT) + <span class="number">1</span>);
+          Log.i(TAG, <span class="string">" strAllParam substring result : -&gt; "</span> + strAllParam);
+      } <span class="keyword">else</span> {
+          strAllParam = strURL;
+      }
+
+      <span class="keyword">return</span> strAllParam;
+  }
+
+  <span class="keyword">public</span> Response responseSuccess() {
+      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"Success!"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
+      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
+  }
+
+  <span class="keyword">public</span> Response response404(IHTTPSession session, <span class="keyword">String</span> url) {
+      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"Sorry, Can't Found "</span> + url + <span class="string">" !"</span>);
+      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
+      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
+  }
+}
+</code></pre><h4 id="2-_在service中初始化WiMoTransferServer对象">2. 在service中初始化WiMoTransferServer对象</h4><pre><code><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">initWebServer</span><span class="params">()</span> </span>{
+    mWiMoTransferServer = <span class="keyword">new</span> WiMoTransferServer(mHandler);
+    <span class="keyword">try</span> {
+        mWiMoTransferServer.start();
+    } <span class="keyword">catch</span> (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><p>  在需要初始化server的地方调用该方法，在需要停止服务的地方调用</p>
+<pre><code>mWiMoTransferServer.<span class="literal">stop</span>();
+</code></pre><h4 id="3-_然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应">3. 然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2016/03/10/RxJava-Study-first/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/10/RxJava-Study-first/" itemprop="url">RxJava学习笔记(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-10T23:31:02+08:00">
+                2016-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RxJava/" itemprop="url" rel="index">
+                    <span itemprop="name">RxJava</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/10/RxJava-Study-first/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/RxJava-Study-first/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>由于目前工作比较安逸，成了温水青蛙，长期以往的惰性，导致了好多新知识还停留在听过的阶段，作为一个软件工程师来说，这是致命的缺点.<br>为了重拾原有的拼劲和热情，所以自己决定做出改变，就以当下比较流程的RxJava的学习去转变！丰富自己技能的同时，也养成坚持写博客的习惯！</p>
+</blockquote>
+<ul>
+<li><p><strong><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava项目地址</a></strong></p>
+</li>
+<li><p>关于RxJava的简介和优点可以参考</p>
+</li>
+<li><p><strong><a href="http://mrfu.me/android/2015/11/11/Getting_Started_with_RxJava_and_Android/" target="_blank" rel="external">RxJava 入门</a></strong></p>
+</li>
+</ul>
+<h3 id="1-准备工作">1.准备工作</h3><blockquote>
+<p>工欲善其事，必先利其器</p>
+</blockquote>
+<p>  a.首先打开Android Studio创建项目，然后根据RxJava的Readme中描述在AS中的使用方法</p>
+<p>  Example for Gradle:</p>
+<pre><code><span class="keyword">compile</span> <span class="string">'io.reactivex:rxjava:x.y.z'</span>
+</code></pre><p>  b.然后再项目的Module的根目录<code>build.gradle</code>文件中添加项目依赖，查看Github中Release分支中看到的RxJava版本为1.1.1, 所以最终添加的内容</p>
+<pre><code><span class="keyword">compile</span> <span class="string">'io.reactivex:rxjava:1.1.1'</span>
+</code></pre><p>  然后点击上边的出现的 <code>Sync Now</code> 等待依赖下载完成，即准备工作完成</p>
+<h3 id="2-牛刀小试">2.牛刀小试</h3><blockquote>
+<p>敲码百变，其义自现</p>
+</blockquote>
+<p>  a.Hello Wrold</p>
+<ul>
+<li><p>先创建Observable</p>
+<pre><code>rx.Observable&lt;String&gt; myObservable = rx.Observable.create(
+      new rx.Observable.OnSubscribe&lt;String&gt;() {
+          <span class="variable">@Override</span>
+          public void call(rx.Subscriber&lt;? super String&gt; <span class="sub"><span class="keyword">sub</span>) {</span>
+              <span class="sub"><span class="keyword">sub</span>.onNext("Hello, world!");</span>
+              <span class="sub"><span class="keyword">sub</span>.onCompleted();</span>
+          }
+      }
+);
+</code></pre></li>
+<li><p>Observable发送“Hello,world!”消息然后完成。接着创建Subscriber来消费这个数据：</p>
+<pre><code><span class="literal">rx</span><span class="built_in">.</span>Subscriber&lt;<span class="built_in">String</span>&gt; mySubscriber = <span class="literal">new</span> <span class="literal">rx</span><span class="built_in">.</span>Subscriber&lt;<span class="built_in">String</span>&gt;() {
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onNext(<span class="built_in">String</span> s) {
+        <span class="keyword">Log</span><span class="built_in">.</span>i(<span class="built_in">TAG</span>, <span class="string">" s -&gt; "</span> + s);
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onCompleted() {
+        <span class="keyword">Log</span><span class="built_in">.</span>i(<span class="built_in">TAG</span>, <span class="string">" onCompleted() "</span>);
+    }
+
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onErr<span class="subst">or</span>(Throwable e) {
+    }
+};
+</code></pre></li>
+<li><p>上面代码所做的工作就是打印由Observable发送的字符串。现在我们有了myObservable和mySubscriber，就可以通过subscribe()函数把两者关联起来：</p>
+<pre><code><span class="tag">myObservable</span><span class="class">.subscribe</span>(<span class="tag">mySubscriber</span>);
+</code></pre></li>
+<li><p>当订阅完成，myObservable将调用subscriber的onNext()和onComplete()函数，最终mySubscriber打印“Hello, world!”然后终止。</p>
+<pre><code><span class="number">03</span>-<span class="number">10</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">42.784</span> <span class="number">4249</span>-<span class="number">4249</span>/com.code4a I/HiddenTitleActivity:  s -&gt; Hello, world!
+<span class="number">03</span>-<span class="number">10</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">42.784</span> <span class="number">4249</span>-<span class="number">4249</span>/com.code4a I/HiddenTitleActivity:  onCompleted() 
+</code></pre></li>
 </ul>
 
-
-        <!-- Sidebar Divider -->
-        <div class="sidebar-divider"></div>
-
-        <!-- Sidebar Footer -->
-        <!--
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
-
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
-
-<!-- Theme Material -->
-<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-        主题 - Material
-        <span class="sidebar-badge badge-circle">i</span>
+          
+        
+      
     </div>
-</a>
+    
+    
+    
 
-<!-- Help & Support -->
-<!--
-<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-    sidebar.help
-    <span class="mdl-button__ripple-container">
-      <span class="mdl-ripple"></span>
-    </span>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-</a>
--->
+  
+  
+  
+  </article>
 
-<!-- Feedback -->
-<!--
-<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.feedback
-                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>
--->
 
-<!-- Abount Theme -->
-<!--
-<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
-    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-         sidebar.about_theme
-        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
-</a>-->
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="code4a" />
+            
+              <p class="site-author-name" itemprop="name">code4a</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/code4a" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:jiangyantao8@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/isprots" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/code4s" target="_blank" title="Zhihu">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/+jiangyantao8" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/jiangyantao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情连接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" title="码农圈" target="_blank">码农圈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wsgzao.github.io/" title="HelloDog" target="_blank">HelloDog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.aswifter.com/" title="APP开发者" target="_blank">APP开发者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://audiebantzhan.github.io/" title="audiebant" target="_blank">audiebant</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liuling123.com/" title="残剑博客" target="_blank">残剑博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
 
     </div>
+  </aside>
 
-    <!-- Sidebar Sponsor -->
-    
 
-</aside>
+        
+      </div>
+    </main>
 
-                    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">code4a</span>
 
-                    
-                        <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
-
-                    
-
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
-    
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-        <a href="https://twitter.com/jiangyantao" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
-                <span class="visuallyhidden">Twitter</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Facebook -->
-    
-        <a href="https://www.facebook.com/jiangyantao" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
-                <span class="visuallyhidden">Facebook</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Google + -->
-    
-        <a href="https://www.google.com/+jiangyantao8" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
-                <span class="visuallyhidden">Google Plus</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Weibo -->
-    
-        <a href="http://weibo.com/isprots" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
-                <span class="visuallyhidden">Weibo</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="https://github.com/code4a" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Zhihu -->
-    
-        <a href="http://www.zhihu.com/people/code4s" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
-                <span class="visuallyhidden">Zhihu</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
-    
+  
 </div>
 
 
-        <!--Copyright-->
-        <div id="copyright">
-            Copyright&nbsp;©&nbsp;
-            <script type="text/javascript">
-                var fd = new Date();
-                document.write(fd.getFullYear());
-            </script>
-            &nbsp;蒋彦涛的个人博客
-        </div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-        <!-- Paradox Footer Right Section -->
 
-        <!--
-        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-        It will not impact the appearance and can give developers a lot of support :)
 
-        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-        它不会影响美观并可以给开发者很大的支持。 :)
-        -->
+  <span class="post-meta-divider">|</span>
 
-        <div class="mdl-mini-footer--right-section">
-            <div>
-                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
-            </div>
-        </div>
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">查看次数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
     
-</footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
+  </div>
 
-                    <!-- Import File -->
-<script src="/js/highlight.min.js" type="text/javascript"></script>
-<script src="/js/js.min.js" type="text/javascript"></script>
-<script src="/js/nprogress.js" type="text/javascript"></script>
+  
 
 <script type="text/javascript">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-
-    $('#nprogress .bar').css({
-        'background': '#FF4081'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#FF4081',
-        'border-left-color': '#FF4081'
-    });
-
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
@@ -1089,46 +1602,124 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-    <!-- 多说公共 js 代码 start -->
-    <script type="text/javascript">
-        var duoshuoQuery = {
-            short_name: 'code4a'
-        };
-        (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = 'https://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0]
-             || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
-    <!-- 多说公共 js 代码 end -->
+  
 
 
 
 
 
-<!-- Swiftye -->
 
 
-<!-- Local Search-->
 
 
-<!-- Window Load-->
-<script>
-    $(window).load(function() {
-        // Post_Toc parent position fixed
-        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
-    });
-</script>
-
-<!-- MathJax Load-->
 
 
-                </main>
-            </div>
-        </body>
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
     
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"code4a"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>

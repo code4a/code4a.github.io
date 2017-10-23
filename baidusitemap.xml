@@ -4,8 +4,68 @@
 
     
   <url>
+    <loc>http://www.code4a.com/2015/11/16/better-java/</loc>
+    <lastmod>2017-10-23T09:59:22.490Z</lastmod>
+    <data>
+        <display>
+        <title>Better Java(一)</title>
+        <pubTime>2015-11-16T13:04:04.000Z</pubTime>
+        
+        <tag>java编程思想</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://www.code4a.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/</loc>
+    <lastmod>2017-10-23T09:59:02.299Z</lastmod>
+    <data>
+        <display>
+        <title>使用NanoHTTPD在Android上建立本地服务器</title>
+        <pubTime>2016-03-11T10:22:51.000Z</pubTime>
+        
+        <tag>NanoHTTPD-Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://www.code4a.com/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/2015/11/15/WheelView-Android/</loc>
+    <lastmod>2017-10-23T09:58:49.068Z</lastmod>
+    <data>
+        <display>
+        <title>WheelView Android</title>
+        <pubTime>2015-11-15T08:42:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android View" url="http://www.code4a.com/categories/Android-View/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.code4a.com/2017/10/23/beyond-compare-for-mac-install-free-use/</loc>
-    <lastmod>2017-10-23T05:19:29.092Z</lastmod>
+    <lastmod>2017-10-23T09:51:41.062Z</lastmod>
     <data>
         <display>
         <title>Beyond Compare for Mac 无限试用方法</title>
@@ -15,6 +75,9 @@
          
          
            
+             
+              <breadCrumb title="Tools" url="http://www.code4a.com/categories/Tools/"/>
+          
         </display>
     </data>
     </url>
@@ -22,7 +85,7 @@
     
   <url>
     <loc>http://www.code4a.com/2017/10/23/create-new-blog-method/</loc>
-    <lastmod>2017-10-23T04:33:59.657Z</lastmod>
+    <lastmod>2017-10-23T09:51:34.398Z</lastmod>
     <data>
         <display>
         <title>创建hexo新文章笔记</title>
@@ -32,96 +95,9 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-    
-  <url>
-    <loc>http://www.code4a.com/2016/03/16/RxJava-Study-two/</loc>
-    <lastmod>2016-03-16T08:05:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>RxJava Study two</title>
-        <pubTime>2016-03-16T08:05:53.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/</loc>
-    <lastmod>2016-03-15T05:32:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>使用NanoHTTPD在Android上建立本地服务器</title>
-        <pubTime>2016-03-11T10:22:51.000Z</pubTime>
-        
-        <tag>NanoHTTPD</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-  <url>
-    <loc>http://www.code4a.com/2016/03/10/RxJava-Study-first/</loc>
-    <lastmod>2016-03-10T16:56:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>RxJava学习笔记(一)</title>
-        <pubTime>2016-03-10T15:31:02.000Z</pubTime>
-        
-        <tag>RxJava</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://www.code4a.com/2015/11/16/better-java/</loc>
-    <lastmod>2015-11-16T15:50:40.000Z</lastmod>
-    <data>
-        <display>
-        <title>Better Java(一)</title>
-        <pubTime>2015-11-16T13:04:04.000Z</pubTime>
-        
-        <tag>java, 编程思想</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://www.code4a.com/2015/11/15/WheelView-Android/</loc>
-    <lastmod>2015-11-15T09:47:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>WheelView Android</title>
-        <pubTime>2015-11-15T08:42:11.000Z</pubTime>
-        
-        <tag>Android, github</tag>
-         
-         
-           
+             
+              <breadCrumb title="hexo" url="http://www.code4a.com/categories/hexo/"/>
+          
         </display>
     </data>
     </url>
@@ -129,7 +105,7 @@
     
   <url>
     <loc>http://www.code4a.com/2015/11/12/hexo-help-page/</loc>
-    <lastmod>2015-11-13T13:33:14.000Z</lastmod>
+    <lastmod>2017-10-23T09:51:29.294Z</lastmod>
     <data>
         <display>
         <title>Hexo + github创建个人博客</title>
@@ -139,6 +115,9 @@
          
          
            
+             
+              <breadCrumb title="hexo" url="http://www.code4a.com/categories/hexo/"/>
+          
         </display>
     </data>
     </url>
@@ -146,7 +125,7 @@
     
   <url>
     <loc>http://www.code4a.com/2015/11/13/music-163/</loc>
-    <lastmod>2015-11-13T13:32:37.000Z</lastmod>
+    <lastmod>2017-10-23T09:51:22.848Z</lastmod>
     <data>
         <display>
         <title>添加网易云音乐</title>
@@ -156,23 +135,111 @@
          
          
            
+             
+              <breadCrumb title="play" url="http://www.code4a.com/categories/play/"/>
+          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://www.code4a.com/2017/10/23/hello-world/</loc>
-    <lastmod>2015-11-11T13:44:55.000Z</lastmod>
+    <loc>http://www.code4a.com/2016/03/10/RxJava-Study-first/</loc>
+    <lastmod>2017-10-23T09:50:44.776Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2017-10-23T03:16:51.158Z</pubTime>
+        <title>RxJava学习笔记(一)</title>
+        <pubTime>2016-03-10T15:31:02.000Z</pubTime>
         
+        <tag>RxJava</tag>
+         
          
            
+             
+              <breadCrumb title="RxJava" url="http://www.code4a.com/categories/RxJava/"/>
+          
         </display>
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://www.code4a.com/2016/03/16/RxJava-Study-two/</loc>
+    <lastmod>2017-10-23T09:50:31.688Z</lastmod>
+    <data>
+        <display>
+        <title>RxJava Study two</title>
+        <pubTime>2016-03-16T08:05:53.000Z</pubTime>
+        
+        <tag>RxJava</tag>
+         
+         
+           
+             
+              <breadCrumb title="RxJava" url="http://www.code4a.com/categories/RxJava/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/cheats/index.html</loc>
+    <lastmod>2017-10-23T09:49:47.001Z</lastmod>
+    <data>
+        <display>
+        <title>乾坤大挪移</title>
+        <pubTime>2015-11-13T15:08:10.000Z</pubTime>
+        
+         
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/chessbook/index.html</loc>
+    <lastmod>2017-10-23T09:49:34.234Z</lastmod>
+    <data>
+        <display>
+        <title>仗键乱弹</title>
+        <pubTime>2015-11-13T15:24:12.000Z</pubTime>
+        
+         
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/opensrc/index.html</loc>
+    <lastmod>2017-10-23T09:48:59.676Z</lastmod>
+    <data>
+        <display>
+        <title>葵花宝典</title>
+        <pubTime>2015-11-13T15:18:00.000Z</pubTime>
+        
+         
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/life/index.html</loc>
+    <lastmod>2017-10-23T09:48:30.900Z</lastmod>
+    <data>
+        <display>
+        <title>诗词文集库</title>
+        <pubTime>2015-11-13T15:17:13.000Z</pubTime>
+        
+         
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
 </urlset>
