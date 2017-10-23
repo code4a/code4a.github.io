@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.code4a.com/2015/11/16/better-java/</loc>
-    <lastmod>2017-10-23T09:59:22.490Z</lastmod>
+    <lastmod>2017-10-23T10:49:06.894Z</lastmod>
     <data>
         <display>
         <title>Better Java(一)</title>
@@ -22,6 +22,27 @@
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://www.code4a.com/2015/11/13/music-163/</loc>
+    <lastmod>2017-10-23T10:48:21.984Z</lastmod>
+    <data>
+        <display>
+        <title>添加网易云音乐</title>
+        <pubTime>2015-11-12T16:44:45.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="play" url="http://www.code4a.com/categories/play/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/</loc>
@@ -124,26 +145,6 @@
 
     
   <url>
-    <loc>http://www.code4a.com/2015/11/13/music-163/</loc>
-    <lastmod>2017-10-23T09:51:22.848Z</lastmod>
-    <data>
-        <display>
-        <title>添加网易云音乐</title>
-        <pubTime>2015-11-12T16:44:45.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="play" url="http://www.code4a.com/categories/play/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.code4a.com/2016/03/10/RxJava-Study-first/</loc>
     <lastmod>2017-10-23T09:50:44.776Z</lastmod>
     <data>
@@ -238,7 +239,6 @@
     </data>
     </url>
 
-    
     
     
     

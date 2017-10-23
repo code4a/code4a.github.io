@@ -386,7 +386,7 @@
     <link href="http://www.code4a.com/2015/11/16/better-java/"/>
     <id>http://www.code4a.com/2015/11/16/better-java/</id>
     <published>2015-11-16T13:04:04.000Z</published>
-    <updated>2017-10-23T09:59:22.490Z</updated>
+    <updated>2017-10-23T10:49:06.894Z</updated>
     <content type="html"><![CDATA[<h2 id="教你编写现代化的java程式">教你编写现代化的java程式</h2><blockquote>
 <p>Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。</p>
 </blockquote>
@@ -493,7 +493,7 @@
         <span class="keyword">throw</span> e;
     }
 }
-</code></pre><p><img src="http://code4a.github.io/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
+</code></pre><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
 </li>
 </ul>
 <h4 id="Avoid_lots_of_Util_Classes(避免使用大量工具类)">Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
@@ -504,7 +504,7 @@
 }
 </code></pre></li>
 </ul>
-<p><img src="http://code4a.github.io/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
+<p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
 <pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Thrower</span> </span>{
     <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">throwIfCondition</span><span class="params">(<span class="keyword">boolean</span> condition, String msg)</span> </span>{
         <span class="comment">// ...</span>
@@ -513,7 +513,7 @@
 </code></pre><ul>
 <li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义">这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
 </ul>
-<h4 id="格式化">格式化</h4><p><img src="http://code4a.github.io/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
+<h4 id="格式化">格式化</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
 <h4 id="javaDoc">javaDoc</h4><ul>
 <li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using_examples">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
 </ul>
@@ -1266,10 +1266,10 @@ import java.util.List;
     <link href="http://www.code4a.com/2015/11/13/music-163/"/>
     <id>http://www.code4a.com/2015/11/13/music-163/</id>
     <published>2015-11-12T16:44:45.000Z</published>
-    <updated>2017-10-23T09:51:22.848Z</updated>
-    <content type="html"><![CDATA[<h3 id="为个人博客添加网易云音乐">为个人博客添加网易云音乐</h3><h4 id="首先进入到网易云音乐">首先进入到<a href="http://music.163.com/" target="_blank" rel="external">网易云音乐</a></h4><h4 id="然后可以创建新的歌单，也可使用已有的歌单">然后可以创建新的歌单，也可使用已有的歌单</h4><p><img src="http://code4a.github.io/bimg/music-163-picture1.png" alt="music-163-picture1"></p>
-<h4 id="点击生成外链播放器，调整如下图界面">点击生成外链播放器，调整如下图界面</h4><p><img src="http://code4a.github.io/bimg/music-163-picture2.png" alt="music-163-picture2"></p>
-<h4 id="复制下边的html代码直接粘贴到markdown文件中即可">复制下边的html代码直接粘贴到markdown文件中即可</h4><p><img src="http://code4a.github.io/bimg/music-163-picture3.png" alt="music-163-picture3"></p>
+    <updated>2017-10-23T10:48:21.984Z</updated>
+    <content type="html"><![CDATA[<h3 id="为个人博客添加网易云音乐">为个人博客添加网易云音乐</h3><h4 id="首先进入到网易云音乐">首先进入到<a href="http://music.163.com/" target="_blank" rel="external">网易云音乐</a></h4><h4 id="然后可以创建新的歌单，也可使用已有的歌单">然后可以创建新的歌单，也可使用已有的歌单</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/music-163-picture1.png" alt="music-163-picture1"></p>
+<h4 id="点击生成外链播放器，调整如下图界面">点击生成外链播放器，调整如下图界面</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/music-163-picture2.png" alt="music-163-picture2"></p>
+<h4 id="复制下边的html代码直接粘贴到markdown文件中即可">复制下边的html代码直接粘贴到markdown文件中即可</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/music-163-picture3.png" alt="music-163-picture3"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h3 id="为个人博客添加网易云音乐">为个人博客添加网易云音乐</h3><h4 id="首先进入到网易云音乐">首先进入到<a href="http://music.163.com/" target="_blank" rel="external">网易云音乐</a></h4]]>
