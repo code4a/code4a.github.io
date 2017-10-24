@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2017-10-23T09:51:41.062Z</updated>
+  <updated>2017-10-24T06:28:03.620Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Mac 下 iTerm2的安装及配置]]></title>
+    <link href="http://www.code4a.com/2017/10/24/iTerm2-install-configuration/"/>
+    <id>http://www.code4a.com/2017/10/24/iTerm2-install-configuration/</id>
+    <published>2017-10-24T05:43:46.000Z</published>
+    <updated>2017-10-24T06:28:03.620Z</updated>
+    <content type="html"><![CDATA[<h2 id="Mac下安装iTerm2以及配色方案">Mac下安装iTerm2以及配色方案</h2><blockquote>
+<p>工欲善其事，必先利其器</p>
+</blockquote>
+<p>在好友博客中看到了一个终端工具iTerm2的使用及配色方案，感觉这个工具程序呈现的外观看着很舒服，所以自己也参照他的方案进行了配置，然后在网上搜索到这个工具同时也可以修改Vim的配色，所以就想流程记录了一下，方便日后再次部署是查看。</p>
+<h3 id="iTerm2安装和配色">iTerm2安装和配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-previews.png" alt="iTerm2效果图"></p>
+<p>具体步骤可参考<a href="http://audiebant.site/" target="_blank" rel="external">audiebantzhan</a>的<a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="external">这篇博文</a>可以解决在安装过程中遇到的问题。</p>
+<h3 id="iTerm2_Vim配色">iTerm2 Vim配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-Vim-previews.png" alt="iTerm2-Vim效果图"></p>
+<p>在第一步中配置工具颜色的时候，会下载到最流行的配色解决方案<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">Solarized</a>，Vim 的配色最好和终端的配色保持一致，不然有可能会觉得很别扭，能接受的可以除外。具体流程如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">cd</span> solarized</span><br><span class="line">$ <span class="keyword">cd</span> <span class="keyword">vim</span>-colors-solarized/colors</span><br><span class="line">$ <span class="built_in">mkdir</span> -<span class="keyword">p</span> ~/.<span class="keyword">vim</span>/colors</span><br><span class="line">$ <span class="keyword">cp</span> solarized.<span class="keyword">vim</span> ~/.<span class="keyword">vim</span>/colors/</span><br></pre></td></tr></table></figure>
+<p>然后需要编辑配置文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">vi</span> ~/.vimrc</span><br><span class="line"><span class="keyword">syntax</span> enable</span><br><span class="line"><span class="keyword">set</span> background=dark</span><br><span class="line"><span class="keyword">colorscheme</span> solarized</span><br></pre></td></tr></table></figure>
+<p>关闭重新打开Vim 就可以看到效果</p>
+<h3 id="致谢及内容出处">致谢及内容出处</h3><p><a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="external">iTerm2 Configuration</a><br><a href="http://www.cnblogs.com/gslyyq/p/5251331.html" target="_blank" rel="external">Mac vim iterm2配色方案</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Mac下安装iTerm2以及配色方案">Mac下安装iTerm2以及配色方案</h2><blockquote>
+<p>工欲善其事，必先利其器</p>
+</blockquote>
+<p>在好友博客中看到了一个终端工具iTerm2的使用及配色方案，感觉这个工具程序呈现]]>
+    </summary>
+    
+      <category term="tools" scheme="http://www.code4a.com/tags/tools/"/>
+    
+      <category term="Tools" scheme="http://www.code4a.com/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Beyond Compare for Mac 无限试用方法]]></title>
