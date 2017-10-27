@@ -313,6 +313,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/10/27/centos7-install-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/27/centos7-install-config/" itemprop="url">Centos7系统安装配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-27T17:58:21+08:00">
+                2017-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Centos_7_Mini安装配置过程">Centos 7 Mini安装配置过程</h2><blockquote>
+<p>由于工作的需要，出差到外地，需要部署局域网的服务器环境，方便这边环境的测试，安装过程也是几经波折，最终还是将环境部署成功，然后记录一下安装的过程。避免以后安装踩到一些未知的坑。</p>
+</blockquote>
+<h3 id="Centos7_镜像下载">Centos7 镜像下载</h3><ul>
+<li>请前往<a href="https://www.centos.org/download/" target="_blank" rel="external">Centos官网的下载页面</a>选择<code>DVD ISO</code>按钮，在我的<code>Mac</code>环境下就是直接启动了迅雷进行下载了，如果没有会进入到二级界面，此时请选择相应的镜像地址进行下载系统镜像</li>
+</ul>
+<h3 id="制作U盘启动盘">制作U盘启动盘</h3><ul>
+<li>U盘启动盘制作可以参考<a href="https://jingyan.baidu.com/article/49711c614d0971fa451b7c59.html" target="_blank" rel="external">这里</a>。 镜像也不需要拷贝到U盘里。我制作的时候有一步不太一样就是在写入之前，点击了<strong>便捷启动</strong> 引导选择 <code>linux</code> 的字样，然后选择写入。后边和链接里类似。</li>
+</ul>
+<h3 id="U盘引导进入安装Centos_7">U盘引导进入安装Centos 7</h3><ol>
+<li>如果你安装之前这台主机已经预装了<code>windows</code>系统，需用通过硬盘工具将整个磁盘删除，我当时是用另外一个<code>WinPE</code>的U盘引导进入，通过磁盘工具删除整个盘符，方便在后续安装中<code>Centos</code>安装程序能够识别硬盘。如果你的盘符已经删除或者是<code>Centos</code>可以识别的类型可以忽略这一步。</li>
+<li>进入<code>Centos</code>引导界面，具体的可以参考<a href="http://www.linuxidc.com/Linux/2016-07/133646.htm" target="_blank" rel="external">这个链接</a> 的第二步</li>
+</ol>
+<h3 id="安装配置Centos_7">安装配置Centos 7</h3><ul>
+<li>具体的安装配置过程可以参考<a href="http://www.111cn.net/sys/CentOS/63645.htm" target="_blank" rel="external">CentOS 7.0系统安装配置步骤详解
+</a></li>
+</ul>
+<h5 id="为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装XShell工具进行远程连接，进行环境部署，环境部署的过程中可以需要网Centos上拷贝文件，此时还需要安装XFtp工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端Navicat。">为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装<code>XShell</code>工具进行远程连接，进行环境部署，环境部署的过程中可以需要网<code>Centos</code>上拷贝文件，此时还需要安装<code>XFtp</code>工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端<code>Navicat</code>。</h5><h5 id="在数据库远程登录的过程中，如果出现_2003_#_10060_的错误时，可能就是Centos的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考远程连接linux下的mysql_Err1045_Err2003解决办法。">在数据库远程登录的过程中，如果出现 2003 # 10060 的错误时，可能就是<code>Centos</code>的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考<a href="http://www.cnblogs.com/K4Creative/p/5631516.html" target="_blank" rel="external">远程连接linux下的mysql Err1045 Err2003解决办法</a>。</h5><h3 id="以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。">以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/10/24/iTerm2-install-configuration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -927,344 +1083,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="code4a">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蒋彦涛的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/11/NanoHTTPD-Simple-Use/" itemprop="url">使用NanoHTTPD在Android上建立本地服务器</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-11T18:22:51+08:00">
-                2016-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/03/11/NanoHTTPD-Simple-Use/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/NanoHTTPD-Simple-Use/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用NanoHTTPD在Android上建立本地服务器">使用NanoHTTPD在Android上建立本地服务器</h2><blockquote>
-<p>因为项目需求，需要在Android端的Service上实现一个简单的服务器，方便客户端发送Http请求，完成对应的自动化流程，<br>通过查阅相关资料，最终决定采用NanoHTTPD</p>
-</blockquote>
-<ul>
-<li><h4 id="NanoHTTPD项目地址"><a href="https://github.com/NanoHttpd/nanohttpd" target="_blank" rel="external">NanoHTTPD项目地址</a></h4></li>
-</ul>
-<p>在 <strong><a href="https://github.com/NanoHttpd/nanohttpd/releases" target="_blank" rel="external">releases</a></strong> 界面下载nanohttpd-2.2.0.jar导入eclipse的工程中，因为目前的项目是迭代早期的项目，而且也并未往Android Studio上迁移，在AS上的依赖可以参考项目的  <strong><a href="https://github.com/NanoHttpd/nanohttpd/blob/master/README.md" target="_blank" rel="external">Readme</a></strong> 进行配置</p>
-<p>使用起来非常的简单，服务端的代码实现如下：</p>
-<h4 id="1-_单独的类集成NanoHTTPD">1. 单独的类集成NanoHTTPD</h4><pre><code><span class="keyword">package</span> com.cmcc.receiver.transfer;
-
-<span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;
-<span class="keyword">import</span> java.util.Map;
-<span class="keyword">import</span> java.util.Set;
-
-<span class="keyword">import</span> android.os.Handler;
-<span class="keyword">import</span> android.os.Message;
-<span class="keyword">import</span> android.<span class="built_in">text</span>.TextUtils;
-<span class="keyword">import</span> android.util.Log;
-
-<span class="keyword">import</span> com.cmcc.receiver.consts.Constants;
-
-<span class="keyword">import</span> fi.iki.elonen.NanoHTTPD;
-
-<span class="keyword">public</span> class WiMoTransferServer extends NanoHTTPD {
-
-  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="built_in">int</span> DEFAULT_SERVER_PORT = <span class="number">8080</span>;
-  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = WiMoTransferServer.class.getSimpleName();
-
-  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> NOTHING = <span class="string">"/favicon.ico"</span>;
-
-  <span class="comment">// ip:8080/cmd=set_interent&amp;target_ssid=WiMO-<span class="label">xxxx&amp;password=12345678</span></span>
-  <span class="comment">// cmd=set_interent&amp;target_ssid=netgear54&amp;password=11111111</span>
-
-  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> REQUEST_ROOT = <span class="string">"/"</span>;
-
-  <span class="keyword">private</span> Handler mHander;
-
-  <span class="keyword">public</span> WiMoTransferServer(Handler mHandler) {
-      <span class="keyword">super</span>(DEFAULT_SERVER_PORT);
-      <span class="keyword">this</span>.mHander = mHandler;
-  }
-
-  @Override
-  <span class="keyword">public</span> Response serve(IHTTPSession session) {
-      <span class="comment">// TODO Auto-generated method stub</span>
-      Log.i(TAG, <span class="string">"IHTTPSession : -&gt; "</span> + session.getMethod() + <span class="string">" , uri : -&gt; "</span> + session.getUri());
-      Response response = <span class="keyword">super</span>.serve(session);
-      <span class="keyword">String</span> uriStr = session.getUri();
-      <span class="keyword">switch</span> (session.getMethod()) {
-      <span class="keyword">case</span> GET:
-          <span class="keyword">if</span> (NOTHING.equals(uriStr) || REQUEST_ROOT.equals(uriStr)) {
-              Log.i(TAG, <span class="string">"request url = "</span> + NOTHING);
-              response = response404(session, uriStr);
-          } <span class="keyword">else</span> <span class="keyword">if</span> (!TextUtils.isEmpty(uriStr) &amp;&amp; uriStr.contains(Constants.EQUAL)) {
-              Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap = parseURLRequest(uriStr);
-              checkParamsResult(paramsMap);
-              <span class="keyword">String</span> cmdResult = paramsMap.<span class="built_in">get</span>(Constants.CMD);
-              Log.i(TAG, <span class="string">" cmdResult -&gt; "</span> + cmdResult);
-              <span class="keyword">if</span> (!TextUtils.isEmpty(cmdResult) &amp;&amp; Constants.SETINTERNET.equals(cmdResult)) {
-                  <span class="keyword">String</span> targetSSID = paramsMap.<span class="built_in">get</span>(Constants.TARGETSSID);
-                  <span class="keyword">String</span> pwd = paramsMap.<span class="built_in">get</span>(Constants.PWD);
-                  Log.i(TAG, <span class="string">"targetSSID = "</span> + targetSSID + <span class="string">" ,password = "</span> + pwd);
-                  Message msg = mHander.obtainMessage(Constants.MSG_CONNECT_TARGET_AP);
-                  msg.obj = targetSSID + Constants.SPLIT + pwd;
-                  mHander.sendMessage(msg);
-              }
-              response = responseSuccess();
-          }
-
-          <span class="comment">// default:</span>
-          <span class="comment">// Log.i(TAG, "request method is not GET");</span>
-          <span class="comment">// response = response404(session, uriStr);</span>
-          <span class="comment">// break;</span>
-      }
-      <span class="keyword">return</span> response;
-  }
-
-  <span class="keyword">public</span> <span class="keyword">void</span> checkParamsResult(Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; paramsMap) {
-      Set&lt;<span class="keyword">String</span>&gt; keySet = paramsMap.keySet();
-      <span class="keyword">for</span> (<span class="keyword">String</span> <span class="variable">key</span> : keySet) {
-          <span class="keyword">String</span> value = paramsMap.<span class="built_in">get</span>(<span class="variable">key</span>);
-          Log.i(TAG, <span class="string">"params_Key: -&gt; "</span> + <span class="variable">key</span> + <span class="string">" ,params_Value: -&gt; "</span> + value);
-      }
-  }
-
-  <span class="comment">/**
-   * 解析出url参数中的键值对 如
-   * "ip:8080/cmd=set_interent&amp;target_ssid=WiMO-xxxx&amp;password=12345678"，
-   * 解析出cmd:set_interent,target_ssid:WiMO-xxxx,password:12345678存入map中
-   *
-   * @param URL
-   *            url地址
-   * @return url请求参数部分
-   */</span>
-  <span class="keyword">public</span> Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; parseURLRequest(<span class="keyword">String</span> URL) {
-      Map&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt; mapRequest = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">String</span>&gt;();
-
-      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
-
-      <span class="keyword">String</span> strUrlParam = truncateUrlPage(URL);
-      <span class="keyword">if</span> (strUrlParam == <span class="keyword">null</span>) {
-          <span class="keyword">return</span> mapRequest;
-      }
-      <span class="comment">// 每个键值为一组</span>
-      arrSplit = strUrlParam.<span class="built_in">split</span>(<span class="string">"[&amp;]"</span>);
-      <span class="keyword">for</span> (<span class="keyword">String</span> strSplit : arrSplit) {
-          <span class="keyword">String</span>[] arrSplitEqual = <span class="keyword">null</span>;
-          arrSplitEqual = strSplit.<span class="built_in">split</span>(<span class="string">"[=]"</span>);
-
-          <span class="comment">// 解析出键值</span>
-          <span class="keyword">if</span> (arrSplitEqual.length &gt; <span class="number">1</span>) {
-              <span class="comment">// 正确解析</span>
-              mapRequest.put(arrSplitEqual[<span class="number">0</span>], arrSplitEqual[<span class="number">1</span>]);
-
-          } <span class="keyword">else</span> {
-              <span class="keyword">if</span> (arrSplitEqual[<span class="number">0</span>] != <span class="string">""</span>) {
-                  <span class="comment">// 只有参数没有值，不加入</span>
-                  mapRequest.put(arrSplitEqual[<span class="number">0</span>], <span class="string">""</span>);
-              }
-          }
-      }
-      <span class="keyword">return</span> mapRequest;
-  }
-
-  <span class="comment">/**
-   * 去掉url中的路径，留下请求参数部分
-   *
-   * @param strURL
-   *            url地址
-   * @return url请求参数部分
-   */</span>
-  <span class="keyword">public</span> <span class="keyword">String</span> truncateUrlPage(<span class="keyword">String</span> strURL) {
-      <span class="keyword">String</span> strAllParam = <span class="keyword">null</span>;
-      <span class="keyword">String</span>[] arrSplit = <span class="keyword">null</span>;
-
-      strURL = strURL.<span class="built_in">trim</span>().toLowerCase();
-
-      <span class="keyword">if</span> (strURL.contains(<span class="string">"[?]"</span>)) {
-          arrSplit = strURL.<span class="built_in">split</span>(<span class="string">"[?]"</span>);
-          <span class="keyword">if</span> (strURL.length() &gt; <span class="number">1</span>) {
-              <span class="keyword">if</span> (arrSplit.length &gt; <span class="number">1</span>) {
-                  <span class="keyword">if</span> (arrSplit[<span class="number">1</span>] != <span class="keyword">null</span>) {
-                      strAllParam = arrSplit[<span class="number">1</span>];
-                  }
-              }
-          }
-      } <span class="keyword">else</span> <span class="keyword">if</span> (strURL.startsWith(REQUEST_ROOT)) {
-          strAllParam = strURL.substring(strURL.indexOf(REQUEST_ROOT) + <span class="number">1</span>);
-          Log.i(TAG, <span class="string">" strAllParam substring result : -&gt; "</span> + strAllParam);
-      } <span class="keyword">else</span> {
-          strAllParam = strURL;
-      }
-
-      <span class="keyword">return</span> strAllParam;
-  }
-
-  <span class="keyword">public</span> Response responseSuccess() {
-      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
-      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
-      builder.<span class="built_in">append</span>(<span class="string">"Success!"</span>);
-      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
-      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
-  }
-
-  <span class="keyword">public</span> Response response404(IHTTPSession session, <span class="keyword">String</span> url) {
-      StringBuilder builder = <span class="keyword">new</span> StringBuilder();
-      builder.<span class="built_in">append</span>(<span class="string">"&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;"</span>);
-      builder.<span class="built_in">append</span>(<span class="string">"Sorry, Can't Found "</span> + url + <span class="string">" !"</span>);
-      builder.<span class="built_in">append</span>(<span class="string">"&lt;/body&gt;&lt;/html&gt;\n"</span>);
-      <span class="keyword">return</span> newFixedLengthResponse(builder.toString());
-  }
-}
-</code></pre><h4 id="2-_在service中初始化WiMoTransferServer对象">2. 在service中初始化WiMoTransferServer对象</h4><pre><code><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">initWebServer</span><span class="params">()</span> </span>{
-    mWiMoTransferServer = <span class="keyword">new</span> WiMoTransferServer(mHandler);
-    <span class="keyword">try</span> {
-        mWiMoTransferServer.start();
-    } <span class="keyword">catch</span> (IOException e) {
-        e.printStackTrace();
-    }
-}
-</code></pre><p>  在需要初始化server的地方调用该方法，在需要停止服务的地方调用</p>
-<pre><code>mWiMoTransferServer.<span class="literal">stop</span>();
-</code></pre><h4 id="3-_然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应">3. 然后再客户端中通过http请求发送到该服务的ip地址，然后再做详细的处理和响应</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1314,7 +1137,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
