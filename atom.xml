@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2017-10-27T10:55:41.243Z</updated>
+  <updated>2017-11-02T12:48:48.507Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[`zsh`: `command not found: gradle/adb/..`]]></title>
+    <link href="http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/"/>
+    <id>http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/</id>
+    <published>2017-11-02T12:17:31.000Z</published>
+    <updated>2017-11-02T12:48:48.507Z</updated>
+    <content type="html"><![CDATA[<h2 id="iTerm2下命令找不到"><code>iTerm2</code>下命令找不到</h2><blockquote>
+<p>由于前段时间更新了命令行工具，导致这两天在<code>Android Studio</code>的命令行下找不到<code>adb</code>命令和<code>gradle</code>命令。因为<code>Android Studio</code>的命令行使用的就是默认的命令行工具，导致之前对<code>bash</code>的配置不生效。</p>
+</blockquote>
+<h5 id="如果你出现同样的问题可以参考Mac下command_not_found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！">如果你出现同样的问题可以参考<a href="http://blog.csdn.net/u010358168/article/details/61924807" target="_blank" rel="external">Mac下command not found:gradle/adb终极解决方案</a>这篇文章，可以很好地解决这个问题！</h5><h2 id="zsh:_permission_denied:_-/gradlew">zsh: permission denied: ./gradlew</h2><h5 id="在使用命令gradlew提交代码到jCenter时出现zsh:_permission_denied:_-/gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo:_-/gradlew:_command_not_found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令">在使用命令<code>gradlew</code>提交代码到<code>jCenter</code>时出现<code>zsh: permission denied: ./gradlew</code>，第一反应是权限不够，然后再前边添加了<code>sudo</code>命令提高权限，紧接着又出现<code>sudo: ./gradlew: command not found</code>的提示，然后再网上搜索了一下原来是<code>gradlew</code>没有执行权限，因为之前在<code>Terminal</code>终端工具中是经常用的命令，换了<code>iTerm2</code>之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令</h5><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">chmod</span> +<span class="keyword">x</span> gradlew</span><br></pre></td></tr></table></figure>
+<h4 id="为gradlew增加可执行权限">为<code>gradlew</code>增加可执行权限</h4><h2 id="发布代码到jCenter">发布代码到jCenter</h2><h5 id="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。">然后再执行发布到<a href="https://bintray.com/code4a" target="_blank" rel="external">jCenter</a>的命令，如果你也是使用的<a href="https://github.com/novoda/bintray-release" target="_blank" rel="external">bintray-release</a>的配置，可以使用以下命令。</h5><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean <span class="keyword">build </span><span class="keyword">bintrayUpload </span>-PbintrayUser<span class="label">=BINTRAY_USERNAME</span> -PbintrayKey<span class="label">=BINTRAY_KEY</span> -PdryRun<span class="label">=false</span></span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="iTerm2下命令找不到"><code>iTerm2</code>下命令找不到</h2><blockquote>
+<p>由于前段时间更新了命令行工具，导致这两天在<code>Android Studio</code>的命令行下找不到<code>adb</code>]]>
+    </summary>
+    
+      <category term="tools" scheme="http://www.code4a.com/tags/tools/"/>
+    
+      <category term="Tools" scheme="http://www.code4a.com/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Centos7系统安装配置]]></title>
