@@ -4,11 +4,51 @@
 
     
   <url>
-    <loc>http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/</loc>
-    <lastmod>2017-11-02T12:48:48.507Z</lastmod>
+    <loc>http://www.code4a.com/2017/11/04/Vim-Command-Used-Record/</loc>
+    <lastmod>2017-11-04T04:28:11.500Z</lastmod>
     <data>
         <display>
-        <title>`zsh`: `command not found: gradle/adb/..`</title>
+        <title>Vim常用命令记录</title>
+        <pubTime>2017-11-04T02:24:24.000Z</pubTime>
+        
+        <tag>tools</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://www.code4a.com/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/2017/11/04/iTerm2-Command-highlighter/</loc>
+    <lastmod>2017-11-04T02:18:29.024Z</lastmod>
+    <data>
+        <display>
+        <title>iTerm2语法高亮配置</title>
+        <pubTime>2017-11-04T02:00:58.000Z</pubTime>
+        
+        <tag>tools</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://www.code4a.com/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/</loc>
+    <lastmod>2017-11-04T02:02:36.179Z</lastmod>
+    <data>
+        <display>
+        <title>zsh: command not found: gradle/adb/..</title>
         <pubTime>2017-11-02T12:17:31.000Z</pubTime>
         
         <tag>tools</tag>

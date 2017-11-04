@@ -313,6 +313,1139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2015/11/16/better-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/16/better-java/" itemprop="url">Better Java(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-16T21:04:04+08:00">
+                2015-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="教你编写现代化的java程式">教你编写现代化的java程式</h2><blockquote>
+<p>Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。</p>
+</blockquote>
+<h3 id="Style(样式)"><strong>Style(样式)</strong></h3><ul>
+<li>传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性</li>
+</ul>
+<h4 id="Structs(结构体)">Structs(结构体)</h4><ul>
+<li><h5 id="常规用法">常规用法</h5><pre><code><span class="keyword">public</span> class DataBean {
+
+  <span class="keyword">private</span> <span class="built_in">String</span> <span class="built_in">data</span>;
+
+  <span class="keyword">public</span> DataBean(){};
+
+  <span class="keyword">public</span> <span class="literal">void</span> setData(<span class="built_in">String</span> <span class="built_in">data</span>){
+    this<span class="built_in">.</span><span class="built_in">data</span> = <span class="built_in">data</span>;
+  }
+
+  <span class="keyword">public</span> <span class="built_in">String</span> getData(){
+    <span class="keyword">return</span> this<span class="built_in">.</span><span class="built_in">data</span>;
+  }
+}
+</code></pre></li>
+<li><h5 id="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：">不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考<code>C</code>风格里的结构体样式去编写这种容器数据：</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> DataBean {
+    <span class="keyword">public</span> <span class="keyword">final</span> String <span class="type">data</span>;
+
+    <span class="keyword">public</span> DataBean(String <span class="type">data</span>) {
+        this.<span class="type">data</span> = <span class="type">data</span>;
+    }
+}
+</code></pre></li>
+<li><h5 id="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。">这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</h5></li>
+</ul>
+<h4 id="Builder模式">Builder模式</h4><ul>
+<li><h5 id="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：">如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</h5><pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComplicatedDataBean</span> </span>{
+    <span class="keyword">public</span> <span class="keyword">final</span> String data;
+    <span class="keyword">public</span> fianl <span class="keyword">int</span> num;
+    <span class="comment">// lots more fields and a constructor</span>
+    <span class="function"><span class="keyword">private</span> <span class="title">ComplicatedDataBean</span><span class="params">(Builder builder)</span></span>{
+        <span class="keyword">this</span>.data = builder.data;
+        <span class="keyword">this</span>.num = builder.num;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>{
+        <span class="keyword">private</span> String data;
+        <span class="keyword">private</span> <span class="keyword">int</span> num;
+
+        <span class="function"><span class="keyword">public</span> Builder <span class="title">data</span><span class="params">(String data)</span> </span>{
+            <span class="keyword">this</span>.data = data;
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+
+        <span class="function"><span class="keyword">public</span> Builder <span class="title">num</span><span class="params">(<span class="keyword">int</span> num)</span></span>{
+            <span class="keyword">this</span>.num = num;
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+
+        <span class="function"><span class="keyword">public</span> ComplicatedDataBean <span class="title">build</span><span class="params">()</span></span>{
+            <span class="keyword">return</span> <span class="keyword">new</span> ComplicatedDataBean(<span class="keyword">this</span>); <span class="comment">// etc</span>
+        }
+    }
+}
+</code></pre></li>
+<li><h5 id="然后可以按照如下方式使用：">然后可以按照如下方式使用：</h5><pre><code><span class="keyword">final</span> ComplicatedDataBean cda = <span class="keyword">new</span> ComplicatedDataBean.builder().data(<span class="string">"她已经"</span>).<span class="built_in">num</span>(<span class="number">22</span>).build();
+</code></pre></li>
+</ul>
+<h4 id="Dependency_Injection(依赖注入)">Dependency Injection(依赖注入)</h4><ul>
+<li><h5 id="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。">依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</h5></li>
+<li><h5 id="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google_和_Square的Dagger库或者Google’s_Guice-">在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</h5></li>
+</ul>
+<h4 id="避免空指针">避免空指针</h4><ul>
+<li><h5 id="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。">尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> FooWidget {
+    <span class="keyword">private</span> <span class="keyword">final</span> String <span class="type">data</span>;
+    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Optional</span>&lt;Bar&gt; bar;
+
+    <span class="keyword">public</span> FooWidget(String <span class="type">data</span>){
+        this(<span class="type">data</span>, <span class="type">Optional</span>.empty());
+    }
+
+    <span class="keyword">public</span> FooWidget(String <span class="type">data</span>, <span class="type">Optional</span>&lt;Bar&gt; bar){
+        this.<span class="type">data</span> = <span class="type">data</span>;
+        this.bar = bar;
+    }
+
+    <span class="keyword">public</span> <span class="type">Optional</span>&lt;Bar&gt; getBar(){
+        <span class="keyword">return</span> bar;
+    }
+}
+</code></pre></li>
+<li><h5 id="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的">根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</h5><pre><code><span class="keyword">final</span> Optional&lt;FooWidget&gt; fooWidget = maybeGetFooWidget();
+<span class="keyword">final</span> Baz baz = fooWidget.flatMap(FooWidget::getBar).flatMap(BarWidget::getBaz).orElse(defaultBaz);
+</code></pre></li>
+</ul>
+<h4 id="ImmuTable-by-default(默认不可变)">ImmuTable-by-default(默认不可变)</h4><blockquote>
+<p>java-advantages-of-of-immutable-objects-in-examples</p>
+</blockquote>
+<ul>
+<li><h5 id="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：">除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</h5><pre><code><span class="keyword">final</span> FooWidget fooWidget;
+<span class="keyword">if</span>(condition()){
+    fooWidget = getWidget();
+}<span class="keyword">else</span>{
+    <span class="keyword">try</span>{
+        fooWidget = cachedFooWidget.<span class="keyword">get</span>();
+    }<span class="keyword">catch</span>(CachingException e){
+        <span class="keyword">throw</span> e;
+    }
+}
+</code></pre><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
+</li>
+</ul>
+<h4 id="Avoid_lots_of_Util_Classes(避免使用大量工具类)">Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
+<li><h5 id="一不注意，就会发现自己写了N多的工具类，譬如：">一不注意，就会发现自己写了N多的工具类，譬如：</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MiscUtil</span> {
+  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">frobnicateString</span>(<span class="params">String <span class="keyword">base</span>, <span class="keyword">int</span> times</span>)</span>{
+  <span class="comment">// ... etc</span>
+  }
+}
+</code></pre></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Thrower</span> </span>{
+    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">throwIfCondition</span><span class="params">(<span class="keyword">boolean</span> condition, String msg)</span> </span>{
+        <span class="comment">// ...</span>
+    }
+}
+</code></pre><ul>
+<li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义">这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
+</ul>
+<h4 id="格式化">格式化</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
+<h4 id="javaDoc">javaDoc</h4><ul>
+<li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using_examples">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
+</ul>
+<h4 id="Streams">Streams</h4><ul>
+<li><h5 id="java_8_提供了非常nice的_stream_api可以用如下的写法：">java 8 提供了非常nice的 stream api可以用如下的写法：</h5><pre><code>final <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; filtered = <span class="built_in">list</span><span class="built_in">.</span>stream()<span class="built_in">.</span>filter(s<span class="subst">-&gt;</span>s<span class="built_in">.</span>startsWith(<span class="string">"s"</span>))<span class="built_in">.</span><span class="built_in">map</span>(s<span class="subst">-&gt;</span>s<span class="built_in">.</span>toUpperCase())<span class="built_in">.</span>collect(Collectors<span class="built_in">.</span>toList());
+</code></pre></li>
+<li><h5 id="来替代：">来替代：</h5><pre><code><span class="keyword">final</span> List&lt;<span class="keyword">String</span>&gt; filtered = <span class="keyword">new</span> ArrayList&lt;&gt;();
+<span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">str</span> : list){
+    <span class="keyword">if</span>(<span class="built_in">str</span>.startsWith(<span class="string">"s"</span>)){
+        filtered.<span class="built_in">add</span>(<span class="built_in">str</span>.toUpperCase());
+    }
+}
+</code></pre></li>
+<li><h5 id="这样可以帮助你写更多的高可读性，流畅性的代码。">这样可以帮助你写更多的高可读性，流畅性的代码。</h5></li>
+</ul>
+<h2 id="本文来自：SegmentFault_版权归属原作者">本文来自：SegmentFault 版权归属原作者</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2015/11/15/WheelView-Android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/15/WheelView-Android/" itemprop="url">WheelView Android</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-15T16:42:11+08:00">
+                2015-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-View/" itemprop="url" rel="index">
+                    <span itemprop="name">Android View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/15/WheelView-Android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/15/WheelView-Android/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Android_横向滚轮选择视图">Android 横向滚轮选择视图</h2><h4 id="适用于为money_或者短词名称做选择器">适用于为money 或者短词名称做选择器</h4><h4 id="先上图，效果图：">先上图，效果图：</h4><p><img src="https://raw.githubusercontent.com/lantouzi/WheelView-Android/master/preview/demo.jpg" alt="WheelView"></p>
+<h4 id="使用方式">使用方式</h4><h5 id="布局xml：">布局xml：</h5><p>  <strong>注意在父布局加入<code>xmlns:app=&quot;http://schemas.android.com/apk/res-auto</code>“可使用自定义属性</strong></p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">ScrollView</span>
+  <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+  <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+  <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">LinearLayout</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:background</span>=<span class="value">"#fafafa"</span>
+    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>
+    <span class="attribute">android:weightSum</span>=<span class="value">"2"</span>
+    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">LinearLayout</span>
+      <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+      <span class="attribute">android:layout_height</span>=<span class="value">"0dp"</span>
+      <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span>
+      <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>&gt;</span>
+
+      <span class="tag">&lt;<span class="title">com.lantouzi.wheelview.WheelView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/wheelview"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+        <span class="attribute">android:layout_marginTop</span>=<span class="value">"8dp"</span>
+        <span class="attribute">android:background</span>=<span class="value">"@android:color/white"</span>/&gt;</span>
+
+      <span class="tag">&lt;<span class="title">com.lantouzi.wheelview.WheelView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/wheelview2"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+        <span class="attribute">android:layout_marginTop</span>=<span class="value">"8dp"</span>
+        <span class="attribute">android:background</span>=<span class="value">"@android:color/white"</span>
+        <span class="attribute">app:lwvHighlightColor</span>=<span class="value">"#7CD717"</span>
+        <span class="attribute">app:lwvIntervalFactor</span>=<span class="value">"1.1"</span>/&gt;</span>
+
+      <span class="tag">&lt;<span class="title">com.lantouzi.wheelview.WheelView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/wheelview3"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+        <span class="attribute">android:layout_marginTop</span>=<span class="value">"8dp"</span>
+        <span class="attribute">android:background</span>=<span class="value">"@android:color/white"</span>
+        <span class="attribute">app:lwvHighlightColor</span>=<span class="value">"#31B1E6"</span>
+        <span class="attribute">app:lwvIntervalFactor</span>=<span class="value">"1.3"</span>
+        <span class="attribute">app:lwvMarkRatio</span>=<span class="value">"0.2"</span>
+        <span class="attribute">app:lwvMarkTextColor</span>=<span class="value">"#919191"</span>/&gt;</span>
+
+    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">com.lantouzi.wheelview.WheelView</span>
+      <span class="attribute">android:id</span>=<span class="value">"@+id/wheelview4"</span>
+      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+      <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+      <span class="attribute">android:layout_marginTop</span>=<span class="value">"16dp"</span>
+      <span class="attribute">android:background</span>=<span class="value">"#222222"</span>
+      <span class="attribute">app:lwvAdditionalCenterMark</span>=<span class="value">"元"</span>
+      <span class="attribute">app:lwvHighlightColor</span>=<span class="value">"#31B1E6"</span>
+      <span class="attribute">app:lwvMarkColor</span>=<span class="value">"#EEEEEE"</span>
+      <span class="attribute">app:lwvMarkTextColor</span>=<span class="value">"#CACACA"</span>/&gt;</span>
+
+    <span class="tag">&lt;<span class="title">com.lantouzi.wheelview.WheelView</span>
+      <span class="attribute">android:id</span>=<span class="value">"@+id/wheelview5"</span>
+      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+      <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+      <span class="attribute">android:layout_marginTop</span>=<span class="value">"16dp"</span>
+      <span class="attribute">android:background</span>=<span class="value">"#222222"</span>
+      <span class="attribute">app:lwvAdditionalCenterMark</span>=<span class="value">"元"</span>
+      <span class="attribute">app:lwvCenterMarkTextSize</span>=<span class="value">"14sp"</span>
+      <span class="attribute">app:lwvCursorSize</span>=<span class="value">"10dp"</span>
+      <span class="attribute">app:lwvHighlightColor</span>=<span class="value">"#31B1E6"</span>
+      <span class="attribute">app:lwvMarkColor</span>=<span class="value">"#EEEEEE"</span>
+      <span class="attribute">app:lwvMarkTextColor</span>=<span class="value">"#CACACA"</span>
+      <span class="attribute">app:lwvMarkTextSize</span>=<span class="value">"12sp"</span>/&gt;</span>
+
+    <span class="tag">&lt;<span class="title">TextView</span>
+      <span class="attribute">android:id</span>=<span class="value">"@+id/selected_tv"</span>
+      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+      <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+      <span class="attribute">android:layout_margin</span>=<span class="value">"8dp"</span>
+      <span class="attribute">android:gravity</span>=<span class="value">"center"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ScrollView</span>&gt;</span>
+</code></pre><h4 id="Activity中实现:">Activity中实现:</h4><pre><code>  <span class="keyword">private</span> WheelView mWheelView, mWheelView2, mWheelView3, mWheelView4, mWheelView5;
+  <span class="keyword">private</span> TextView mSelectedTv;
+
+  @Override
+  <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) {
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    mWheelView = (WheelView) findViewById(R.id.wheelview);
+    mWheelView2 = (WheelView) findViewById(R.id.wheelview2);
+    mWheelView3 = (WheelView) findViewById(R.id.wheelview3);
+    mWheelView4 = (WheelView) findViewById(R.id.wheelview4);
+    mWheelView5 = (WheelView) findViewById(R.id.wheelview5);
+    mSelectedTv = (TextView) findViewById(R.id.selected_tv);
+
+    <span class="keyword">final</span> List&lt;<span class="keyword">String</span>&gt; items = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">40</span>; i++) {
+      items.<span class="built_in">add</span>(<span class="keyword">String</span>.valueOf(i * <span class="number">1000</span>));
+    }
+
+    mWheelView.setItems(items);
+    mWheelView.selectIndex(<span class="number">8</span>);
+    mWheelView.setAdditionCenterMark(<span class="string">"元"</span>);
+
+    List&lt;<span class="keyword">String</span>&gt; items2 = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    items2.<span class="built_in">add</span>(<span class="string">"一月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"二月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"三月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"四月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"五月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"六月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"七月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"八月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"九月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"十月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"十一月"</span>);
+    items2.<span class="built_in">add</span>(<span class="string">"十二月"</span>);
+
+    mWheelView2.setItems(items2);
+
+    List&lt;<span class="keyword">String</span>&gt; items3 = <span class="keyword">new</span> ArrayList&lt;&gt;();
+    items3.<span class="built_in">add</span>(<span class="string">"1"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"2"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"3"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"5"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"7"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"11"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"13"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"17"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"19"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"23"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"29"</span>);
+    items3.<span class="built_in">add</span>(<span class="string">"31"</span>);
+
+    mWheelView3.setItems(items3);
+    mWheelView3.setAdditionCenterMark(<span class="string">"m"</span>);
+
+    mWheelView4.setItems(items);
+
+    mWheelView5.setItems(items);
+    mWheelView5.setOnWheelItemSelectedListener(<span class="keyword">new</span> WheelView.OnWheelItemSelectedListener() {
+      @Override
+      <span class="keyword">public</span> <span class="keyword">void</span> onWheelItemSelected(<span class="built_in">int</span> position) {
+        mSelectedTv.setText(<span class="string">"选择："</span> + items.<span class="built_in">get</span>(position) + <span class="string">"万"</span>);
+      }
+    });
+
+}
+</code></pre><h4 id="引用的wheelview">引用的wheelview</h4><h5 id="attrs-xml">attrs.xml</h5><pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">resources</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">declare-styleable</span> <span class="attribute">name</span>=<span class="value">"WheelView"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvHighlightColor"</span> <span class="attribute">format</span>=<span class="value">"color|reference"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvMarkColor"</span> <span class="attribute">format</span>=<span class="value">"color|reference"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvMarkTextColor"</span> <span class="attribute">format</span>=<span class="value">"color|reference"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvIntervalFactor"</span> <span class="attribute">format</span>=<span class="value">"float"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvMarkRatio"</span> <span class="attribute">format</span>=<span class="value">"float"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvCursorSize"</span> <span class="attribute">format</span>=<span class="value">"dimension"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvMarkTextSize"</span> <span class="attribute">format</span>=<span class="value">"dimension"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvCenterMarkTextSize"</span> <span class="attribute">format</span>=<span class="value">"dimension"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvHighlightMarkTextSize"</span> <span class="attribute">format</span>=<span class="value">"dimension"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"lwvAdditionalCenterMark"</span> <span class="attribute">format</span>=<span class="value">"string|reference"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">declare-styleable</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">resources</span>&gt;</span>
+</code></pre><h5 id="自定义视图WheelView">自定义视图WheelView</h5><pre><code>package com.lantouzi.wheelview;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.ViewCompat;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
+import android.view.View;
+import android.widget.OverScroller;
+
+import com.lantouzi.wheelview.library.R;
+
+import java.util.List;
+
+<span class="comment">/**
+* Created by kyle on 15/11/9.
+*/</span>
+<span class="keyword">public</span> <span class="keyword">class</span> WheelView extends View implements GestureDetector.OnGestureListener {
+  <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">float</span> DEFAULT_INTERVAL_FACTOR = <span class="number">1.2f</span>;
+  <span class="keyword">public</span> <span class="keyword">static</span> final <span class="keyword">float</span> DEFAULT_MARK_RATIO = <span class="number">0.7f</span>;
+
+  <span class="keyword">private</span> Paint mMarkPaint;
+  <span class="keyword">private</span> TextPaint mMarkTextPaint;
+  <span class="keyword">private</span> <span class="keyword">int</span> mCenterIndex;
+
+  <span class="keyword">private</span> <span class="keyword">int</span> mHighlightColor, mMarkTextColor;
+  <span class="keyword">private</span> <span class="keyword">int</span> mMarkColor, mFadeMarkColor;
+
+  <span class="keyword">private</span> <span class="keyword">int</span> mHeight;
+  <span class="keyword">private</span> List&lt;String&gt; mItems;
+  <span class="keyword">private</span> String mAdditionCenterMark;
+  <span class="keyword">private</span> OnWheelItemSelectedListener mOnWheelItemSelectedListener;
+  <span class="keyword">private</span> <span class="keyword">float</span> mIntervalFactor = DEFAULT_INTERVAL_FACTOR;
+  <span class="keyword">private</span> <span class="keyword">float</span> mMarkRatio = DEFAULT_MARK_RATIO;
+
+  <span class="keyword">private</span> <span class="keyword">int</span> mMarkCount;
+  <span class="keyword">private</span> <span class="keyword">float</span> mAdditionCenterMarkWidth;
+  <span class="keyword">private</span> Path mCenterIndicatorPath = <span class="keyword">new</span> Path();
+  <span class="keyword">private</span> <span class="keyword">float</span> mCursorSize;
+  <span class="keyword">private</span> <span class="keyword">int</span> mViewScopeSize;
+
+  <span class="comment">// scroll control args ---- start</span>
+  <span class="keyword">private</span> OverScroller mScroller;
+  <span class="keyword">private</span> <span class="keyword">float</span> mMaxOverScrollDistance;
+  <span class="keyword">private</span> RectF mContentRectF;
+  <span class="keyword">private</span> boolean mFling = <span class="literal">false</span>;
+  <span class="keyword">private</span> <span class="keyword">float</span> mCenterTextSize, mNormalTextSize;
+  <span class="keyword">private</span> <span class="keyword">float</span> mTopSpace, mBottomSpace;
+  <span class="keyword">private</span> <span class="keyword">float</span> mIntervalDis;
+  <span class="keyword">private</span> <span class="keyword">float</span> mCenterMarkWidth, mMarkWidth;
+  <span class="keyword">private</span> GestureDetectorCompat mGestureDetectorCompat;
+  <span class="comment">// scroll control args ---- end</span>
+
+
+  <span class="function"><span class="keyword">public</span> <span class="title">WheelView</span><span class="params">(Context context)</span> </span>{
+    super(context);
+    init(null);
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="title">WheelView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+    super(context, attrs);
+    init(attrs);
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="title">WheelView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>{
+    super(context, attrs, defStyleAttr);
+    init(attrs);
+  }
+
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(AttributeSet attrs)</span> </span>{
+    <span class="keyword">float</span> density = getResources().getDisplayMetrics().density;
+    mCenterMarkWidth = (<span class="keyword">int</span>) (density * <span class="number">1.5f</span> + <span class="number">0.5f</span>);
+    mMarkWidth = density;
+
+    mHighlightColor = <span class="number">0xFFF74C39</span>;
+    mMarkTextColor = <span class="number">0xFF666666</span>;
+    mMarkColor = <span class="number">0xFFEEEEEE</span>;
+    mCursorSize = density * <span class="number">18</span>;
+    mCenterTextSize = density * <span class="number">22</span>;
+    mNormalTextSize = density * <span class="number">18</span>;
+    mBottomSpace = density * <span class="number">6</span>;
+
+    TypedArray ta = attrs == null ? null : getContext().obtainStyledAttributes(attrs, R.styleable.WheelView);
+    <span class="keyword">if</span> (ta != null) {
+      mHighlightColor = ta.getColor(R.styleable.WheelView_lwvHighlightColor, mHighlightColor);
+      mMarkTextColor = ta.getColor(R.styleable.WheelView_lwvMarkTextColor, mMarkTextColor);
+      mMarkColor = ta.getColor(R.styleable.WheelView_lwvMarkColor, mMarkColor);
+      mIntervalFactor = ta.getFloat(R.styleable.WheelView_lwvIntervalFactor, mIntervalFactor);
+      mMarkRatio = ta.getFloat(R.styleable.WheelView_lwvMarkRatio, mMarkRatio);
+      mAdditionCenterMark = ta.getString(R.styleable.WheelView_lwvAdditionalCenterMark);
+      mCenterTextSize = ta.getDimension(R.styleable.WheelView_lwvCenterMarkTextSize, mCenterTextSize);
+      mNormalTextSize = ta.getDimension(R.styleable.WheelView_lwvMarkTextSize, mNormalTextSize);
+      mCursorSize = ta.getDimension(R.styleable.WheelView_lwvCursorSize, mCursorSize);
+    }
+    mFadeMarkColor = mHighlightColor &amp; <span class="number">0xAAFFFFFF</span>;
+    mIntervalFactor = Math.max(<span class="number">1</span>, mIntervalFactor);
+    mMarkRatio = Math.min(<span class="number">1</span>, mMarkRatio);
+    mTopSpace = mCursorSize + density * <span class="number">2</span>;
+
+    mMarkPaint = <span class="keyword">new</span> Paint(Paint.ANTI_ALIAS_FLAG);
+    mMarkTextPaint = <span class="keyword">new</span> TextPaint(Paint.ANTI_ALIAS_FLAG);
+    mMarkTextPaint.setTextAlign(Paint.Align.CENTER);
+    mMarkTextPaint.setColor(mHighlightColor);
+
+    mMarkPaint.setColor(mMarkColor);
+    mMarkPaint.setStrokeWidth(mCenterMarkWidth);
+
+    mMarkTextPaint.setTextSize(mCenterTextSize);
+    calcIntervalDis();
+
+    mScroller = <span class="keyword">new</span> OverScroller(getContext());
+    mContentRectF = <span class="keyword">new</span> RectF();
+
+    mGestureDetectorCompat = <span class="keyword">new</span> GestureDetectorCompat(getContext(), <span class="keyword">this</span>);
+
+    selectIndex(<span class="number">0</span>);
+  }
+
+  <span class="comment">/**
+   * calculate interval distance between items
+   */</span>
+  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">calcIntervalDis</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> (mMarkTextPaint == null) {
+      <span class="keyword">return</span>;
+    }
+    String defaultText = <span class="string">"888888"</span>;
+    Rect temp = <span class="keyword">new</span> Rect();
+    <span class="keyword">int</span> max = <span class="number">0</span>;
+    <span class="keyword">if</span> (mItems != null &amp;&amp; mItems.size() &gt; <span class="number">0</span>) {
+      <span class="keyword">for</span> (String i : mItems) {
+        mMarkTextPaint.getTextBounds(i, <span class="number">0</span>, i.length(), temp);
+        <span class="keyword">if</span> (temp.width() &gt; max) {
+          max = temp.width();
+        }
+      }
+    } <span class="keyword">else</span> {
+      mMarkTextPaint.getTextBounds(defaultText, <span class="number">0</span>, defaultText.length(), temp);
+      max = temp.width();
+    }
+
+    <span class="keyword">if</span> (!TextUtils.isEmpty(mAdditionCenterMark)) {
+      mMarkTextPaint.setTextSize(mNormalTextSize);
+      mMarkTextPaint.getTextBounds(mAdditionCenterMark, <span class="number">0</span>, mAdditionCenterMark.length(), temp);
+      mAdditionCenterMarkWidth = temp.width();
+      max += temp.width();
+    }
+
+    mIntervalDis = max * mIntervalFactor;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>{
+    setMeasuredDimension(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
+  }
+
+  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">measureWidth</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec)</span> </span>{
+    <span class="keyword">int</span> measureMode = MeasureSpec.getMode(widthMeasureSpec);
+    <span class="keyword">int</span> measureSize = MeasureSpec.getSize(widthMeasureSpec);
+    <span class="keyword">int</span> result = getSuggestedMinimumWidth();
+    <span class="keyword">switch</span> (measureMode) {
+      <span class="keyword">case</span> MeasureSpec.AT_MOST:
+      <span class="keyword">case</span> MeasureSpec.EXACTLY:
+        result = measureSize;
+        <span class="keyword">break</span>;
+      <span class="keyword">default</span>:
+        <span class="keyword">break</span>;
+    }
+    <span class="keyword">return</span> result;
+  }
+
+  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">measureHeight</span><span class="params">(<span class="keyword">int</span> heightMeasure)</span> </span>{
+    <span class="keyword">int</span> measureMode = MeasureSpec.getMode(heightMeasure);
+    <span class="keyword">int</span> measureSize = MeasureSpec.getSize(heightMeasure);
+    <span class="keyword">int</span> result = (<span class="keyword">int</span>) (mBottomSpace + mTopSpace * <span class="number">2</span> + mCenterTextSize);
+    <span class="keyword">switch</span> (measureMode) {
+      <span class="keyword">case</span> MeasureSpec.EXACTLY:
+        result = Math.max(result, measureSize);
+        <span class="keyword">break</span>;
+      <span class="keyword">case</span> MeasureSpec.AT_MOST:
+        result = Math.min(result, measureSize);
+        <span class="keyword">break</span>;
+      <span class="keyword">default</span>:
+        <span class="keyword">break</span>;
+    }
+    <span class="keyword">return</span> result;
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fling</span><span class="params">(<span class="keyword">int</span> velocityX, <span class="keyword">int</span> velocityY)</span> </span>{
+    mScroller.fling(getScrollX(), getScrollY(), velocityX, velocityY, (<span class="keyword">int</span>) -mMaxOverScrollDistance, (<span class="keyword">int</span>) (mContentRectF.width() - mMaxOverScrollDistance), <span class="number">0</span>, <span class="number">0</span>, (<span class="keyword">int</span>) mMaxOverScrollDistance, <span class="number">0</span>);
+    ViewCompat.postInvalidateOnAnimation(<span class="keyword">this</span>);
+  }
+
+  @<span class="function">Override
+  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSizeChanged</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h, <span class="keyword">int</span> oldw, <span class="keyword">int</span> oldh)</span> </span>{
+    super.onSizeChanged(w, h, oldw, oldh);
+    <span class="keyword">if</span> (w != oldw || h != oldh) {
+      mHeight = h;
+      mMaxOverScrollDistance = w / <span class="number">2.f</span>;
+      mContentRectF.<span class="built_in">set</span>(<span class="number">0</span>, <span class="number">0</span>, (mMarkCount - <span class="number">1</span>) * mIntervalDis, h);
+      mViewScopeSize = (<span class="keyword">int</span>) Math.<span class="built_in">ceil</span>(mMaxOverScrollDistance / mIntervalDis);
+    }
+  }
+
+  @<span class="function">Override
+  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>{
+    super.onDraw(canvas);
+
+    mCenterIndicatorPath.reset();
+    <span class="keyword">float</span> sizeDiv2 = mCursorSize / <span class="number">2f</span>;
+    <span class="keyword">float</span> sizeDiv3 = mCursorSize / <span class="number">3f</span>;
+    mCenterIndicatorPath.moveTo(mMaxOverScrollDistance - sizeDiv2 + getScrollX(), <span class="number">0</span>);
+    mCenterIndicatorPath.rLineTo(<span class="number">0</span>, sizeDiv3);
+    mCenterIndicatorPath.rLineTo(sizeDiv2, sizeDiv2);
+    mCenterIndicatorPath.rLineTo(sizeDiv2, -sizeDiv2);
+    mCenterIndicatorPath.rLineTo(<span class="number">0</span>, -sizeDiv3);
+    mCenterIndicatorPath.close();
+
+    mMarkPaint.setColor(mHighlightColor);
+    canvas.drawPath(mCenterIndicatorPath, mMarkPaint);
+
+    <span class="keyword">int</span> start = mCenterIndex - mViewScopeSize;
+    <span class="keyword">int</span> end = mCenterIndex + mViewScopeSize + <span class="number">1</span>;
+
+    start = Math.max(start, -mViewScopeSize * <span class="number">2</span>);
+    end = Math.min(end, mMarkCount + mViewScopeSize * <span class="number">2</span>);
+
+    <span class="comment">// extends both ends</span>
+    <span class="keyword">if</span> (mCenterIndex == mMarkCount - <span class="number">1</span>) {
+      end += mViewScopeSize;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (mCenterIndex == <span class="number">0</span>) {
+      start -= mViewScopeSize;
+    }
+
+    <span class="keyword">float</span> x = start * mIntervalDis;
+
+    <span class="keyword">float</span> markHeight =  mHeight - mBottomSpace - mCenterTextSize - mTopSpace;
+    <span class="comment">// small scale Y offset</span>
+    <span class="keyword">float</span> smallMarkShrinkY = markHeight * (<span class="number">1</span> - mMarkRatio) / <span class="number">2f</span>;
+    smallMarkShrinkY = Math.min((markHeight - mMarkWidth) / <span class="number">2f</span>, smallMarkShrinkY);
+
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; end; i++) {
+      <span class="keyword">float</span> tempDis = mIntervalDis / <span class="number">5f</span>;
+      <span class="comment">// offset: Small mark offset Big mark</span>
+      <span class="keyword">for</span> (<span class="keyword">int</span> offset = -<span class="number">2</span>; offset &lt; <span class="number">3</span>; offset++) {
+        <span class="keyword">float</span> ox = x + offset * tempDis;
+
+        <span class="keyword">if</span> (i &gt;= <span class="number">0</span> &amp;&amp; i &lt;= mMarkCount &amp;&amp; mCenterIndex == i) {
+          <span class="keyword">int</span> tempOffset = Math.<span class="built_in">abs</span>(offset);
+          <span class="keyword">if</span> (tempOffset == <span class="number">0</span>) {
+            mMarkPaint.setColor(mHighlightColor);
+          } <span class="keyword">else</span> <span class="keyword">if</span> (tempOffset == <span class="number">1</span>) {
+            mMarkPaint.setColor(mFadeMarkColor);
+          } <span class="keyword">else</span> {
+            mMarkPaint.setColor(mMarkColor);
+          }
+        } <span class="keyword">else</span> {
+          mMarkPaint.setColor(mMarkColor);
+        }
+
+        <span class="keyword">if</span> (offset == <span class="number">0</span>) {
+          <span class="comment">// center mark</span>
+          mMarkPaint.setStrokeWidth(mCenterMarkWidth);
+          canvas.drawLine(ox, mTopSpace, ox, mTopSpace + markHeight, mMarkPaint);
+        } <span class="keyword">else</span> {
+          <span class="comment">// other small mark</span>
+          mMarkPaint.setStrokeWidth(mMarkWidth);
+          canvas.drawLine(ox, mTopSpace + smallMarkShrinkY, ox, mTopSpace + markHeight - smallMarkShrinkY, mMarkPaint);
+        }
+      }
+
+      <span class="comment">// mark text</span>
+      <span class="keyword">if</span> (mMarkCount &gt; <span class="number">0</span> &amp;&amp; i &gt;= <span class="number">0</span> &amp;&amp; i &lt; mMarkCount) {
+        CharSequence temp = mItems.get(i);
+        <span class="keyword">if</span> (mCenterIndex == i) {
+          mMarkTextPaint.setColor(mHighlightColor);
+          mMarkTextPaint.setTextSize(mCenterTextSize);
+          <span class="keyword">if</span> (!TextUtils.isEmpty(mAdditionCenterMark)) {
+            <span class="keyword">float</span> off = mAdditionCenterMarkWidth / <span class="number">2f</span>;
+            <span class="keyword">float</span> tsize = mMarkTextPaint.measureText(temp, <span class="number">0</span>, temp.length());
+            canvas.drawText(temp, <span class="number">0</span>, temp.length(), x - off, mHeight - mBottomSpace, mMarkTextPaint);
+            mMarkTextPaint.setTextSize(mNormalTextSize);
+            canvas.drawText(mAdditionCenterMark, x + tsize / <span class="number">2f</span>, mHeight - mBottomSpace, mMarkTextPaint);
+          } <span class="keyword">else</span> {
+            canvas.drawText(temp, <span class="number">0</span>, temp.length(), x, mHeight - mBottomSpace, mMarkTextPaint);
+          }
+        } <span class="keyword">else</span> {
+          mMarkTextPaint.setColor(mMarkTextColor);
+          mMarkTextPaint.setTextSize(mNormalTextSize);
+          canvas.drawText(temp, <span class="number">0</span>, temp.length(), x, mHeight - mBottomSpace, mMarkTextPaint);
+        }
+      }
+
+      x += mIntervalDis;
+    }
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> boolean <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>{
+    <span class="keyword">if</span> (mItems == null || mItems.size() == <span class="number">0</span>) {
+      <span class="keyword">return</span> <span class="literal">false</span>;
+    }
+    boolean ret = mGestureDetectorCompat.onTouchEvent(event);
+    <span class="keyword">if</span> (!mFling &amp;&amp; MotionEvent.ACTION_UP == event.getAction()) {
+      <span class="keyword">if</span> (getScrollX() &lt; -mMaxOverScrollDistance) {
+        mScroller.startScroll(getScrollX(), <span class="number">0</span>, (<span class="keyword">int</span>) -mMaxOverScrollDistance - getScrollX(), <span class="number">0</span>);
+        invalidate();
+        ret = <span class="literal">true</span>;
+      } <span class="keyword">else</span> <span class="keyword">if</span> (getScrollX() &gt; mContentRectF.width() - mMaxOverScrollDistance) {
+        mScroller.startScroll(getScrollX(), <span class="number">0</span>, (<span class="keyword">int</span>) (mContentRectF.width() - mMaxOverScrollDistance) - getScrollX(), <span class="number">0</span>);
+        invalidate();
+        ret = <span class="literal">true</span>;
+      } <span class="keyword">else</span> {
+        autoSettle();
+        ret = <span class="literal">true</span>;
+      }
+    }
+    <span class="keyword">return</span> ret || super.onTouchEvent(event);
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>{
+    super.computeScroll();
+    <span class="keyword">if</span> (mScroller.computeScrollOffset()) {
+      scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+      refreshCenter();
+      invalidate();
+    } <span class="keyword">else</span> {
+      <span class="keyword">if</span> (mFling) {
+        mFling = <span class="literal">false</span>;
+        autoSettle();
+      }
+    }
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAdditionCenterMark</span><span class="params">(String additionCenterMark)</span> </span>{
+    mAdditionCenterMark = additionCenterMark;
+    calcIntervalDis();
+    invalidate();
+  }
+
+  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">autoSettle</span><span class="params">()</span> </span>{
+    <span class="keyword">int</span> sx = getScrollX();
+    <span class="keyword">float</span> dx = mCenterIndex * mIntervalDis - sx - mMaxOverScrollDistance;
+    mScroller.startScroll(sx, <span class="number">0</span>, (<span class="keyword">int</span>) dx, <span class="number">0</span>);
+    invalidate();
+  }
+
+  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refreshCenter</span><span class="params">(<span class="keyword">int</span> offsetX)</span> </span>{
+    <span class="keyword">int</span> offset = (<span class="keyword">int</span>) (offsetX + mMaxOverScrollDistance);
+    mCenterIndex = Math.round(offset / mIntervalDis);
+    <span class="keyword">if</span> (mCenterIndex &lt; <span class="number">0</span>) {
+      mCenterIndex = <span class="number">0</span>;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (mCenterIndex &gt; mMarkCount - <span class="number">1</span>) {
+      mCenterIndex = mMarkCount - <span class="number">1</span>;
+    }
+    <span class="keyword">if</span> (null != mOnWheelItemSelectedListener) {
+      mOnWheelItemSelectedListener.onWheelItemSelected(mCenterIndex);
+    }
+  }
+
+  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refreshCenter</span><span class="params">()</span> </span>{
+    refreshCenter(getScrollX());
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectIndex</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{
+    mCenterIndex = index;
+    post(<span class="keyword">new</span> Runnable() {
+      @<span class="function">Override
+      <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        scrollTo((<span class="keyword">int</span>) (mCenterIndex * mIntervalDis - mMaxOverScrollDistance), <span class="number">0</span>);
+        invalidate();
+        refreshCenter();
+      }
+    });
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">smoothSelectIndex</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{
+    <span class="keyword">if</span> (!mScroller.isFinished()) {
+      mScroller.abortAnimation();
+    }
+    <span class="keyword">int</span> deltaIndex = index - mCenterIndex;
+    mScroller.startScroll(getScrollX(), <span class="number">0</span>, (<span class="keyword">int</span>) (deltaIndex * mIntervalDis), <span class="number">0</span>);
+    invalidate();
+  }
+
+  <span class="keyword">public</span> List&lt;String&gt; getItems() {
+    <span class="keyword">return</span> mItems;
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setItems</span><span class="params">(List&lt;String&gt; items)</span> </span>{
+    mItems = items;
+    mMarkCount = null == mItems ? <span class="number">0</span> : mItems.size();
+    mCenterIndex = Math.min(mCenterIndex, mMarkCount);
+    calcIntervalDis();
+    invalidate();
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSelectedPosition</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> mCenterIndex;
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnWheelItemSelectedListener</span><span class="params">(OnWheelItemSelectedListener onWheelItemSelectedListener)</span> </span>{
+    mOnWheelItemSelectedListener = onWheelItemSelectedListener;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> boolean <span class="title">onDown</span><span class="params">(MotionEvent e)</span> </span>{
+    <span class="keyword">if</span> (!mScroller.isFinished()) {
+      mScroller.forceFinished(<span class="literal">false</span>);
+    }
+    mFling = <span class="literal">false</span>;
+    <span class="keyword">if</span> (null != getParent()) {
+      getParent().requestDisallowInterceptTouchEvent(<span class="literal">true</span>);
+    }
+    <span class="keyword">return</span> <span class="literal">true</span>;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onShowPress</span><span class="params">(MotionEvent e)</span> </span>{
+
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> boolean <span class="title">onSingleTapUp</span><span class="params">(MotionEvent e)</span> </span>{
+    playSoundEffect(SoundEffectConstants.CLICK);
+    refreshCenter((<span class="keyword">int</span>) (getScrollX() + e.getX() - mMaxOverScrollDistance));
+    autoSettle();
+    <span class="keyword">return</span> <span class="literal">true</span>;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLongPress</span><span class="params">(MotionEvent e)</span> </span>{
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> boolean <span class="title">onScroll</span><span class="params">(MotionEvent e1, MotionEvent e2, <span class="keyword">float</span> distanceX, <span class="keyword">float</span> distanceY)</span> </span>{
+    <span class="keyword">float</span> dis = distanceX;
+    <span class="keyword">float</span> scrollX = getScrollX();
+    <span class="keyword">if</span> (scrollX &lt; <span class="number">2</span> * -mMaxOverScrollDistance) {
+      dis = <span class="number">0</span>;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (scrollX &lt; -mMaxOverScrollDistance) {
+      dis = distanceX / <span class="number">4.f</span>;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (scrollX &gt; mContentRectF.width()) {
+      dis = <span class="number">0</span>;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (scrollX &gt; mContentRectF.width() - mMaxOverScrollDistance) {
+      dis = distanceX / <span class="number">4.f</span>;
+    }
+    scrollBy((<span class="keyword">int</span>) dis, <span class="number">0</span>);
+    refreshCenter();
+    <span class="keyword">return</span> <span class="literal">true</span>;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> boolean <span class="title">onFling</span><span class="params">(MotionEvent e1, MotionEvent e2, <span class="keyword">float</span> velocityX, <span class="keyword">float</span> velocityY)</span> </span>{
+    <span class="keyword">float</span> scrollX = getScrollX();
+    <span class="keyword">if</span> (scrollX &lt; -mMaxOverScrollDistance || scrollX &gt; mContentRectF.width() - mMaxOverScrollDistance) {
+      <span class="keyword">return</span> <span class="literal">false</span>;
+    } <span class="keyword">else</span> {
+      mFling = <span class="literal">true</span>;
+      fling((<span class="keyword">int</span>) -velocityX, <span class="number">0</span>);
+      <span class="keyword">return</span> <span class="literal">true</span>;
+    }
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> Parcelable <span class="title">onSaveInstanceState</span><span class="params">()</span> </span>{
+    Parcelable superState = super.onSaveInstanceState();
+    SavedState ss = <span class="keyword">new</span> SavedState(superState);
+    ss.index = getSelectedPosition();
+    <span class="keyword">return</span> ss;
+  }
+
+  @<span class="function">Override
+  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreInstanceState</span><span class="params">(Parcelable state)</span> </span>{
+    SavedState ss = (SavedState) state;
+    super.onRestoreInstanceState(ss.getSuperState());
+    selectIndex(ss.index);
+    requestLayout();
+  }
+
+  <span class="keyword">static</span> <span class="keyword">class</span> SavedState extends BaseSavedState {
+    <span class="keyword">int</span> index;
+    <span class="keyword">public</span> <span class="keyword">static</span> final Parcelable.Creator&lt;SavedState&gt; CREATOR
+        = <span class="keyword">new</span> Parcelable.Creator&lt;SavedState&gt;() {
+      <span class="function"><span class="keyword">public</span> SavedState <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> SavedState(in);
+      }
+
+      <span class="keyword">public</span> SavedState[] newArray(<span class="keyword">int</span> size) {
+        <span class="keyword">return</span> <span class="keyword">new</span> SavedState[size];
+      }
+    };
+    SavedState(Parcelable superState) {
+      super(superState);
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="title">SavedState</span><span class="params">(Parcel in)</span> </span>{
+      super(in);
+      index = (<span class="keyword">int</span>) in.readValue(null);
+    }
+
+    @<span class="function">Override
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel out, <span class="keyword">int</span> flags)</span> </span>{
+      super.writeToParcel(out, flags);
+      out.writeValue(index);
+    }
+
+    @<span class="function">Override
+    <span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> <span class="string">"WheelView.SavedState{"</span>
+          + Integer.toHexString(System.identityHashCode(<span class="keyword">this</span>))
+          + <span class="string">" index="</span> + index + <span class="string">"}"</span>;
+    }
+  }
+
+  <span class="keyword">public</span> interface OnWheelItemSelectedListener {
+    <span class="function"><span class="keyword">void</span> <span class="title">onWheelItemSelected</span><span class="params">(<span class="keyword">int</span> position)</span></span>;
+  }
+}
+</code></pre><h2 id="致谢：">致谢：</h2><p>  <a href="https://github.com/lantouzi/WheelView-Android" target="_blank" rel="external">lantouzi的WheelView-Android</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2015/11/13/music-163/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -662,7 +1795,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
