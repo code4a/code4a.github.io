@@ -93,7 +93,7 @@ vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本
 一直在使用Vim编辑文件但是也只是略懂皮毛，只会使用一些简单地命令，操作编辑文件。为了熟练的使用Vim，在使用Vim编辑这篇文章的同时，也进行一些命令的练习和记录，方便以后更加高效的编辑文件。
 
 vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进">
-<meta property="og:updated_time" content="2017-11-04T04:28:11.500Z">
+<meta property="og:updated_time" content="2017-11-04T05:01:28.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim常用命令记录">
 <meta name="twitter:description" content="Vim常用命令
@@ -417,30 +417,324 @@ vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本
         <h2 id="Vim常用命令">Vim常用命令</h2><blockquote>
 <p>一直在使用<code>Vim</code>编辑文件但是也只是略懂皮毛，只会使用一些简单地命令，操作编辑文件。为了熟练的使用<code>Vim</code>，在使用<code>Vim</code>编辑这篇文章的同时，也进行一些命令的练习和记录，方便以后更加高效的编辑文件。</p>
 </blockquote>
-<h5 id="vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。">vi编辑器支持<em>编辑模式</em>和<em>命令模式</em>，<em>编辑模式</em>下可以完成文本的编辑功能，<em>命令模式</em>下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入<em>命令模式</em>。从<em>编辑模式</em>切换到<em>命令模式</em>使用<code>esc</code>键，从<em>命令模式</em>切换到<em>编辑模式</em>使用<code>A</code>,<code>a</code>,<code>O</code>,<code>o</code>,<code>I</code>,<code>i</code>键。</h5><h3 id="命令模式下">命令模式下</h3><hr>
-<ol>
-<li><p>游标操作</p>
-<p>按键            | 操作<br>————– | ——————————–<br>h                | 游标向左移动<br>j                | 游标向下移动<br>k                | 游标向上移动<br>l                | 游标向右移动<br>w                | 向前移动一个单词<br>b                | 向后移动一个单词<br>e                | 向前移动一个单词，且游标指向单词的末尾<br>(                | 移动当前句子的首部<br>)                | 移动下一个句子的首部<br>{                | 移动当前段的首部<br>}                | 移动下一段的首部<br>[[                | 移到当前区段的首部<br>]]                | 移到下一个区段的首部<br>0                | 移到当前行的首部<br>$                | 移到当前行的尾部<br>^                | 移到当前行第一个非空白字符的地方<br><code>+</code> or RETURN    | 移动到下一行的第一个字符<br><code>-</code>            | 移动到上一行的第一个字符<br>/text            | 向下搜索text<br>?text            | 向上搜索text</p>
-</li>
-<li><p>切换编辑模式</p>
-<p>按键           | 操作<br>————- | ————-<br>A               | 当前行的尾部追加内容<br>i               | 游标前插入内容<br>I               | 游标后插入内容<br>o               | 在鼠标所在行的下面添加内容<br>O               | 在鼠标所在行的上面添加内容<br>cw               | 删除游标所在的字符，然后进入编辑模式<br>cc               | 删除游标所在的行，然后进入编辑模式<br>C               | 删除从游标所在的位置到行尾的字符，然后进入编辑模式</p>
-</li>
-<li><p>内容编辑</p>
-<p>按键               | 操作<br>—————– | ————-<br>dd                   | 删除当前行<br>ndd               | 删除第n行<br>D                   | 删除当前行游标所在的位置后面的字符<br>d}                   | 删除当前段剩余的字符<br>d^                   | 删除游标前到行首的字符<br>dL                   | 删除从游标到屏幕的最后一行之间的内容<br>dG                   | 删除从游标到文件末尾之间的内容<br>u                   | 撤销最后的改变<br>U                   | 还原当前行的内容<br>x                   | 向后删除游标所在位置的字符<br>X                   | 向前删除游标前面的字符<br>nX                   | 删除前面的n个字符，游标所在的字符将不会被删<br>.                   | 还原最后的改变</p>
-</li>
-<li><p>文件操作</p>
-<p>按键               | 操作<br>—————– | ——————-<br>:w                   | 写文件<br>:w!               | 写文件，忽略警告信息<br>:w! file           | 覆盖文件，忽略警告信息<br>:wq               | 写文件之后退出编辑<br>:q                   | 退出编辑器<br>:q!               | 强制退出编辑器<br>:w file           | 把文件的内容写到另一个文件<br>ZZ                   | 退出编辑器，如果文件有改动，则保存再退出<br>:x                   | 退出编辑器，如果文件有改动，则保存再退出<br>:n1,n2w file      | 把n1行到n2行间的内容写到文件file<br>:n1,n2w &gt;&gt; file   | 把n1行到n2行间的内容追加到文件file<br>:e file2           | 在当前文件的命令行模式下编辑file2<br>:e!               | 重新从磁盘加载文件<br>:e#               | 交替编辑文件<br>:n                   | 编辑地下一行<br>:n!               | 编辑地下一行（忽略警告）<br>:r file           | 在游标后面插入文件<br>:r !command       | 在当前行的后面，插入运行命令后的输出内容<br>:set number       | 最左端显示行号<br>:set nonumber     | 最左端隐藏行号</p>
-</li>
-</ol>
-<h3 id="编辑模式">编辑模式</h3><hr>
-<blockquote>
+<h5 id="vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。">vi编辑器支持<em>编辑模式</em>和<em>命令模式</em>，<em>编辑模式</em>下可以完成文本的编辑功能，<em>命令模式</em>下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入<em>命令模式</em>。从<em>编辑模式</em>切换到<em>命令模式</em>使用<code>esc</code>键，从<em>命令模式</em>切换到<em>编辑模式</em>使用<code>A</code>,<code>a</code>,<code>O</code>,<code>o</code>,<code>I</code>,<code>i</code>键。</h5><hr>
+<h3 id="命令模式下">命令模式下</h3><ul>
+<li><h5 id="游标操作">游标操作</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> h</td>
+<td>游标向左移动</td>
+</tr>
+<tr>
+<td> j</td>
+<td>游标向下移动</td>
+</tr>
+<tr>
+<td> k</td>
+<td>游标向上移动</td>
+</tr>
+<tr>
+<td> l</td>
+<td>游标向右移动</td>
+</tr>
+<tr>
+<td> w</td>
+<td>向前移动一个单词</td>
+</tr>
+<tr>
+<td> b</td>
+<td>向后移动一个单词</td>
+</tr>
+<tr>
+<td> e</td>
+<td>向前移动一个单词，且游标指向单词的末尾</td>
+</tr>
+<tr>
+<td> (</td>
+<td>移动当前句子的首部</td>
+</tr>
+<tr>
+<td> )</td>
+<td>移动下一个句子的首部</td>
+</tr>
+<tr>
+<td> {</td>
+<td>移动当前段的首部</td>
+</tr>
+<tr>
+<td> }</td>
+<td>移动下一段的首部</td>
+</tr>
+<tr>
+<td> [[</td>
+<td>移到当前区段的首部</td>
+</tr>
+<tr>
+<td> ]]</td>
+<td>移到下一个区段的首部</td>
+</tr>
+<tr>
+<td> 0</td>
+<td>移到当前行的首部</td>
+</tr>
+<tr>
+<td> $</td>
+<td>移到当前行的尾部</td>
+</tr>
+<tr>
+<td> ^</td>
+<td>移到当前行第一个非空白字符的地方</td>
+</tr>
+<tr>
+<td> <code>+</code> or RETURN</td>
+<td>移动到下一行的第一个字符</td>
+</tr>
+<tr>
+<td> <code>-</code></td>
+<td>移动到上一行的第一个字符</td>
+</tr>
+<tr>
+<td> /text</td>
+<td>向下搜索text</td>
+</tr>
+<tr>
+<td> ?text</td>
+<td>向上搜索text</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><h5 id="切换编辑模式">切换编辑模式</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> A</td>
+<td>当前行的尾部追加内容</td>
+</tr>
+<tr>
+<td> i</td>
+<td>游标前插入内容</td>
+</tr>
+<tr>
+<td> I</td>
+<td>游标后插入内容</td>
+</tr>
+<tr>
+<td> o</td>
+<td>在鼠标所在行的下面添加内容</td>
+</tr>
+<tr>
+<td> O</td>
+<td>在鼠标所在行的上面添加内容</td>
+</tr>
+<tr>
+<td> cw</td>
+<td>删除游标所在的字符，然后进入编辑模式</td>
+</tr>
+<tr>
+<td> cc</td>
+<td>删除游标所在的行，然后进入编辑模式</td>
+</tr>
+<tr>
+<td> C</td>
+<td>删除从游标所在的位置到行尾的字符，然后进入编辑模式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><h5 id="内容编辑">内容编辑</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> dd</td>
+<td>删除当前行</td>
+</tr>
+<tr>
+<td> ndd</td>
+<td>删除第n行</td>
+</tr>
+<tr>
+<td> D</td>
+<td>删除当前行游标所在的位置后面的字符</td>
+</tr>
+<tr>
+<td> d}</td>
+<td>删除当前段剩余的字符</td>
+</tr>
+<tr>
+<td> d^</td>
+<td>删除游标前到行首的字符</td>
+</tr>
+<tr>
+<td> dL</td>
+<td>删除从游标到屏幕的最后一行之间的内容</td>
+</tr>
+<tr>
+<td> dG</td>
+<td>删除从游标到文件末尾之间的内容</td>
+</tr>
+<tr>
+<td> u</td>
+<td>撤销最后的改变</td>
+</tr>
+<tr>
+<td> U</td>
+<td>还原当前行的内容</td>
+</tr>
+<tr>
+<td> x</td>
+<td>向后删除游标所在位置的字符</td>
+</tr>
+<tr>
+<td> X</td>
+<td>向前删除游标前面的字符</td>
+</tr>
+<tr>
+<td> nX</td>
+<td>删除前面的n个字符，游标所在的字符将不会被删</td>
+</tr>
+<tr>
+<td> .</td>
+<td>还原最后的改变</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><h5 id="文件操作">文件操作</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> :w</td>
+<td>写文件</td>
+</tr>
+<tr>
+<td> :w!</td>
+<td>写文件，忽略警告信息</td>
+</tr>
+<tr>
+<td> :w! file</td>
+<td>覆盖文件，忽略警告信息</td>
+</tr>
+<tr>
+<td> :wq</td>
+<td>写文件之后退出编辑</td>
+</tr>
+<tr>
+<td> :q</td>
+<td>退出编辑器</td>
+</tr>
+<tr>
+<td> :q!</td>
+<td>强制退出编辑器</td>
+</tr>
+<tr>
+<td> :w file</td>
+<td>把文件的内容写到另一个文件</td>
+</tr>
+<tr>
+<td> ZZ</td>
+<td>退出编辑器，如果文件有改动，则保存再退出</td>
+</tr>
+<tr>
+<td> :x</td>
+<td>退出编辑器，如果文件有改动，则保存再退出</td>
+</tr>
+<tr>
+<td> :n1,n2w file</td>
+<td>把n1行到n2行间的内容写到文件file</td>
+</tr>
+<tr>
+<td> :n1,n2w &gt;&gt; file</td>
+<td>把n1行到n2行间的内容追加到文件file</td>
+</tr>
+<tr>
+<td> :e file2</td>
+<td>在当前文件的命令行模式下编辑file2</td>
+</tr>
+<tr>
+<td> :e!</td>
+<td>重新从磁盘加载文件</td>
+</tr>
+<tr>
+<td> :e#</td>
+<td>交替编辑文件</td>
+</tr>
+<tr>
+<td> :n</td>
+<td>编辑地下一行</td>
+</tr>
+<tr>
+<td> :n!</td>
+<td>编辑地下一行（忽略警告）</td>
+</tr>
+<tr>
+<td> :r file</td>
+<td>在游标后面插入文件</td>
+</tr>
+<tr>
+<td> :r !command</td>
+<td>在当前行的后面，插入运行命令后的输出内容</td>
+</tr>
+<tr>
+<td> :set number</td>
+<td>最左端显示行号</td>
+</tr>
+<tr>
+<td> :set nonumber</td>
+<td>最左端隐藏行号</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="编辑模式">编辑模式</h3><blockquote>
 <p>该模式下就是文件的常规编写，输入任意字符进行编辑</p>
 </blockquote>
-<ol>
-<li><p>切换命令模式</p>
-<p>按键           | 操作<br>————- | ————-<br>esc           | 切换为命令模式</p>
-</li>
-</ol>
+<ul>
+<li><h5 id="切换命令模式">切换命令模式</h5></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">esc</td>
+<td style="text-align:center">切换为命令模式</td>
+</tr>
+</tbody>
+</table>
 <h5 id="上述命令可进行命令模式下的文件操作">上述命令可进行命令模式下的文件操作</h5><h2 id="致谢">致谢</h2><p><a href="http://man.linuxde.net/vi" target="_blank" rel="external">vi命令</a><br><a href="http://www.cnblogs.com/junw_china/articles/1708967.html" target="_blank" rel="external">常用vi编辑器命令行</a></p>
 
       
@@ -701,7 +995,7 @@ vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim常用命令"><span class="nav-number">1.</span> <span class="nav-text">Vim常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令模式下"><span class="nav-number">1.1.</span> <span class="nav-text">命令模式下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑模式"><span class="nav-number">1.2.</span> <span class="nav-text">编辑模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#上述命令可进行命令模式下的文件操作"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">上述命令可进行命令模式下的文件操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#致谢"><span class="nav-number">2.</span> <span class="nav-text">致谢</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim常用命令"><span class="nav-number">1.</span> <span class="nav-text">Vim常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令模式下"><span class="nav-number">1.1.</span> <span class="nav-text">命令模式下</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#游标操作"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">游标操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切换编辑模式"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">切换编辑模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内容编辑"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">内容编辑</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件操作"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">文件操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑模式"><span class="nav-number">1.2.</span> <span class="nav-text">编辑模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#切换命令模式"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">切换命令模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#上述命令可进行命令模式下的文件操作"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">上述命令可进行命令模式下的文件操作</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#致谢"><span class="nav-number">2.</span> <span class="nav-text">致谢</span></a></li></ol></div>
             
 
           </div>
