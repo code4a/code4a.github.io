@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2017-11-04T05:01:28.708Z</updated>
+  <updated>2018-01-31T10:23:55.261Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -13,6 +13,167 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[百度DuerOS Android平台接入流程]]></title>
+    <link href="http://www.code4a.com/2018/01/31/dueros-android-import/"/>
+    <id>http://www.code4a.com/2018/01/31/dueros-android-import/</id>
+    <published>2018-01-31T09:00:23.000Z</published>
+    <updated>2018-01-31T10:23:55.261Z</updated>
+    <content type="html"><![CDATA[<h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
+<p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
+</blockquote>
+<h4 id="百度DuerOS开发平台官网地址">百度DuerOS开发平台<a href="http://open.duer.baidu.com/open" target="_blank" rel="external">官网地址</a></h4><blockquote>
+<p>平台分为<a href="https://dueros.baidu.com/dbp" target="_blank" rel="external">技能开放平台</a>和<a href="http://open.duer.baidu.com/didp/main/index" target="_blank" rel="external">智能设备开放平台</a>具体的功能区别以及应用场景可查看网站介绍</p>
+</blockquote>
+<h3 id="注册成为开发者">注册成为开发者</h3><ol>
+<li>如何你有百度账号，则使用百度账号进行<a href="https://passport.baidu.com/v2/?login&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="external">登录</a>，如何没有账号，则需要先<a href="https://passport.baidu.com/v2/?reg&amp;tt=1517389947286&amp;overseas=&amp;gid=A8F49B7-66FC-4337-955E-DC518691EF04&amp;tpl=pp&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="external">注册</a>百度账号</li>
+<li><a href="https://dueros.baidu.com/didp/register/registerinfo" target="_blank" rel="external">进行开发者认证</a>开发者认证分为个人和企业开发者，需要的材料按照网页所需提供，审核材料需要经过两个工作日，审核通过就可以管理技能和设备两个控制台。</li>
+</ol>
+<h3 id="技能平台">技能平台</h3><ol>
+<li>创建新技能</li>
+</ol>
+<blockquote>
+<p>技能平台，包含自定义技能，智能家居技能，内容播报技能</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/dueros-android-import-skill1.png" alt="dueros-android-import-skill1.png"></p>
+<ol>
+<li>管理技能</li>
+</ol>
+<blockquote>
+<p>可以在自己创建的技能上进行编辑/删除/查看技能ID</p>
+</blockquote>
+<ul>
+<li>编辑技能</li>
+</ul>
+<blockquote>
+<p>编辑技能页面可以查看技能的基础信息/交互模型/配置服务/模拟测试/发布上线/版本管理/技能数据功能，其中交互模型需要自己创建意图，定义字典，还可对其进行训练。</p>
+</blockquote>
+<p>交互模型的使用可以查看官方教程进行学习<a href="http://duer.bdstatic.com/saiya/flow/dbp-dst-multidialogue.mp4" target="_blank" rel="external">DST多轮对话</a></p>
+<h3 id="设备平台(以下以Android设备为例)">设备平台(以下以Android设备为例)</h3><ol>
+<li>配置新设备<ol>
+<li>场景选择为<strong>手机</strong>点击下一步</li>
+<li>操作系统选择为<strong>Android</strong>点击下一步</li>
+<li>此时需要填写设备名称，点击申请<strong>ClientID</strong>，用于后续SDK接入鉴权使用。</li>
+<li>端能力配置，可用于屏幕展示，语音输入输出的配置。点击下一步</li>
+<li>云服务配置，可分为BOT配置，聊天人物肖像的配置，可以将语音机器人进行丰富。语音唤醒服务，自定义控制命令，此时需要提供三个dic文件，用于自定义命令的识别和识别后云平台指令的下发。</li>
+<li><strong><a href="https://github.com/dueros/dcs-sdk-java" target="_blank" rel="external">SDK下载</a></strong></li>
+</ol>
+</li>
+<li><p>SDK接入</p>
+<p> SDK的配置可以参考<a href="https://github.com/dueros/dcs-sdk-java/blob/master/README.md" target="_blank" rel="external">DCS SDK（Java）开发者指南</a></p>
+</li>
+<li><p>接入SDK添加自定义功能。</p>
+<ol>
+<li><p>首先配置自己设备的云服务自定义控制命令，上传三个dic文件(intent.dic/dict.dic/command.dic)进行审核，需要五个工作日左右。</p>
+<p>intent.dic意图文件将用户的语音命令上传到云平台之后拆分进行意图匹配下发命令</p>
+<p> ai.dueros.device_interface.thirdparty.cmcc.smart_gateway Add [D:add][device][type][W:0-2]<br> ai.dueros.device_interface.thirdparty.cmcc.smart_gateway Remove [D:remove][device][type][W:0-2]<br> ai.dueros.device_interface.thirdparty.cmcc.smart_gateway Bind [D:bind][gateway][W:0-2]<br> ai.dueros.device_interface.thirdparty.cmcc.smart_gateway UnBind [D:unbind][gateway][W:0-2]</p>
+<p>dict.dic词典文件将平台上用户的语音进行分解，解析出用户想要做出的指令</p>
+<p> [D:add]<br> 添加<br> 增加<br> [D:remove]<br> 删除<br> 移除<br> [D:bind]<br> 绑定<br> [D:unbind]<br> 解绑<br> [D:device]<br> 温湿度<br> 水浸<br> 红外人感<br> 门磁<br> 燃气<br> 可燃气体<br> 烟雾感应<br> 声光<br> [D:gateway]<br> 普通网关<br> [D:type]<br> 传感器<br> 感应器</p>
+<p>command.dic用户语言库，用来存储用户可能想要说出的完成控制命令语句</p>
+<p> 添加烟雾感应感应器</p>
+</li>
+<li><p>修改SDK添加自定义的DeviceModule</p>
+<p> <img src="dueros-android-import-sdk-devicemodule.png" alt="dueros-android-import-sdk-devicemodule.png"></p>
+<ul>
+<li><p>ApiConstants.java用来匹配自定义的控制命令意图，将用户的话拆分成控制关键词和命令语句</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiConstants</span> </span>{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAMESPACE = <span class="string">"ai.dueros.device_interface.thirdparty.cmcc.smart_gateway"</span>;
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = <span class="string">"SmartGatewayInterface"</span>;
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Events</span> </span>{
+
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Directives</span> </span>{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Add</span> </span>{
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Add.<span class="keyword">class</span>.getSimpleName();
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Remove</span> </span>{
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Remove.<span class="keyword">class</span>.getSimpleName();
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Bind</span> </span>{
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Bind.<span class="keyword">class</span>.getSimpleName();
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">UnBind</span> </span>{
+        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = UnBind.<span class="keyword">class</span>.getSimpleName();
+    }
+    }
+}
+</code></pre></li>
+<li><p>*Payload.java用来接收用户的命令，这两个类需要在<code>framework.message</code>包下的<code>PayloadConfig.java</code>中进行插入，用来解析下发的<code>payload json</code>数据</p>
+</li>
+<li>SmartGatewayDeviceModule.java用来解析命令，并分发下去。</li>
+<li>最后在<code>framework</code>包下的<code>DeviceModuleFactory.java</code>中创建添加我们的Module即可。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
+<p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
+</blockquote>
+<h4 id="百度Duer]]>
+    </summary>
+    
+      <category term="Android" scheme="http://www.code4a.com/tags/Android/"/>
+    
+      <category term="android" scheme="http://www.code4a.com/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[自建服务器证书]]></title>
+    <link href="http://www.code4a.com/2017/12/26/creat-server-certificate/"/>
+    <id>http://www.code4a.com/2017/12/26/creat-server-certificate/</id>
+    <published>2017-12-26T08:41:22.000Z</published>
+    <updated>2017-12-26T09:02:21.302Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="http://www.code4a.com/tags/JavaWeb/"/>
+    
+      <category term="JavaWeb" scheme="http://www.code4a.com/categories/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Sublime Text Install Package Control]]></title>
+    <link href="http://www.code4a.com/2017/11/22/sublime-text-install-package-control/"/>
+    <id>http://www.code4a.com/2017/11/22/sublime-text-install-package-control/</id>
+    <published>2017-11-22T04:47:31.000Z</published>
+    <updated>2018-01-31T10:29:05.201Z</updated>
+    <content type="html"><![CDATA[<h2 id="Sublime_Text_安装Package_Control">Sublime Text 安装Package Control</h2><p>输入如下命令</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.<span class="keyword">join</span>(ipp, pf), <span class="string">'wb'</span>).<span class="keyword">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="keyword">read</span>())</span><br></pre></td></tr></table></figure>
+<p>提示如下错误</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error loading /Users/xxx/<span class="keyword">Library</span>/Application Support/Sublime Text <span class="number">3</span>/Installed Packages/<span class="keyword">Package</span> Control.sublime-<span class="keyword">package</span>: <span class="keyword">File</span> <span class="keyword">is</span> <span class="keyword">not</span> a zip <span class="keyword">file</span></span><br></pre></td></tr></table></figure>
+<p>此时需要参考<a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a>输入最新的安装命令即可解决该问题</p>
+<ul>
+<li>Sublime Text3</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Sublime Text2</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib2,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="operator">not</span> os.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); <span class="keyword">by</span> = urllib2.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); <span class="built_in">open</span>( os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>) <span class="keyword">if</span> dh == h <span class="keyword">else</span> None; print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string">'Please restart Sublime Text to finish installation'</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Sublime_Text_安装Package_Control">Sublime Text 安装Package Control</h2><p>输入如下命令</p>
+<figure class="highlight gradle"><table><tr><td cla]]>
+    </summary>
+    
+      <category term="tools" scheme="http://www.code4a.com/tags/tools/"/>
+    
+      <category term="Tools" scheme="http://www.code4a.com/categories/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Vim常用命令记录]]></title>

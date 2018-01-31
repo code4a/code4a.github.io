@@ -1,6 +1,6 @@
 # 联系方式
 
-- 手机：18338878315 （```河南洛阳```）
+- 手机：17600975947 
 - Email：jiangyantaodev@163.com
 - QQ：1286744353
 
@@ -16,7 +16,7 @@
 - GitHub：https://github.com/code4a
 
 - 期望职位：Android高级工程师
-- 期望薪资：税前月薪15k~20k，特别喜欢的公司可例外
+- 期望薪资：税前月薪17k~20k，特别喜欢的公司可例外
 - 期望城市：北京
 
 ---
@@ -24,11 +24,11 @@
 # 工作经历
 
 
-## 文思海辉技术技术公司 （ 2014年8月 ~ 至今 ）
+## 文思海辉技术有限公司 （ 2014年8月 ~ 至今 ）
 
 ### IotHub项目
 
-此项目是移动研究院基于自主协议(AndLink)开发的智能家居Android客户端。
+此项目是移动研究院基于自主协议(AndLink)开发的智能家居解决方案。各类传感器(门磁/温湿度/水浸/红外/门锁/等)通过主板的zigbee模块，和网关的zigbee模块进行通讯，网关的zigbee模块通过串口将数据上报到网关的上层程序Andlink模块。数据上报到Andlink云平台，平台通过mqtt再将实时数据推送到手机的和家安App通知用户家庭的状态。
 
 ### AndLink项目 
 
@@ -62,7 +62,7 @@
 我在此项目协助pm完成应用框架的搭建，完成联网协议的处理和联网工具类的编写，抽象类和接口的抽取，对初始化数据的获取和存储，以及首页模块和活动模块的实现，项目中疑难bug的解决。该项目主界面FrameActivity继承activityGroup，主要完成应用数据的初始化，获取定位和用户信息并通过网络接口异步上传到服务器，初始化界面，完成主界面的切换，检查并维护应用的生命周期，完成各个阶段的数据初始化/销毁等操作和方法调用。界面模块：内部使用到Stack数组存放(封装intent，class，view等信息)自定义类模拟任务栈，存放界面的帧布局数组，界面内部视图的view数组和界面对应的class字节码文件数组。页面切换是通过获取到点击的tab的索引值(需要注意是在底部导航初始化时需要给每个视图设置tag)，取出class等数组中的值通过getLocalActivityManager调用startActivity用intent绑定对应的activity获取返回window对象，调用getDecorView()方法获取到顶层视图，赋值给stack栈中的自定义对象的view属性中，通过切换不同的类中的View的显示与隐藏，实现tab的视图切换。四个界面的父类BaseActivity完成公共的操作的抽取如标题栏的初始化，提示消息，dialog的显示与隐藏等，以及对按键的处理等操作。主界面整个就是使用pullToRefresh开源框架，实现下拉刷新和加载更多功能，第一个条目是一个自定义的线性布局通过addHeaderView将布局添加进去，完成gridview的事件处理，定位，和条目图片的异步加载，活动界面是通过一个自定义的3D画廊，完成图片的展示，该功能的实现是通过自定义类继承gallery，重写getChildStaticTransformation和onSizeChanged两个方法，完成图片的放大，旋转的效果实现，通过LruCache进行图片的缓存管理，通过在适配器中调用getView方法展示图片是首先展示默认图片，通过封装工具类异步加载网络图片进行替换，增强用户体验
 
 
-### 趣闻天下
+### 扯蛋日报
 
 我在职责是完成项目中json数据的解析bean对象的封装，联网工具类和处理图片的工具类的编写，完成主页面的信息展示，该项目主界面是使用一个Activity管理生命周期，做相应的逻辑操作，通过setContentView将布局文件解析成View对象添加到Phonewindow创建的ViewGroup中进行展示，和用户交互。抽取一个BaseActivity，完成标题栏的的初始化，和按键的处理，定义一个baseView抽象类，通过构造传递参数，在内部添加两个抽象方法，initView初始化布局和initData填充布局中的数据，在页面模块的实现中，将界面划分为标题栏，导航栏，带一个帧布局的ListView添加Android-ViewPagerIndicator指针项目，完成导航条功能，每个导航条绑定一个viewpage的页面，利用xutils 框架中的HttpUtils进行客户端与服务器的交互(在模版类中提供方法)，使用BitmapUtils进行对从服务器获取的图片数据的处理，完成ListView异步加载图片完成数据的填充，导入PullToRefresh下拉刷新框架，完成下拉刷新数据和滚动加载更多数据
 
@@ -83,6 +83,8 @@
 
 ## 开源项目
 
+- [RetrofitUtil](https://github.com/code4a/NbaEvent)：此项目是对Retrofit + OKHttp + RxJava 简单二次封装，支持Http/Https请求，支持自己定义SSL解析，请求结果可以是String类型也可以是解析好的bean对象！
+- [WiFiConnectLib](https://github.com/code4a/WiFiConnectLibrary)：此项目是一个将Android手机WiFi连接到指定热点的开源的Android库，可以很方便的通过程序操作手机的WiFi！
 - [JLibrary](https://github.com/code4a/JLibraryDemo)：此项目是一个开源的Android库，提供了一些界面的基类和工具类，包含crash日志本地化，crash重启，修改状态栏颜色等功能，项目在不断完善更新中！
 - [BatScript](https://github.com/code4a/BatScript)：这是一个批处理，旨在简化开发环境的配置，如java、sdk等，通过批处理批量添加配置，解决每次换环境一堆配置的麻烦，拷贝，运行轻松搞定！
 - [UpdateManager](https://github.com/code4a/UpdateManager)：这是一个支持多线程下载的Library，支持解析json和xml，断点续传等功能
@@ -109,13 +111,13 @@
 - 熟悉Android开发的数据（图片，文字，文件等）的缓存技术，并且能够对图片的优化进行相应的处理，熟悉ASimpleCache，LruCache缓存和DiskLruCache缓存使用。
 - 熟练并能独立解决市面上各种Android机型屏幕的适配（图片适配，Dimens适配和AutoLayout适配等等）。
 - 熟练使用Git/SVN等版本控制工具。
-- 熟练使用Android Studio、Eclipse、Beyond Compare、markdown、谷歌浏览器、科学上网、等开发利器
+- 熟练使用Android Studio、Eclipse、Vim、XShell、iTerm2、Dash、Volecity、Beyond Compare、Markdown、谷歌浏览器、科学上网、等开发利器
 - 熟悉XML/JSON数据解析和生成JSON/XML，以及Android下SQLiter数据库存储方式（greendao，ormlite）。
 - 熟悉android 的JNI/NDK开发，通过JNI实现JAVA与C程序间的调用及回调数据通信。
 - 熟悉掌握RecyclerView，ListView等重要控件的使用和优化及（AsyncTask）异步任务加载网络数据
 - 熟悉使用支付宝，微信支付的SDK和银行的卡SDK的接入，为App增加支付模块。
 - 熟练使用Android下的GPS定位和（接入百度地图定位SDK实现定位，标记，搜索等功能）
-- 熟悉主流常用的第三方SDK（友盟统计，极光送，QQ和微信的三方登陆和分享SDK，基于讯飞语音的文字和语音的相互转化开发）
+- 熟悉主流常用的第三方SDK（友盟统计，极光送，QQ和微信的三方登陆和分享SDK，热更新Sophix，基于百度/讯飞语音的文字和语音的相互转化开发）
 - 熟悉Android下混合开发，原生App和HTML5的使用，和js交互，数据通信。
 
 
@@ -140,6 +142,7 @@
 - stackoverflow
 - andorid
 - udp
+- vim
 
 ---
 
