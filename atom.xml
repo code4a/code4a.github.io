@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2018-02-01T11:26:22.271Z</updated>
+  <updated>2018-02-01T12:02:43.684Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.code4a.com/2018/01/31/dueros-android-import/"/>
     <id>http://www.code4a.com/2018/01/31/dueros-android-import/</id>
     <published>2018-01-31T09:00:23.000Z</published>
-    <updated>2018-02-01T11:26:22.271Z</updated>
+    <updated>2018-02-01T12:02:43.684Z</updated>
     <content type="html"><![CDATA[<h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
 <p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
 </blockquote>
@@ -113,7 +113,7 @@
 </ol>
 </li>
 </ol>
-]]></content>
+<h3 id="具体示例可以查看百度Dueros平台Demo">具体示例可以查看<a href="https://github.com/code4a/dcs-sdk-java-master" target="_blank" rel="external">百度Dueros平台Demo</a></h3>]]></content>
     <summary type="html">
     <![CDATA[<h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
 <p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
