@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Code 4 Android / ...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://www.code4a.com/"/>
-  <updated>2018-01-31T10:23:55.261Z</updated>
+  <updated>2018-02-01T11:26:22.271Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://www.code4a.com/2018/01/31/dueros-android-import/"/>
     <id>http://www.code4a.com/2018/01/31/dueros-android-import/</id>
     <published>2018-01-31T09:00:23.000Z</published>
-    <updated>2018-01-31T10:23:55.261Z</updated>
+    <updated>2018-02-01T11:26:22.271Z</updated>
     <content type="html"><![CDATA[<h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
 <p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
 </blockquote>
@@ -74,7 +74,7 @@
 <p> 添加烟雾感应感应器</p>
 </li>
 <li><p>修改SDK添加自定义的DeviceModule</p>
-<p> <img src="dueros-android-import-sdk-devicemodule.png" alt="dueros-android-import-sdk-devicemodule.png"></p>
+<p> <img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/dueros-android-import-sdk-devicemodule.png" alt="dueros-android-import-sdk-devicemodule.png"></p>
 <ul>
 <li><p>ApiConstants.java用来匹配自定义的控制命令意图，将用户的话拆分成控制关键词和命令语句</p>
 <pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiConstants</span> </span>{
