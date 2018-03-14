@@ -87,6 +87,7 @@
 <meta property="og:url" content="http://www.code4a.com/page/2/index.html">
 <meta property="og:site_name" content="蒋彦涛的个人博客">
 <meta property="og:description" content="Write Change Share">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒋彦涛的个人博客">
 <meta name="twitter:description" content="Write Change Share">
@@ -313,6 +314,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/11/04/iTerm2-Command-highlighter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/04/iTerm2-Command-highlighter/" itemprop="url">iTerm2语法高亮配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T10:00:58+08:00">
+                2017-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="iTerm2-语法高亮"><a href="#iTerm2-语法高亮" class="headerlink" title="iTerm2 语法高亮"></a>iTerm2 语法高亮</h2><h5 id="假如你没有配置过iTerm2可以参考Mac-下-iTerm2的安装及配置完成其安装和配置"><a href="#假如你没有配置过iTerm2可以参考Mac-下-iTerm2的安装及配置完成其安装和配置" class="headerlink" title="假如你没有配置过iTerm2可以参考Mac 下 iTerm2的安装及配置完成其安装和配置"></a>假如你没有配置过<code>iTerm2</code>可以参考<a href="http://www.code4a.com/2017/10/24/iTerm2-install-configuration/">Mac 下 iTerm2的安装及配置</a>完成其安装和配置</h5><blockquote>
+<p>安装完<code>iTerm2</code>发现之前配置过得命令都找不到了，像<code>brew</code>,<code>npm</code>等命令，此时只需要更新一下<code>.bash_profile</code>文件即可</p>
+</blockquote>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> 打开配置文件</span><br><span class="line">sudo vi <span class="string">.bash_profile</span></span><br><span class="line"><span class="string">//</span> 添加如下路径，保存退出</span><br><span class="line">export PATH=<span class="string">/usr/local/bin</span>:$PATH</span><br><span class="line"><span class="string">//</span> 更新配置</span><br><span class="line">source ~<span class="string">/.bash_profile</span></span><br></pre></td></tr></table></figure>
+<h3 id="语法高亮配置"><a href="#语法高亮配置" class="headerlink" title="语法高亮配置"></a>语法高亮配置</h3><ol>
+<li>使用homebrew安装 zsh-syntax-highlighting 插件。</li>
+</ol>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<ol>
+<li>配置.zshrc文件，插入一行。</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/usr/</span>local<span class="regexp">/share/</span>zsh-syntax-highlighting<span class="regexp">/zsh-syntax-highlighting.zsh</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>更新配置</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -404,11 +559,11 @@
       
         
           
-            <h2 id="iTerm2下命令找不到"><code>iTerm2</code>下命令找不到</h2><blockquote>
+            <h2 id="iTerm2下命令找不到"><a href="#iTerm2下命令找不到" class="headerlink" title="iTerm2下命令找不到"></a><code>iTerm2</code>下命令找不到</h2><blockquote>
 <p>由于前段时间更新了命令行工具，导致这两天在<code>Android Studio</code>的命令行下找不到<code>adb</code>命令和<code>gradle</code>命令。因为<code>Android Studio</code>的命令行使用的就是默认的命令行工具，导致之前对<code>bash</code>的配置不生效。</p>
 </blockquote>
-<h5 id="如果你出现同样的问题可以参考Mac下command_not_found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！">如果你出现同样的问题可以参考<a href="http://blog.csdn.net/u010358168/article/details/61924807" target="_blank" rel="external">Mac下command not found:gradle/adb终极解决方案</a>这篇文章，可以很好地解决这个问题！</h5><h2 id="zsh:_permission_denied:_-/gradlew">zsh: permission denied: ./gradlew</h2><h5 id="在使用命令gradlew提交代码到jCenter时出现zsh:_permission_denied:_-/gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo:_-/gradlew:_command_not_found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令">在使用命令<code>gradlew</code>提交代码到<code>jCenter</code>时出现<code>zsh: permission denied: ./gradlew</code>，第一反应是权限不够，然后再前边添加了<code>sudo</code>命令提高权限，紧接着又出现<code>sudo: ./gradlew: command not found</code>的提示，然后再网上搜索了一下原来是<code>gradlew</code>没有执行权限，因为之前在<code>Terminal</code>终端工具中是经常用的命令，换了<code>iTerm2</code>之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令</h5><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">chmod</span> +<span class="keyword">x</span> gradlew</span><br></pre></td></tr></table></figure>
-<h4 id="为gradlew增加可执行权限">为<code>gradlew</code>增加可执行权限</h4><h2 id="发布代码到jCenter">发布代码到jCenter</h2><h5 id="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。">然后再执行发布到<a href="https://bintray.com/code4a" target="_blank" rel="external">jCenter</a>的命令，如果你也是使用的<a href="https://github.com/novoda/bintray-release" target="_blank" rel="external">bintray-release</a>的配置，可以使用以下命令。</h5><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean <span class="keyword">build </span><span class="keyword">bintrayUpload </span>-PbintrayUser<span class="label">=BINTRAY_USERNAME</span> -PbintrayKey<span class="label">=BINTRAY_KEY</span> -PdryRun<span class="label">=false</span></span><br></pre></td></tr></table></figure>
+<h5 id="如果你出现同样的问题可以参考Mac下command-not-found-gradle-adb终极解决方案这篇文章，可以很好地解决这个问题！"><a href="#如果你出现同样的问题可以参考Mac下command-not-found-gradle-adb终极解决方案这篇文章，可以很好地解决这个问题！" class="headerlink" title="如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！"></a>如果你出现同样的问题可以参考<a href="http://blog.csdn.net/u010358168/article/details/61924807" target="_blank" rel="noopener">Mac下command not found:gradle/adb终极解决方案</a>这篇文章，可以很好地解决这个问题！</h5><h2 id="zsh-permission-denied-gradlew"><a href="#zsh-permission-denied-gradlew" class="headerlink" title="zsh: permission denied: ./gradlew"></a>zsh: permission denied: ./gradlew</h2><h5 id="在使用命令gradlew提交代码到jCenter时出现zsh-permission-denied-gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo-gradlew-command-not-found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令"><a href="#在使用命令gradlew提交代码到jCenter时出现zsh-permission-denied-gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo-gradlew-command-not-found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令" class="headerlink" title="在使用命令gradlew提交代码到jCenter时出现zsh: permission denied: ./gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo: ./gradlew: command not found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令"></a>在使用命令<code>gradlew</code>提交代码到<code>jCenter</code>时出现<code>zsh: permission denied: ./gradlew</code>，第一反应是权限不够，然后再前边添加了<code>sudo</code>命令提高权限，紧接着又出现<code>sudo: ./gradlew: command not found</code>的提示，然后再网上搜索了一下原来是<code>gradlew</code>没有执行权限，因为之前在<code>Terminal</code>终端工具中是经常用的命令，换了<code>iTerm2</code>之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令</h5><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +<span class="keyword">x</span> gradlew</span><br></pre></td></tr></table></figure>
+<h4 id="为gradlew增加可执行权限"><a href="#为gradlew增加可执行权限" class="headerlink" title="为gradlew增加可执行权限"></a>为<code>gradlew</code>增加可执行权限</h4><h2 id="发布代码到jCenter"><a href="#发布代码到jCenter" class="headerlink" title="发布代码到jCenter"></a>发布代码到jCenter</h2><h5 id="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。"><a href="#然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。" class="headerlink" title="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。"></a>然后再执行发布到<a href="https://bintray.com/code4a" target="_blank" rel="noopener">jCenter</a>的命令，如果你也是使用的<a href="https://github.com/novoda/bintray-release" target="_blank" rel="noopener">bintray-release</a>的配置，可以使用以下命令。</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean build bintrayUpload <span class="attribute">-PbintrayUser</span>=BINTRAY_USERNAME <span class="attribute">-PbintrayKey</span>=BINTRAY_KEY <span class="attribute">-PdryRun</span>=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
           
         
       
@@ -547,24 +702,24 @@
       
         
           
-            <h2 id="Centos_7_Mini安装配置过程">Centos 7 Mini安装配置过程</h2><blockquote>
+            <h2 id="Centos-7-Mini安装配置过程"><a href="#Centos-7-Mini安装配置过程" class="headerlink" title="Centos 7 Mini安装配置过程"></a>Centos 7 Mini安装配置过程</h2><blockquote>
 <p>由于工作的需要，出差到外地，需要部署局域网的服务器环境，方便这边环境的测试，安装过程也是几经波折，最终还是将环境部署成功，然后记录一下安装的过程。避免以后安装踩到一些未知的坑。</p>
 </blockquote>
-<h3 id="Centos7_镜像下载">Centos7 镜像下载</h3><ul>
-<li>请前往<a href="https://www.centos.org/download/" target="_blank" rel="external">Centos官网的下载页面</a>选择<code>DVD ISO</code>按钮，在我的<code>Mac</code>环境下就是直接启动了迅雷进行下载了，如果没有会进入到二级界面，此时请选择相应的镜像地址进行下载系统镜像</li>
+<h3 id="Centos7-镜像下载"><a href="#Centos7-镜像下载" class="headerlink" title="Centos7 镜像下载"></a>Centos7 镜像下载</h3><ul>
+<li>请前往<a href="https://www.centos.org/download/" target="_blank" rel="noopener">Centos官网的下载页面</a>选择<code>DVD ISO</code>按钮，在我的<code>Mac</code>环境下就是直接启动了迅雷进行下载了，如果没有会进入到二级界面，此时请选择相应的镜像地址进行下载系统镜像</li>
 </ul>
-<h3 id="制作U盘启动盘">制作U盘启动盘</h3><ul>
-<li>U盘启动盘制作可以参考<a href="https://jingyan.baidu.com/article/49711c614d0971fa451b7c59.html" target="_blank" rel="external">这里</a>。 镜像也不需要拷贝到U盘里。我制作的时候有一步不太一样就是在写入之前，点击了<strong>便捷启动</strong> 引导选择 <code>linux</code> 的字样，然后选择写入。后边和链接里类似。</li>
+<h3 id="制作U盘启动盘"><a href="#制作U盘启动盘" class="headerlink" title="制作U盘启动盘"></a>制作U盘启动盘</h3><ul>
+<li>U盘启动盘制作可以参考<a href="https://jingyan.baidu.com/article/49711c614d0971fa451b7c59.html" target="_blank" rel="noopener">这里</a>。 镜像也不需要拷贝到U盘里。我制作的时候有一步不太一样就是在写入之前，点击了<strong>便捷启动</strong> 引导选择 <code>linux</code> 的字样，然后选择写入。后边和链接里类似。</li>
 </ul>
-<h3 id="U盘引导进入安装Centos_7">U盘引导进入安装Centos 7</h3><ol>
+<h3 id="U盘引导进入安装Centos-7"><a href="#U盘引导进入安装Centos-7" class="headerlink" title="U盘引导进入安装Centos 7"></a>U盘引导进入安装Centos 7</h3><ol>
 <li>如果你安装之前这台主机已经预装了<code>windows</code>系统，需用通过硬盘工具将整个磁盘删除，我当时是用另外一个<code>WinPE</code>的U盘引导进入，通过磁盘工具删除整个盘符，方便在后续安装中<code>Centos</code>安装程序能够识别硬盘。如果你的盘符已经删除或者是<code>Centos</code>可以识别的类型可以忽略这一步。</li>
-<li>进入<code>Centos</code>引导界面，具体的可以参考<a href="http://www.linuxidc.com/Linux/2016-07/133646.htm" target="_blank" rel="external">这个链接</a> 的第二步</li>
+<li>进入<code>Centos</code>引导界面，具体的可以参考<a href="http://www.linuxidc.com/Linux/2016-07/133646.htm" target="_blank" rel="noopener">这个链接</a> 的第二步</li>
 </ol>
-<h3 id="安装配置Centos_7">安装配置Centos 7</h3><ul>
-<li>具体的安装配置过程可以参考<a href="http://www.111cn.net/sys/CentOS/63645.htm" target="_blank" rel="external">CentOS 7.0系统安装配置步骤详解
+<h3 id="安装配置Centos-7"><a href="#安装配置Centos-7" class="headerlink" title="安装配置Centos 7"></a>安装配置Centos 7</h3><ul>
+<li>具体的安装配置过程可以参考<a href="http://www.111cn.net/sys/CentOS/63645.htm" target="_blank" rel="noopener">CentOS 7.0系统安装配置步骤详解
 </a></li>
 </ul>
-<h5 id="为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装XShell工具进行远程连接，进行环境部署，环境部署的过程中可以需要网Centos上拷贝文件，此时还需要安装XFtp工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端Navicat。">为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装<code>XShell</code>工具进行远程连接，进行环境部署，环境部署的过程中可以需要网<code>Centos</code>上拷贝文件，此时还需要安装<code>XFtp</code>工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端<code>Navicat</code>。</h5><h5 id="在数据库远程登录的过程中，如果出现_2003_#_10060_的错误时，可能就是Centos的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考远程连接linux下的mysql_Err1045_Err2003解决办法。">在数据库远程登录的过程中，如果出现 2003 # 10060 的错误时，可能就是<code>Centos</code>的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考<a href="http://www.cnblogs.com/K4Creative/p/5631516.html" target="_blank" rel="external">远程连接linux下的mysql Err1045 Err2003解决办法</a>。</h5><h3 id="以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。">以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。</h3>
+<h5 id="为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装XShell工具进行远程连接，进行环境部署，环境部署的过程中可以需要网Centos上拷贝文件，此时还需要安装XFtp工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端Navicat。"><a href="#为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装XShell工具进行远程连接，进行环境部署，环境部署的过程中可以需要网Centos上拷贝文件，此时还需要安装XFtp工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端Navicat。" class="headerlink" title="为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装XShell工具进行远程连接，进行环境部署，环境部署的过程中可以需要网Centos上拷贝文件，此时还需要安装XFtp工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端Navicat。"></a>为了big够大，选择安装的都是命令行的系统，命令行大神可以忽略后边的废话。为了配置方便此时需要在自己的个人笔记本上安装<code>XShell</code>工具进行远程连接，进行环境部署，环境部署的过程中可以需要网<code>Centos</code>上拷贝文件，此时还需要安装<code>XFtp</code>工具进行文件的拷贝。后续的数据库操作也需要在电脑上安装数据库操作的客户端<code>Navicat</code>。</h5><h5 id="在数据库远程登录的过程中，如果出现-2003-10060-的错误时，可能就是Centos的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考远程连接linux下的mysql-Err1045-Err2003解决办法。"><a href="#在数据库远程登录的过程中，如果出现-2003-10060-的错误时，可能就是Centos的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考远程连接linux下的mysql-Err1045-Err2003解决办法。" class="headerlink" title="在数据库远程登录的过程中，如果出现 2003 # 10060 的错误时，可能就是Centos的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考远程连接linux下的mysql Err1045 Err2003解决办法。"></a>在数据库远程登录的过程中，如果出现 2003 # 10060 的错误时，可能就是<code>Centos</code>的防火墙未允许远程连接，此时需要修改防火墙配置文件，具体可参考<a href="http://www.cnblogs.com/K4Creative/p/5631516.html" target="_blank" rel="noopener">远程连接linux下的mysql Err1045 Err2003解决办法</a>。</h5><h3 id="以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。"><a href="#以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。" class="headerlink" title="以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。"></a>以上推荐的链接都是在安装过程中搜索大量帖子之后筛选的最终解决问题的链接。以上链接可能符合个人的操作习惯，或者能解决某些问题。希望能有帮助。</h3>
           
         
       
@@ -703,19 +858,19 @@
       
         
           
-            <h2 id="Mac下安装iTerm2以及配色方案">Mac下安装iTerm2以及配色方案</h2><blockquote>
+            <h2 id="Mac下安装iTerm2以及配色方案"><a href="#Mac下安装iTerm2以及配色方案" class="headerlink" title="Mac下安装iTerm2以及配色方案"></a>Mac下安装iTerm2以及配色方案</h2><blockquote>
 <p>工欲善其事，必先利其器</p>
 </blockquote>
 <p>在好友博客中看到了一个终端工具iTerm2的使用及配色方案，感觉这个工具程序呈现的外观看着很舒服，所以自己也参照他的方案进行了配置，然后在网上搜索到这个工具同时也可以修改Vim的配色，所以就想流程记录了一下，方便日后再次部署是查看。</p>
-<h3 id="iTerm2安装和配色">iTerm2安装和配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-previews.png" alt="iTerm2效果图"></p>
-<p>具体步骤可参考<a href="http://audiebant.site/" target="_blank" rel="external">audiebantzhan</a>的<a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="external">这篇博文</a>可以解决在安装过程中遇到的问题。</p>
-<h3 id="iTerm2_Vim配色">iTerm2 Vim配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-Vim-previews.png" alt="iTerm2-Vim效果图"></p>
-<p>在第一步中配置工具颜色的时候，会下载到最流行的配色解决方案<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">Solarized</a>，Vim 的配色最好和终端的配色保持一致，不然有可能会觉得很别扭，能接受的可以除外。具体流程如下：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">cd</span> solarized</span><br><span class="line">$ <span class="keyword">cd</span> <span class="keyword">vim</span>-colors-solarized/colors</span><br><span class="line">$ <span class="built_in">mkdir</span> -<span class="keyword">p</span> ~/.<span class="keyword">vim</span>/colors</span><br><span class="line">$ <span class="keyword">cp</span> solarized.<span class="keyword">vim</span> ~/.<span class="keyword">vim</span>/colors/</span><br></pre></td></tr></table></figure>
+<h3 id="iTerm2安装和配色"><a href="#iTerm2安装和配色" class="headerlink" title="iTerm2安装和配色"></a>iTerm2安装和配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-previews.png" alt="iTerm2效果图"></p>
+<p>具体步骤可参考<a href="http://audiebant.site/" target="_blank" rel="noopener">audiebantzhan</a>的<a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="noopener">这篇博文</a>可以解决在安装过程中遇到的问题。</p>
+<h3 id="iTerm2-Vim配色"><a href="#iTerm2-Vim配色" class="headerlink" title="iTerm2 Vim配色"></a>iTerm2 Vim配色</h3><p>参考效果图：<br><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/iTerm2-Vim-previews.png" alt="iTerm2-Vim效果图"></p>
+<p>在第一步中配置工具颜色的时候，会下载到最流行的配色解决方案<a href="http://ethanschoonover.com/solarized" target="_blank" rel="noopener">Solarized</a>，Vim 的配色最好和终端的配色保持一致，不然有可能会觉得很别扭，能接受的可以除外。具体流程如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> solarized</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> vim-colors-solarized/colors</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> mkdir -p ~/.vim/colors</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> cp solarized.vim ~/.vim/colors/</span></span><br></pre></td></tr></table></figure>
 <p>然后需要编辑配置文件</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">vi</span> ~/.vimrc</span><br><span class="line"><span class="keyword">syntax</span> enable</span><br><span class="line"><span class="keyword">set</span> background=dark</span><br><span class="line"><span class="keyword">colorscheme</span> solarized</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.vimrc</span><br><span class="line">syntax enable</span><br><span class="line"><span class="builtin-name">set</span> <span class="attribute">background</span>=dark</span><br><span class="line">colorscheme solarized</span><br></pre></td></tr></table></figure>
 <p>关闭重新打开Vim 就可以看到效果</p>
-<h3 id="致谢及内容出处">致谢及内容出处</h3><p><a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="external">iTerm2 Configuration</a><br><a href="http://www.cnblogs.com/gslyyq/p/5251331.html" target="_blank" rel="external">Mac vim iterm2配色方案</a></p>
+<h3 id="致谢及内容出处"><a href="#致谢及内容出处" class="headerlink" title="致谢及内容出处"></a>致谢及内容出处</h3><p><a href="http://audiebant.site/2016/01/11/iterm2-themes/" target="_blank" rel="noopener">iTerm2 Configuration</a><br><a href="http://www.cnblogs.com/gslyyq/p/5251331.html" target="_blank" rel="noopener">Mac vim iterm2配色方案</a></p>
 
           
         
@@ -855,13 +1010,13 @@
       
         
           
-            <h2 id="Beyond_Compare_For_Mac">Beyond Compare For Mac</h2><h3 id="Beyond_Compare_下载试用原理">Beyond Compare 下载试用原理</h3><h4 id="在Beyond_Compare官网下载最新的_Beyond_Compare">在<a href="http://www.scootersoftware.com/download.php" target="_blank" rel="external">Beyond Compare官网</a>下载最新的 Beyond Compare</h4><h5 id="解压后,_把_Beyond_Compare_复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入_Beyond_Compare_应用程序的_MacOS_目录下(/Applications/Beyond_Compare-app/Contents/MacOS)">解压后, 把 <code>Beyond Compare</code> 复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入 <code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</h5><h5 id="原理：">原理：</h5><p><code>BCompare</code> 是应用程序启动的程序. 只要在启动的时候删除 <code>registry.dat</code> (<code>Library/Application Support/Beyond Compare/registry.dat</code>)注册信息就好了.<br>为此可以在该目录下添加一个批处理文件用来处理这个操作.</p>
-<h5 id="具体操作如下:">具体操作如下:</h5><ol>
+            <h2 id="Beyond-Compare-For-Mac"><a href="#Beyond-Compare-For-Mac" class="headerlink" title="Beyond Compare For Mac"></a>Beyond Compare For Mac</h2><h3 id="Beyond-Compare-下载试用原理"><a href="#Beyond-Compare-下载试用原理" class="headerlink" title="Beyond Compare 下载试用原理"></a>Beyond Compare 下载试用原理</h3><h4 id="在Beyond-Compare官网下载最新的-Beyond-Compare"><a href="#在Beyond-Compare官网下载最新的-Beyond-Compare" class="headerlink" title="在Beyond Compare官网下载最新的 Beyond Compare"></a>在<a href="http://www.scootersoftware.com/download.php" target="_blank" rel="noopener">Beyond Compare官网</a>下载最新的 Beyond Compare</h4><h5 id="解压后-把-Beyond-Compare-复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入-Beyond-Compare-应用程序的-MacOS-目录下-Applications-Beyond-Compare-app-Contents-MacOS"><a href="#解压后-把-Beyond-Compare-复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入-Beyond-Compare-应用程序的-MacOS-目录下-Applications-Beyond-Compare-app-Contents-MacOS" class="headerlink" title="解压后, 把 Beyond Compare 复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入 Beyond Compare 应用程序的 MacOS 目录下(/Applications/Beyond Compare.app/Contents/MacOS)"></a>解压后, 把 <code>Beyond Compare</code> 复制到应用程序中，选中图标，右键点击“显示包内容”，逐步进入 <code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</h5><h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p><code>BCompare</code> 是应用程序启动的程序. 只要在启动的时候删除 <code>registry.dat</code> (<code>Library/Application Support/Beyond Compare/registry.dat</code>)注册信息就好了.<br>为此可以在该目录下添加一个批处理文件用来处理这个操作.</p>
+<h5 id="具体操作如下"><a href="#具体操作如下" class="headerlink" title="具体操作如下:"></a>具体操作如下:</h5><ol>
 <li>将主启动程序 <code>BCompare</code> 重命名为 <code>BCompare.real</code></li>
 <li><p>在同级目录下新建一个脚本文件,命名为 <code>BCompare</code>,这样 <code>BCompare</code> 在启动的时候就会执行该脚本文件,注意记得 <code>chmod a+x BCompare</code></p>
 <ul>
 <li><p>使用文本编辑工具(如：<code>Sublime Text</code>)新建一个文件，在里面写如下代码，第一行是注明解释器，第二行是删除注册信息，第三行是启动真正的主程序。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">rm <span class="string">"/Users/<span class="variable">$(whoami)</span>/Library/Application Support/Beyond Compare/registry.dat"</span></span><br><span class="line"><span class="string">"`dirname "</span><span class="variable">$0</span><span class="string">"`"</span>/BCompare.real <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">rm <span class="string">"/Users/<span class="variable">$(whoami)</span>/Library/Application Support/Beyond Compare/registry.dat"</span></span><br><span class="line"><span class="string">"`dirname "</span><span class="variable">$0</span><span class="string">"`"</span>/BCompare.real <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>然后保存文件到名称为<code>BCompare.sh</code>到<code>Beyond Compare</code> 应用程序的 <code>MacOS</code> 目录下(<code>/Applications/Beyond Compare.app/Contents/MacOS</code>)</p>
 </li>
@@ -874,172 +1029,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="参考致谢">参考致谢</h2><p><a href="http://www.seidea.com/" target="_blank" rel="external">Seidea</a>的<a href="http://www.seidea.com/2017/03/23/beyond-compare-for-mac-%E6%97%A0%E9%99%90%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" target="_blank" rel="external">Beyond Compare for Mac 无限试用方法</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/10/23/create-new-blog-method/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="code4a">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蒋彦涛的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/23/create-new-blog-method/" itemprop="url">创建hexo新文章笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T10:50:55+08:00">
-                2017-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/23/create-new-blog-method/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/23/create-new-blog-method/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="创建我的新文章">创建我的新文章</h2><blockquote>
-<p>好记性不如烂笔头，好长时间不更新博客了，连更新的流程和方法都忘记了，所以时下记得很清楚的东西，还是要用文本记录下来，方便日后忘记再次查看！</p>
-</blockquote>
-<h3 id="命令行进入到blog文件夹根目录">命令行进入到blog文件夹根目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 自己的路径/blog/</span><br></pre></td></tr></table></figure>
-<h3 id="通过hexo命令创建新博文">通过hexo命令创建新博文</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"博文名称"</span> <span class="comment"><span class="markdown">/<span class="strong">** 创建新的博文 **</span>/</span></span></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">hexo <span class="keyword">new</span> post <span class="string">"博文名称"</span></span><br></pre></td></tr></table></figure>
-<h3 id="编辑博文">编辑博文</h3><p>通过上边的代码会将新的博文创建在<code>source/_posts/</code> 的文件夹下，然后进入到<code>路径/blog/source/_posts</code>目录下，找到刚刚创建的“博文名称.md”使用 <code>markdown</code>工具进行编辑博客内容。不知道<code>markdow</code>格式的可以参考<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">Markdown语法说明</a>对比书写自己的博文</p>
-<h3 id="编辑生成静态博客">编辑生成静态博客</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">// 或者</span><br><span class="line">hexo generate /<span class="keyword">*</span><span class="keyword">*</span> 生成一套静态网页 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
-<p>生成的博客内容就在当前路径的 <code>public</code>目录下</p>
-<h3 id="本地预览完整博客内容">本地预览完整博客内容</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">// 或者</span><br><span class="line">hexo server /<span class="keyword">*</span><span class="keyword">*</span> 在本地建立 Server ，提供访问和浏览 <span class="keyword">*</span><span class="keyword">*</span>/</span><br></pre></td></tr></table></figure>
-<p>浏览器访问地址 <code>http://0.0.0.0:4000/</code></p>
-<h3 id="上传到github">上传到github</h3><p>可以通过github desktop提交变更到github仓库，等待一会编译通过，新的文章就更新进去了</p>
-<p>也可以通过命令行进行提交。<br>使用BCompare 对比两个目录的差异，进行更新<br>然后通过命令行进行提交</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . <span class="comment">// # 将所有修改过的工作文件提交暂存区</span></span><br><span class="line">git commit -m “the commit message<span class="string">"</span></span><br><span class="line">git push origin master <span class="preprocessor"># 将本地主分支推到远程主分支</span></span><br></pre></td></tr></table></figure>
-<h3 id="参考">参考</h3><p>更多详细的配置内容可以参考以下链接<br><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a><br><a href="https://ninghao.net/blog/1412" target="_blank" rel="external">使用 Hexo 生成一套静态博客网页</a></p>
+<h2 id="参考致谢"><a href="#参考致谢" class="headerlink" title="参考致谢"></a>参考致谢</h2><p><a href="http://www.seidea.com/" target="_blank" rel="noopener">Seidea</a>的<a href="http://www.seidea.com/2017/03/23/beyond-compare-for-mac-%E6%97%A0%E9%99%90%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener">Beyond Compare for Mac 无限试用方法</a></p>
 
           
         
@@ -1129,7 +1119,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

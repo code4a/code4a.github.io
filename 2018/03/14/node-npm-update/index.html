@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="iTerm2下命令找不到 由于前段时间更新了命令行工具，导致这两天在Android Studio的命令行下找不到adb命令和gradle命令。因为Android Studio的命令行使用的就是默认的命令行工具，导致之前对bash的配置不生效。  如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！zsh: per">
+<meta name="description" content="Mac环境下安装node时遇到的问题汇总通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到 此时需要添加如下配置到.zshrc    12export NVM_DIR=&quot;/Users/username/.nvm&quot;source $(brew --prefix nvm)/nvm.sh  注意：在安装完成nvm后命令行自动提示的追加内容，会导致nvm安装nodejs后不生效的问题，此问">
 <meta name="keywords" content="tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zsh: command not found: gradle&#x2F;adb&#x2F;..">
-<meta property="og:url" content="http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/index.html">
+<meta property="og:title" content="mac环境下使用nvm管理node版本">
+<meta property="og:url" content="http://www.code4a.com/2018/03/14/node-npm-update/index.html">
 <meta property="og:site_name" content="蒋彦涛的个人博客">
-<meta property="og:description" content="iTerm2下命令找不到 由于前段时间更新了命令行工具，导致这两天在Android Studio的命令行下找不到adb命令和gradle命令。因为Android Studio的命令行使用的就是默认的命令行工具，导致之前对bash的配置不生效。  如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！zsh: per">
+<meta property="og:description" content="Mac环境下安装node时遇到的问题汇总通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到 此时需要添加如下配置到.zshrc    12export NVM_DIR=&quot;/Users/username/.nvm&quot;source $(brew --prefix nvm)/nvm.sh  注意：在安装完成nvm后命令行自动提示的追加内容，会导致nvm安装nodejs后不生效的问题，此问">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-04T02:02:36.179Z">
+<meta property="og:updated_time" content="2018-03-14T09:41:08.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zsh: command not found: gradle&#x2F;adb&#x2F;..">
-<meta name="twitter:description" content="iTerm2下命令找不到 由于前段时间更新了命令行工具，导致这两天在Android Studio的命令行下找不到adb命令和gradle命令。因为Android Studio的命令行使用的就是默认的命令行工具，导致之前对bash的配置不生效。  如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！zsh: per">
+<meta name="twitter:title" content="mac环境下使用nvm管理node版本">
+<meta name="twitter:description" content="Mac环境下安装node时遇到的问题汇总通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到 此时需要添加如下配置到.zshrc    12export NVM_DIR=&quot;/Users/username/.nvm&quot;source $(brew --prefix nvm)/nvm.sh  注意：在安装完成nvm后命令行自动提示的追加内容，会导致nvm安装nodejs后不生效的问题，此问">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/"/>
+  <link rel="canonical" href="http://www.code4a.com/2018/03/14/node-npm-update/"/>
 
 
 
 
 
-  <title>zsh: command not found: gradle/adb/.. | 蒋彦涛的个人博客</title>
+  <title>mac环境下使用nvm管理node版本 | 蒋彦涛的个人博客</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/11/02/zsh-command-not-found-cmd/">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2018/03/14/node-npm-update/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="code4a">
@@ -332,7 +332,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">zsh: command not found: gradle/adb/..</h2>
+          <h2 class="post-title" itemprop="name headline">mac环境下使用nvm管理node版本</h2>
         
 
         <div class="post-meta">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T20:17:31+08:00">
-                2017-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T09:55:58+08:00">
+                2018-03-14
               </time>
             
 
@@ -407,11 +407,13 @@
       
 
       
-        <h2 id="iTerm2下命令找不到"><a href="#iTerm2下命令找不到" class="headerlink" title="iTerm2下命令找不到"></a><code>iTerm2</code>下命令找不到</h2><blockquote>
-<p>由于前段时间更新了命令行工具，导致这两天在<code>Android Studio</code>的命令行下找不到<code>adb</code>命令和<code>gradle</code>命令。因为<code>Android Studio</code>的命令行使用的就是默认的命令行工具，导致之前对<code>bash</code>的配置不生效。</p>
+        <h2 id="Mac环境下安装node时遇到的问题汇总"><a href="#Mac环境下安装node时遇到的问题汇总" class="headerlink" title="Mac环境下安装node时遇到的问题汇总"></a>Mac环境下安装node时遇到的问题汇总</h2><h5 id="通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到"><a href="#通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到" class="headerlink" title="通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到"></a>通过<code>brew</code>安装<code>nvm</code>成功后，在<code>zsh</code>命令行输入<code>nvm</code>提示命令找不到</h5><blockquote>
+<p>此时需要添加如下配置到<code>.zshrc</code></p>
 </blockquote>
-<h5 id="如果你出现同样的问题可以参考Mac下command-not-found-gradle-adb终极解决方案这篇文章，可以很好地解决这个问题！"><a href="#如果你出现同样的问题可以参考Mac下command-not-found-gradle-adb终极解决方案这篇文章，可以很好地解决这个问题！" class="headerlink" title="如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！"></a>如果你出现同样的问题可以参考<a href="http://blog.csdn.net/u010358168/article/details/61924807" target="_blank" rel="noopener">Mac下command not found:gradle/adb终极解决方案</a>这篇文章，可以很好地解决这个问题！</h5><h2 id="zsh-permission-denied-gradlew"><a href="#zsh-permission-denied-gradlew" class="headerlink" title="zsh: permission denied: ./gradlew"></a>zsh: permission denied: ./gradlew</h2><h5 id="在使用命令gradlew提交代码到jCenter时出现zsh-permission-denied-gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo-gradlew-command-not-found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令"><a href="#在使用命令gradlew提交代码到jCenter时出现zsh-permission-denied-gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo-gradlew-command-not-found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令" class="headerlink" title="在使用命令gradlew提交代码到jCenter时出现zsh: permission denied: ./gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo: ./gradlew: command not found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令"></a>在使用命令<code>gradlew</code>提交代码到<code>jCenter</code>时出现<code>zsh: permission denied: ./gradlew</code>，第一反应是权限不够，然后再前边添加了<code>sudo</code>命令提高权限，紧接着又出现<code>sudo: ./gradlew: command not found</code>的提示，然后再网上搜索了一下原来是<code>gradlew</code>没有执行权限，因为之前在<code>Terminal</code>终端工具中是经常用的命令，换了<code>iTerm2</code>之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令</h5><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +<span class="keyword">x</span> gradlew</span><br></pre></td></tr></table></figure>
-<h4 id="为gradlew增加可执行权限"><a href="#为gradlew增加可执行权限" class="headerlink" title="为gradlew增加可执行权限"></a>为<code>gradlew</code>增加可执行权限</h4><h2 id="发布代码到jCenter"><a href="#发布代码到jCenter" class="headerlink" title="发布代码到jCenter"></a>发布代码到jCenter</h2><h5 id="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。"><a href="#然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。" class="headerlink" title="然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。"></a>然后再执行发布到<a href="https://bintray.com/code4a" target="_blank" rel="noopener">jCenter</a>的命令，如果你也是使用的<a href="https://github.com/novoda/bintray-release" target="_blank" rel="noopener">bintray-release</a>的配置，可以使用以下命令。</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean build bintrayUpload <span class="attribute">-PbintrayUser</span>=BINTRAY_USERNAME <span class="attribute">-PbintrayKey</span>=BINTRAY_KEY <span class="attribute">-PdryRun</span>=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">NVM_DIR</span>=<span class="string">"/Users/username/.nvm"</span></span><br><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></table></figure>
+<p> <strong>注意</strong>：在安装完成<code>nvm</code>后命令行自动提示的追加内容，会导致<code>nvm</code>安装<code>nodejs</code>后不生效的问题，此问题时<code>zsh</code>的一个bug</p>
+<h5 id="通过命令nvm-install-nodeversion-安装完成之后，需要通过如下命令使用"><a href="#通过命令nvm-install-nodeversion-安装完成之后，需要通过如下命令使用" class="headerlink" title="通过命令nvm install (nodeversion)安装完成之后，需要通过如下命令使用"></a>通过命令<code>nvm install (nodeversion)</code>安装完成之后，需要通过如下命令使用</h5>  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm use (version)</span><br><span class="line">nvm alias<span class="built_in"> default </span>(version)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -441,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/27/centos7-install-config/" rel="next" title="Centos7系统安装配置">
-                <i class="fa fa-chevron-left"></i> Centos7系统安装配置
+              <a href="/2018/01/31/dueros-android-import/" rel="next" title="百度DuerOS Android平台接入流程">
+                <i class="fa fa-chevron-left"></i> 百度DuerOS Android平台接入流程
               </a>
             
           </div>
@@ -450,10 +452,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/04/iTerm2-Command-highlighter/" rel="prev" title="iTerm2语法高亮配置">
-                iTerm2语法高亮配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -674,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2下命令找不到"><span class="nav-number">1.</span> <span class="nav-text">iTerm2下命令找不到</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如果你出现同样的问题可以参考Mac下command-not-found-gradle-adb终极解决方案这篇文章，可以很好地解决这个问题！"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">如果你出现同样的问题可以参考Mac下command not found:gradle/adb终极解决方案这篇文章，可以很好地解决这个问题！</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh-permission-denied-gradlew"><span class="nav-number">2.</span> <span class="nav-text">zsh: permission denied: ./gradlew</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在使用命令gradlew提交代码到jCenter时出现zsh-permission-denied-gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo-gradlew-command-not-found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">在使用命令gradlew提交代码到jCenter时出现zsh: permission denied: ./gradlew，第一反应是权限不够，然后再前边添加了sudo命令提高权限，紧接着又出现sudo: ./gradlew: command not found的提示，然后再网上搜索了一下原来是gradlew没有执行权限，因为之前在Terminal终端工具中是经常用的命令，换了iTerm2之后就忘记了是否之前添加过执行权限，真是好记性不如烂笔头，何况我这记性还不好。记录一下这种情况以及所需命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为gradlew增加可执行权限"><span class="nav-number">2.0.1.</span> <span class="nav-text">为gradlew增加可执行权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布代码到jCenter"><span class="nav-number">3.</span> <span class="nav-text">发布代码到jCenter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">然后再执行发布到jCenter的命令，如果你也是使用的bintray-release的配置，可以使用以下命令。</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac环境下安装node时遇到的问题汇总"><span class="nav-number">1.</span> <span class="nav-text">Mac环境下安装node时遇到的问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过命令nvm-install-nodeversion-安装完成之后，需要通过如下命令使用"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">通过命令nvm install (nodeversion)安装完成之后，需要通过如下命令使用</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

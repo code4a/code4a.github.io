@@ -81,46 +81,22 @@
 
 
 
-<meta name="description" content="教你编写现代化的java程式
-Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。
-
-Style(样式)
-传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性
-
-Structs(结构体)
-常规用法public class DataBean {
-
-  private String data;">
+<meta name="description" content="教你编写现代化的java程式 Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。  Style(样式) 传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性  Structs(结构体) 常规用法public class DataBean {    private String data;">
+<meta name="keywords" content="java编程思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Better Java(一)">
 <meta property="og:url" content="http://www.code4a.com/2015/11/16/better-java/index.html">
 <meta property="og:site_name" content="蒋彦涛的个人博客">
-<meta property="og:description" content="教你编写现代化的java程式
-Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。
-
-Style(样式)
-传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性
-
-Structs(结构体)
-常规用法public class DataBean {
-
-  private String data;">
+<meta property="og:description" content="教你编写现代化的java程式 Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。  Style(样式) 传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性  Structs(结构体) 常规用法public class DataBean {    private String data;">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png">
 <meta property="og:updated_time" content="2017-10-23T10:49:06.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Better Java(一)">
-<meta name="twitter:description" content="教你编写现代化的java程式
-Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。
-
-Style(样式)
-传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性
-
-Structs(结构体)
-常规用法public class DataBean {
-
-  private String data;">
+<meta name="twitter:description" content="教你编写现代化的java程式 Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。  Style(样式) 传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性  Structs(结构体) 常规用法public class DataBean {    private String data;">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png">
 
 
 
@@ -435,149 +411,149 @@ Structs(结构体)
       
 
       
-        <h2 id="教你编写现代化的java程式">教你编写现代化的java程式</h2><blockquote>
+        <h2 id="教你编写现代化的java程式"><a href="#教你编写现代化的java程式" class="headerlink" title="教你编写现代化的java程式"></a>教你编写现代化的java程式</h2><blockquote>
 <p>Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。</p>
 </blockquote>
-<h3 id="Style(样式)"><strong>Style(样式)</strong></h3><ul>
+<h3 id="Style-样式"><a href="#Style-样式" class="headerlink" title="Style(样式)"></a><strong>Style(样式)</strong></h3><ul>
 <li>传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性</li>
 </ul>
-<h4 id="Structs(结构体)">Structs(结构体)</h4><ul>
-<li><h5 id="常规用法">常规用法</h5><pre><code><span class="keyword">public</span> class DataBean {
+<h4 id="Structs-结构体"><a href="#Structs-结构体" class="headerlink" title="Structs(结构体)"></a>Structs(结构体)</h4><ul>
+<li><h5 id="常规用法"><a href="#常规用法" class="headerlink" title="常规用法"></a>常规用法</h5><pre><code>public class DataBean {
 
-  <span class="keyword">private</span> <span class="built_in">String</span> <span class="built_in">data</span>;
+  private String data;
 
-  <span class="keyword">public</span> DataBean(){};
+  public DataBean(){};
 
-  <span class="keyword">public</span> <span class="literal">void</span> setData(<span class="built_in">String</span> <span class="built_in">data</span>){
-    this<span class="built_in">.</span><span class="built_in">data</span> = <span class="built_in">data</span>;
+  public void setData(String data){
+    this.data = data;
   }
 
-  <span class="keyword">public</span> <span class="built_in">String</span> getData(){
-    <span class="keyword">return</span> this<span class="built_in">.</span><span class="built_in">data</span>;
+  public String getData(){
+    return this.data;
   }
 }
 </code></pre></li>
-<li><h5 id="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：">不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考<code>C</code>风格里的结构体样式去编写这种容器数据：</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> DataBean {
-    <span class="keyword">public</span> <span class="keyword">final</span> String <span class="type">data</span>;
+<li><h5 id="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："><a href="#不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：" class="headerlink" title="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："></a>不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考<code>C</code>风格里的结构体样式去编写这种容器数据：</h5><pre><code>public class DataBean {
+    public final String data;
 
-    <span class="keyword">public</span> DataBean(String <span class="type">data</span>) {
-        this.<span class="type">data</span> = <span class="type">data</span>;
+    public DataBean(String data) {
+        this.data = data;
     }
 }
 </code></pre></li>
-<li><h5 id="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。">这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</h5></li>
+<li><h5 id="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"><a href="#这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。" class="headerlink" title="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"></a>这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</h5></li>
 </ul>
-<h4 id="Builder模式">Builder模式</h4><ul>
-<li><h5 id="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：">如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</h5><pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComplicatedDataBean</span> </span>{
-    <span class="keyword">public</span> <span class="keyword">final</span> String data;
-    <span class="keyword">public</span> fianl <span class="keyword">int</span> num;
-    <span class="comment">// lots more fields and a constructor</span>
-    <span class="function"><span class="keyword">private</span> <span class="title">ComplicatedDataBean</span><span class="params">(Builder builder)</span></span>{
-        <span class="keyword">this</span>.data = builder.data;
-        <span class="keyword">this</span>.num = builder.num;
+<h4 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h4><ul>
+<li><h5 id="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："><a href="#如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：" class="headerlink" title="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："></a>如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</h5><pre><code>public class ComplicatedDataBean {
+    public final String data;
+    public fianl int num;
+    // lots more fields and a constructor
+    private ComplicatedDataBean(Builder builder){
+        this.data = builder.data;
+        this.num = builder.num;
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>{
-        <span class="keyword">private</span> String data;
-        <span class="keyword">private</span> <span class="keyword">int</span> num;
+    public static class Builder {
+        private String data;
+        private int num;
 
-        <span class="function"><span class="keyword">public</span> Builder <span class="title">data</span><span class="params">(String data)</span> </span>{
-            <span class="keyword">this</span>.data = data;
-            <span class="keyword">return</span> <span class="keyword">this</span>;
+        public Builder data(String data) {
+            this.data = data;
+            return this;
         }
 
-        <span class="function"><span class="keyword">public</span> Builder <span class="title">num</span><span class="params">(<span class="keyword">int</span> num)</span></span>{
-            <span class="keyword">this</span>.num = num;
-            <span class="keyword">return</span> <span class="keyword">this</span>;
+        public Builder num(int num){
+            this.num = num;
+            return this;
         }
 
-        <span class="function"><span class="keyword">public</span> ComplicatedDataBean <span class="title">build</span><span class="params">()</span></span>{
-            <span class="keyword">return</span> <span class="keyword">new</span> ComplicatedDataBean(<span class="keyword">this</span>); <span class="comment">// etc</span>
+        public ComplicatedDataBean build(){
+            return new ComplicatedDataBean(this); // etc
         }
     }
 }
 </code></pre></li>
-<li><h5 id="然后可以按照如下方式使用：">然后可以按照如下方式使用：</h5><pre><code><span class="keyword">final</span> ComplicatedDataBean cda = <span class="keyword">new</span> ComplicatedDataBean.builder().data(<span class="string">"她已经"</span>).<span class="built_in">num</span>(<span class="number">22</span>).build();
+<li><h5 id="然后可以按照如下方式使用："><a href="#然后可以按照如下方式使用：" class="headerlink" title="然后可以按照如下方式使用："></a>然后可以按照如下方式使用：</h5><pre><code>final ComplicatedDataBean cda = new ComplicatedDataBean.builder().data(&quot;她已经&quot;).num(22).build();
 </code></pre></li>
 </ul>
-<h4 id="Dependency_Injection(依赖注入)">Dependency Injection(依赖注入)</h4><ul>
-<li><h5 id="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。">依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</h5></li>
-<li><h5 id="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google_和_Square的Dagger库或者Google’s_Guice-">在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</h5></li>
+<h4 id="Dependency-Injection-依赖注入"><a href="#Dependency-Injection-依赖注入" class="headerlink" title="Dependency Injection(依赖注入)"></a>Dependency Injection(依赖注入)</h4><ul>
+<li><h5 id="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"><a href="#依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。" class="headerlink" title="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"></a>依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</h5></li>
+<li><h5 id="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google-和-Square的Dagger库或者Google’s-Guice"><a href="#在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google-和-Square的Dagger库或者Google’s-Guice" class="headerlink" title="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice."></a>在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</h5></li>
 </ul>
-<h4 id="避免空指针">避免空指针</h4><ul>
-<li><h5 id="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。">尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> FooWidget {
-    <span class="keyword">private</span> <span class="keyword">final</span> String <span class="type">data</span>;
-    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Optional</span>&lt;Bar&gt; bar;
+<h4 id="避免空指针"><a href="#避免空指针" class="headerlink" title="避免空指针"></a>避免空指针</h4><ul>
+<li><h5 id="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"><a href="#尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。" class="headerlink" title="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"></a>尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</h5><pre><code>public class FooWidget {
+    private final String data;
+    private final Optional&lt;Bar&gt; bar;
 
-    <span class="keyword">public</span> FooWidget(String <span class="type">data</span>){
-        this(<span class="type">data</span>, <span class="type">Optional</span>.empty());
+    public FooWidget(String data){
+        this(data, Optional.empty());
     }
 
-    <span class="keyword">public</span> FooWidget(String <span class="type">data</span>, <span class="type">Optional</span>&lt;Bar&gt; bar){
-        this.<span class="type">data</span> = <span class="type">data</span>;
+    public FooWidget(String data, Optional&lt;Bar&gt; bar){
+        this.data = data;
         this.bar = bar;
     }
 
-    <span class="keyword">public</span> <span class="type">Optional</span>&lt;Bar&gt; getBar(){
-        <span class="keyword">return</span> bar;
+    public Optional&lt;Bar&gt; getBar(){
+        return bar;
     }
 }
 </code></pre></li>
-<li><h5 id="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的">根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</h5><pre><code><span class="keyword">final</span> Optional&lt;FooWidget&gt; fooWidget = maybeGetFooWidget();
-<span class="keyword">final</span> Baz baz = fooWidget.flatMap(FooWidget::getBar).flatMap(BarWidget::getBaz).orElse(defaultBaz);
+<li><h5 id="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present-存在-的"><a href="#根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present-存在-的" class="headerlink" title="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的"></a>根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</h5><pre><code>final Optional&lt;FooWidget&gt; fooWidget = maybeGetFooWidget();
+final Baz baz = fooWidget.flatMap(FooWidget::getBar).flatMap(BarWidget::getBaz).orElse(defaultBaz);
 </code></pre></li>
 </ul>
-<h4 id="ImmuTable-by-default(默认不可变)">ImmuTable-by-default(默认不可变)</h4><blockquote>
+<h4 id="ImmuTable-by-default-默认不可变"><a href="#ImmuTable-by-default-默认不可变" class="headerlink" title="ImmuTable-by-default(默认不可变)"></a>ImmuTable-by-default(默认不可变)</h4><blockquote>
 <p>java-advantages-of-of-immutable-objects-in-examples</p>
 </blockquote>
 <ul>
-<li><h5 id="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：">除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</h5><pre><code><span class="keyword">final</span> FooWidget fooWidget;
-<span class="keyword">if</span>(condition()){
+<li><h5 id="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："><a href="#除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：" class="headerlink" title="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："></a>除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</h5><pre><code>final FooWidget fooWidget;
+if(condition()){
     fooWidget = getWidget();
-}<span class="keyword">else</span>{
-    <span class="keyword">try</span>{
-        fooWidget = cachedFooWidget.<span class="keyword">get</span>();
-    }<span class="keyword">catch</span>(CachingException e){
-        <span class="keyword">throw</span> e;
+}else{
+    try{
+        fooWidget = cachedFooWidget.get();
+    }catch(CachingException e){
+        throw e;
     }
 }
 </code></pre><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
 </li>
 </ul>
-<h4 id="Avoid_lots_of_Util_Classes(避免使用大量工具类)">Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
-<li><h5 id="一不注意，就会发现自己写了N多的工具类，譬如：">一不注意，就会发现自己写了N多的工具类，譬如：</h5><pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MiscUtil</span> {
-  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">frobnicateString</span>(<span class="params">String <span class="keyword">base</span>, <span class="keyword">int</span> times</span>)</span>{
-  <span class="comment">// ... etc</span>
+<h4 id="Avoid-lots-of-Util-Classes-避免使用大量工具类"><a href="#Avoid-lots-of-Util-Classes-避免使用大量工具类" class="headerlink" title="Avoid lots of Util Classes(避免使用大量工具类)"></a>Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
+<li><h5 id="一不注意，就会发现自己写了N多的工具类，譬如："><a href="#一不注意，就会发现自己写了N多的工具类，譬如：" class="headerlink" title="一不注意，就会发现自己写了N多的工具类，譬如："></a>一不注意，就会发现自己写了N多的工具类，譬如：</h5><pre><code>public class MiscUtil {
+  public static String frobnicateString(String base, int times){
+  // ... etc
   }
 }
 </code></pre></li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Thrower</span> </span>{
-    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">throwIfCondition</span><span class="params">(<span class="keyword">boolean</span> condition, String msg)</span> </span>{
-        <span class="comment">// ...</span>
+<pre><code>public interface Thrower {
+    default void throwIfCondition(boolean condition, String msg) {
+        // ...
     }
 }
 </code></pre><ul>
-<li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义">这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
+<li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义"><a href="#这样每个需要使用这些接口的类可以方便的进行自定义" class="headerlink" title="这样每个需要使用这些接口的类可以方便的进行自定义"></a>这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
 </ul>
-<h4 id="格式化">格式化</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
-<h4 id="javaDoc">javaDoc</h4><ul>
-<li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using_examples">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
+<h4 id="javaDoc"><a href="#javaDoc" class="headerlink" title="javaDoc"></a>javaDoc</h4><ul>
+<li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using-examples"><a href="#为你的代码添加javaDoc同样非常重要，可以参考这个示例：using-examples" class="headerlink" title="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples"></a>为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
 </ul>
-<h4 id="Streams">Streams</h4><ul>
-<li><h5 id="java_8_提供了非常nice的_stream_api可以用如下的写法：">java 8 提供了非常nice的 stream api可以用如下的写法：</h5><pre><code>final <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; filtered = <span class="built_in">list</span><span class="built_in">.</span>stream()<span class="built_in">.</span>filter(s<span class="subst">-&gt;</span>s<span class="built_in">.</span>startsWith(<span class="string">"s"</span>))<span class="built_in">.</span><span class="built_in">map</span>(s<span class="subst">-&gt;</span>s<span class="built_in">.</span>toUpperCase())<span class="built_in">.</span>collect(Collectors<span class="built_in">.</span>toList());
+<h4 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h4><ul>
+<li><h5 id="java-8-提供了非常nice的-stream-api可以用如下的写法："><a href="#java-8-提供了非常nice的-stream-api可以用如下的写法：" class="headerlink" title="java 8 提供了非常nice的 stream api可以用如下的写法："></a>java 8 提供了非常nice的 stream api可以用如下的写法：</h5><pre><code>final List&lt;String&gt; filtered = list.stream().filter(s-&gt;s.startsWith(&quot;s&quot;)).map(s-&gt;s.toUpperCase()).collect(Collectors.toList());
 </code></pre></li>
-<li><h5 id="来替代：">来替代：</h5><pre><code><span class="keyword">final</span> List&lt;<span class="keyword">String</span>&gt; filtered = <span class="keyword">new</span> ArrayList&lt;&gt;();
-<span class="keyword">for</span> (<span class="keyword">String</span> <span class="built_in">str</span> : list){
-    <span class="keyword">if</span>(<span class="built_in">str</span>.startsWith(<span class="string">"s"</span>)){
-        filtered.<span class="built_in">add</span>(<span class="built_in">str</span>.toUpperCase());
+<li><h5 id="来替代："><a href="#来替代：" class="headerlink" title="来替代："></a>来替代：</h5><pre><code>final List&lt;String&gt; filtered = new ArrayList&lt;&gt;();
+for (String str : list){
+    if(str.startsWith(&quot;s&quot;)){
+        filtered.add(str.toUpperCase());
     }
 }
 </code></pre></li>
-<li><h5 id="这样可以帮助你写更多的高可读性，流畅性的代码。">这样可以帮助你写更多的高可读性，流畅性的代码。</h5></li>
+<li><h5 id="这样可以帮助你写更多的高可读性，流畅性的代码。"><a href="#这样可以帮助你写更多的高可读性，流畅性的代码。" class="headerlink" title="这样可以帮助你写更多的高可读性，流畅性的代码。"></a>这样可以帮助你写更多的高可读性，流畅性的代码。</h5></li>
 </ul>
-<h2 id="本文来自：SegmentFault_版权归属原作者">本文来自：SegmentFault 版权归属原作者</h2>
+<h2 id="本文来自：SegmentFault-版权归属原作者"><a href="#本文来自：SegmentFault-版权归属原作者" class="headerlink" title="本文来自：SegmentFault 版权归属原作者"></a>本文来自：SegmentFault 版权归属原作者</h2>
       
     </div>
     
@@ -696,7 +672,7 @@ Structs(结构体)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -840,7 +816,7 @@ Structs(结构体)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教你编写现代化的java程式"><span class="nav-number">1.</span> <span class="nav-text">教你编写现代化的java程式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Style(样式)"><span class="nav-number">1.1.</span> <span class="nav-text">Style(样式)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Structs(结构体)"><span class="nav-number">1.1.1.</span> <span class="nav-text">Structs(结构体)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常规用法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">常规用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："><span class="nav-number">1.1.1.2.</span> <span class="nav-text">不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Builder模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">Builder模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："><span class="nav-number">1.1.2.1.</span> <span class="nav-text">如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后可以按照如下方式使用："><span class="nav-number">1.1.2.2.</span> <span class="nav-text">然后可以按照如下方式使用：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dependency_Injection(依赖注入)"><span class="nav-number">1.1.3.</span> <span class="nav-text">Dependency Injection(依赖注入)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google_和_Square的Dagger库或者Google’s_Guice-"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免空指针"><span class="nav-number">1.1.4.</span> <span class="nav-text">避免空指针</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImmuTable-by-default(默认不可变)"><span class="nav-number">1.1.5.</span> <span class="nav-text">ImmuTable-by-default(默认不可变)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："><span class="nav-number">1.1.5.1.</span> <span class="nav-text">除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Avoid_lots_of_Util_Classes(避免使用大量工具类)"><span class="nav-number">1.1.6.</span> <span class="nav-text">Avoid lots of Util Classes(避免使用大量工具类)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一不注意，就会发现自己写了N多的工具类，譬如："><span class="nav-number">1.1.6.1.</span> <span class="nav-text">一不注意，就会发现自己写了N多的工具类，譬如：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这样每个需要使用这些接口的类可以方便的进行自定义"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">这样每个需要使用这些接口的类可以方便的进行自定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式化"><span class="nav-number">1.1.7.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javaDoc"><span class="nav-number">1.1.8.</span> <span class="nav-text">javaDoc</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为你的代码添加javaDoc同样非常重要，可以参考这个示例：using_examples"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Streams"><span class="nav-number">1.1.9.</span> <span class="nav-text">Streams</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#java_8_提供了非常nice的_stream_api可以用如下的写法："><span class="nav-number">1.1.9.1.</span> <span class="nav-text">java 8 提供了非常nice的 stream api可以用如下的写法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#来替代："><span class="nav-number">1.1.9.2.</span> <span class="nav-text">来替代：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这样可以帮助你写更多的高可读性，流畅性的代码。"><span class="nav-number">1.1.9.3.</span> <span class="nav-text">这样可以帮助你写更多的高可读性，流畅性的代码。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文来自：SegmentFault_版权归属原作者"><span class="nav-number">2.</span> <span class="nav-text">本文来自：SegmentFault 版权归属原作者</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教你编写现代化的java程式"><span class="nav-number">1.</span> <span class="nav-text">教你编写现代化的java程式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Style-样式"><span class="nav-number">1.1.</span> <span class="nav-text">Style(样式)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Structs-结构体"><span class="nav-number">1.1.1.</span> <span class="nav-text">Structs(结构体)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常规用法"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">常规用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："><span class="nav-number">1.1.1.2.</span> <span class="nav-text">不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Builder模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">Builder模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："><span class="nav-number">1.1.2.1.</span> <span class="nav-text">如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#然后可以按照如下方式使用："><span class="nav-number">1.1.2.2.</span> <span class="nav-text">然后可以按照如下方式使用：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dependency-Injection-依赖注入"><span class="nav-number">1.1.3.</span> <span class="nav-text">Dependency Injection(依赖注入)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google-和-Square的Dagger库或者Google’s-Guice"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免空指针"><span class="nav-number">1.1.4.</span> <span class="nav-text">避免空指针</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present-存在-的"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ImmuTable-by-default-默认不可变"><span class="nav-number">1.1.5.</span> <span class="nav-text">ImmuTable-by-default(默认不可变)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："><span class="nav-number">1.1.5.1.</span> <span class="nav-text">除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Avoid-lots-of-Util-Classes-避免使用大量工具类"><span class="nav-number">1.1.6.</span> <span class="nav-text">Avoid lots of Util Classes(避免使用大量工具类)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一不注意，就会发现自己写了N多的工具类，譬如："><span class="nav-number">1.1.6.1.</span> <span class="nav-text">一不注意，就会发现自己写了N多的工具类，譬如：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这样每个需要使用这些接口的类可以方便的进行自定义"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">这样每个需要使用这些接口的类可以方便的进行自定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式化"><span class="nav-number">1.1.7.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javaDoc"><span class="nav-number">1.1.8.</span> <span class="nav-text">javaDoc</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为你的代码添加javaDoc同样非常重要，可以参考这个示例：using-examples"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Streams"><span class="nav-number">1.1.9.</span> <span class="nav-text">Streams</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#java-8-提供了非常nice的-stream-api可以用如下的写法："><span class="nav-number">1.1.9.1.</span> <span class="nav-text">java 8 提供了非常nice的 stream api可以用如下的写法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#来替代："><span class="nav-number">1.1.9.2.</span> <span class="nav-text">来替代：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#这样可以帮助你写更多的高可读性，流畅性的代码。"><span class="nav-number">1.1.9.3.</span> <span class="nav-text">这样可以帮助你写更多的高可读性，流畅性的代码。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文来自：SegmentFault-版权归属原作者"><span class="nav-number">2.</span> <span class="nav-text">本文来自：SegmentFault 版权归属原作者</span></a></li></ol></div>
             
 
           </div>

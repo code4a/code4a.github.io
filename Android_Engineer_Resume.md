@@ -83,6 +83,7 @@
 
 ## 开源项目
 
+- [百度Dueros平台](https://github.com/code4a/dcs-sdk-java-master)：此项目是一套把DuerOS的智能语音交互能力向所有设备开放的API，进行封装一下，方便在android平台下，作为library进行快速移植，并且使用。
 - [RetrofitUtil](https://github.com/code4a/NbaEvent)：此项目是对Retrofit + OKHttp + RxJava 简单二次封装，支持Http/Https请求，支持自己定义SSL解析，请求结果可以是String类型也可以是解析好的bean对象！
 - [WiFiConnectLib](https://github.com/code4a/WiFiConnectLibrary)：此项目是一个将Android手机WiFi连接到指定热点的开源的Android库，可以很方便的通过程序操作手机的WiFi！
 - [JLibrary](https://github.com/code4a/JLibraryDemo)：此项目是一个开源的Android库，提供了一些界面的基类和工具类，包含crash日志本地化，crash重启，修改状态栏颜色等功能，项目在不断完善更新中！

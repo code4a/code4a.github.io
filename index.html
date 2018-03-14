@@ -87,6 +87,7 @@
 <meta property="og:url" content="http://www.code4a.com/index.html">
 <meta property="og:site_name" content="蒋彦涛的个人博客">
 <meta property="og:description" content="Write Change Share">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒋彦涛的个人博客">
 <meta name="twitter:description" content="Write Change Share">
@@ -313,6 +314,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2018/03/14/node-npm-update/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/14/node-npm-update/" itemprop="url">mac环境下使用nvm管理node版本</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T09:55:58+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Mac环境下安装node时遇到的问题汇总"><a href="#Mac环境下安装node时遇到的问题汇总" class="headerlink" title="Mac环境下安装node时遇到的问题汇总"></a>Mac环境下安装node时遇到的问题汇总</h2><h5 id="通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到"><a href="#通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到" class="headerlink" title="通过brew安装nvm成功后，在zsh命令行输入nvm提示命令找不到"></a>通过<code>brew</code>安装<code>nvm</code>成功后，在<code>zsh</code>命令行输入<code>nvm</code>提示命令找不到</h5><blockquote>
+<p>此时需要添加如下配置到<code>.zshrc</code></p>
+</blockquote>
+  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">NVM_DIR</span>=<span class="string">"/Users/username/.nvm"</span></span><br><span class="line">source $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></table></figure>
+<p> <strong>注意</strong>：在安装完成<code>nvm</code>后命令行自动提示的追加内容，会导致<code>nvm</code>安装<code>nodejs</code>后不生效的问题，此问题时<code>zsh</code>的一个bug</p>
+<h5 id="通过命令nvm-install-nodeversion-安装完成之后，需要通过如下命令使用"><a href="#通过命令nvm-install-nodeversion-安装完成之后，需要通过如下命令使用" class="headerlink" title="通过命令nvm install (nodeversion)安装完成之后，需要通过如下命令使用"></a>通过命令<code>nvm install (nodeversion)</code>安装完成之后，需要通过如下命令使用</h5>  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm use (version)</span><br><span class="line">nvm alias<span class="built_in"> default </span>(version)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2018/01/31/dueros-android-import/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -404,17 +550,17 @@
       
         
           
-            <h2 id="百度DuerOS接入让App更加智能">百度DuerOS接入让App更加智能</h2><blockquote>
+            <h2 id="百度DuerOS接入让App更加智能"><a href="#百度DuerOS接入让App更加智能" class="headerlink" title="百度DuerOS接入让App更加智能"></a>百度DuerOS接入让App更加智能</h2><blockquote>
 <p>DuerOS开放平台是为企业及开发者提供的一整套对话式人工智能解决方案的开放平台</p>
 </blockquote>
-<h4 id="百度DuerOS开发平台官网地址">百度DuerOS开发平台<a href="http://open.duer.baidu.com/open" target="_blank" rel="external">官网地址</a></h4><blockquote>
-<p>平台分为<a href="https://dueros.baidu.com/dbp" target="_blank" rel="external">技能开放平台</a>和<a href="http://open.duer.baidu.com/didp/main/index" target="_blank" rel="external">智能设备开放平台</a>具体的功能区别以及应用场景可查看网站介绍</p>
+<h4 id="百度DuerOS开发平台官网地址"><a href="#百度DuerOS开发平台官网地址" class="headerlink" title="百度DuerOS开发平台官网地址"></a>百度DuerOS开发平台<a href="http://open.duer.baidu.com/open" target="_blank" rel="noopener">官网地址</a></h4><blockquote>
+<p>平台分为<a href="https://dueros.baidu.com/dbp" target="_blank" rel="noopener">技能开放平台</a>和<a href="http://open.duer.baidu.com/didp/main/index" target="_blank" rel="noopener">智能设备开放平台</a>具体的功能区别以及应用场景可查看网站介绍</p>
 </blockquote>
-<h3 id="注册成为开发者">注册成为开发者</h3><ol>
-<li>如何你有百度账号，则使用百度账号进行<a href="https://passport.baidu.com/v2/?login&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="external">登录</a>，如何没有账号，则需要先<a href="https://passport.baidu.com/v2/?reg&amp;tt=1517389947286&amp;overseas=&amp;gid=A8F49B7-66FC-4337-955E-DC518691EF04&amp;tpl=pp&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="external">注册</a>百度账号</li>
-<li><a href="https://dueros.baidu.com/didp/register/registerinfo" target="_blank" rel="external">进行开发者认证</a>开发者认证分为个人和企业开发者，需要的材料按照网页所需提供，审核材料需要经过两个工作日，审核通过就可以管理技能和设备两个控制台。</li>
+<h3 id="注册成为开发者"><a href="#注册成为开发者" class="headerlink" title="注册成为开发者"></a>注册成为开发者</h3><ol>
+<li>如何你有百度账号，则使用百度账号进行<a href="https://passport.baidu.com/v2/?login&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="noopener">登录</a>，如何没有账号，则需要先<a href="https://passport.baidu.com/v2/?reg&amp;tt=1517389947286&amp;overseas=&amp;gid=A8F49B7-66FC-4337-955E-DC518691EF04&amp;tpl=pp&amp;u=https%3A%2F%2Fdueros.baidu.com%2Fdidp%2Fmain%2Findex" target="_blank" rel="noopener">注册</a>百度账号</li>
+<li><a href="https://dueros.baidu.com/didp/register/registerinfo" target="_blank" rel="noopener">进行开发者认证</a>开发者认证分为个人和企业开发者，需要的材料按照网页所需提供，审核材料需要经过两个工作日，审核通过就可以管理技能和设备两个控制台。</li>
 </ol>
-<h3 id="技能平台">技能平台</h3><ol>
+<h3 id="技能平台"><a href="#技能平台" class="headerlink" title="技能平台"></a>技能平台</h3><ol>
 <li>创建新技能</li>
 </ol>
 <blockquote>
@@ -433,19 +579,19 @@
 <blockquote>
 <p>编辑技能页面可以查看技能的基础信息/交互模型/配置服务/模拟测试/发布上线/版本管理/技能数据功能，其中交互模型需要自己创建意图，定义字典，还可对其进行训练。</p>
 </blockquote>
-<p>交互模型的使用可以查看官方教程进行学习<a href="http://duer.bdstatic.com/saiya/flow/dbp-dst-multidialogue.mp4" target="_blank" rel="external">DST多轮对话</a></p>
-<h3 id="设备平台(以下以Android设备为例)">设备平台(以下以Android设备为例)</h3><ol>
+<p>交互模型的使用可以查看官方教程进行学习<a href="http://duer.bdstatic.com/saiya/flow/dbp-dst-multidialogue.mp4" target="_blank" rel="noopener">DST多轮对话</a></p>
+<h3 id="设备平台-以下以Android设备为例"><a href="#设备平台-以下以Android设备为例" class="headerlink" title="设备平台(以下以Android设备为例)"></a>设备平台(以下以Android设备为例)</h3><ol>
 <li>配置新设备<ol>
 <li>场景选择为<strong>手机</strong>点击下一步</li>
 <li>操作系统选择为<strong>Android</strong>点击下一步</li>
 <li>此时需要填写设备名称，点击申请<strong>ClientID</strong>，用于后续SDK接入鉴权使用。</li>
 <li>端能力配置，可用于屏幕展示，语音输入输出的配置。点击下一步</li>
 <li>云服务配置，可分为BOT配置，聊天人物肖像的配置，可以将语音机器人进行丰富。语音唤醒服务，自定义控制命令，此时需要提供三个dic文件，用于自定义命令的识别和识别后云平台指令的下发。</li>
-<li><strong><a href="https://github.com/dueros/dcs-sdk-java" target="_blank" rel="external">SDK下载</a></strong></li>
+<li><strong><a href="https://github.com/dueros/dcs-sdk-java" target="_blank" rel="noopener">SDK下载</a></strong></li>
 </ol>
 </li>
 <li><p>SDK接入</p>
-<p> SDK的配置可以参考<a href="https://github.com/dueros/dcs-sdk-java/blob/master/README.md" target="_blank" rel="external">DCS SDK（Java）开发者指南</a></p>
+<p> SDK的配置可以参考<a href="https://github.com/dueros/dcs-sdk-java/blob/master/README.md" target="_blank" rel="noopener">DCS SDK（Java）开发者指南</a></p>
 </li>
 <li><p>接入SDK添加自定义功能。</p>
 <ol>
@@ -461,29 +607,29 @@
 <p> <img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/dueros-android-import-sdk-devicemodule.png" alt="dueros-android-import-sdk-devicemodule.png"></p>
 <ul>
 <li><p>ApiConstants.java用来匹配自定义的控制命令意图，将用户的话拆分成控制关键词和命令语句</p>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiConstants</span> </span>{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAMESPACE = <span class="string">"ai.dueros.device_interface.thirdparty.cmcc.smart_gateway"</span>;
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = <span class="string">"SmartGatewayInterface"</span>;
+<pre><code>public class ApiConstants {
+    public static final String NAMESPACE = &quot;ai.dueros.device_interface.thirdparty.cmcc.smart_gateway&quot;;
+    public static final String NAME = &quot;SmartGatewayInterface&quot;;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Events</span> </span>{
+    public static final class Events {
 
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Directives</span> </span>{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Add</span> </span>{
-        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Add.<span class="keyword">class</span>.getSimpleName();
+    public static final class Directives {
+    public static final class Add {
+        public static final String NAME = Add.class.getSimpleName();
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Remove</span> </span>{
-        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Remove.<span class="keyword">class</span>.getSimpleName();
+    public static final class Remove {
+        public static final String NAME = Remove.class.getSimpleName();
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Bind</span> </span>{
-        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = Bind.<span class="keyword">class</span>.getSimpleName();
+    public static final class Bind {
+        public static final String NAME = Bind.class.getSimpleName();
     }
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">UnBind</span> </span>{
-        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = UnBind.<span class="keyword">class</span>.getSimpleName();
+    public static final class UnBind {
+        public static final String NAME = UnBind.class.getSimpleName();
     }
     }
 }
@@ -497,7 +643,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="具体示例可以查看百度Dueros平台Demo">具体示例可以查看<a href="https://github.com/code4a/dcs-sdk-java-master" target="_blank" rel="external">百度Dueros平台Demo</a></h3>
+<h3 id="具体示例可以查看百度Dueros平台Demo"><a href="#具体示例可以查看百度Dueros平台Demo" class="headerlink" title="具体示例可以查看百度Dueros平台Demo"></a>具体示例可以查看<a href="https://github.com/code4a/dcs-sdk-java-master" target="_blank" rel="noopener">百度Dueros平台Demo</a></h3>
           
         
       
@@ -775,11 +921,11 @@
       
         
           
-            <h2 id="Sublime_Text_安装Package_Control">Sublime Text 安装Package Control</h2><p>输入如下命令</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.<span class="keyword">join</span>(ipp, pf), <span class="string">'wb'</span>).<span class="keyword">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="keyword">read</span>())</span><br></pre></td></tr></table></figure>
+            <h2 id="Sublime-Text-安装Package-Control"><a href="#Sublime-Text-安装Package-Control" class="headerlink" title="Sublime Text 安装Package Control"></a>Sublime Text 安装Package Control</h2><p>输入如下命令</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,<span class="built_in">os</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="built_in">open</span>(<span class="built_in">os</span>.<span class="built_in">path</span>.join(ipp, pf), <span class="string">'wb'</span>).<span class="built_in">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="built_in">read</span>())</span><br></pre></td></tr></table></figure>
 <p>提示如下错误</p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error loading /Users/xxx/<span class="keyword">Library</span>/Application Support/Sublime Text <span class="number">3</span>/Installed Packages/<span class="keyword">Package</span> Control.sublime-<span class="keyword">package</span>: <span class="keyword">File</span> <span class="keyword">is</span> <span class="keyword">not</span> a zip <span class="keyword">file</span></span><br></pre></td></tr></table></figure>
-<p>此时需要参考<a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a>输入最新的安装命令即可解决该问题</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Error </span>loading /Users/xxx/Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package: File is not a zip file</span><br></pre></td></tr></table></figure>
+<p>此时需要参考<a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">Package Control</a>输入最新的安装命令即可解决该问题</p>
 <ul>
 <li>Sublime Text3</li>
 </ul>
@@ -787,7 +933,7 @@
 <ul>
 <li>Sublime Text2</li>
 </ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib2,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="operator">not</span> os.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); <span class="keyword">by</span> = urllib2.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); <span class="built_in">open</span>( os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>) <span class="keyword">if</span> dh == h <span class="keyword">else</span> None; print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string">'Please restart Sublime Text to finish installation'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib2,<span class="built_in">os</span>,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); <span class="built_in">os</span>.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">os</span>.<span class="built_in">path</span>.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(by).hexdigest(); <span class="built_in">open</span>( <span class="built_in">os</span>.<span class="built_in">path</span>.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> None; <span class="built_in">print</span>(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string">'Please restart Sublime Text to finish installation'</span>)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -927,12 +1073,12 @@
       
         
           
-            <h2 id="Vim常用命令">Vim常用命令</h2><blockquote>
+            <h2 id="Vim常用命令"><a href="#Vim常用命令" class="headerlink" title="Vim常用命令"></a>Vim常用命令</h2><blockquote>
 <p>一直在使用<code>Vim</code>编辑文件但是也只是略懂皮毛，只会使用一些简单地命令，操作编辑文件。为了熟练的使用<code>Vim</code>，在使用<code>Vim</code>编辑这篇文章的同时，也进行一些命令的练习和记录，方便以后更加高效的编辑文件。</p>
 </blockquote>
-<h5 id="vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。">vi编辑器支持<em>编辑模式</em>和<em>命令模式</em>，<em>编辑模式</em>下可以完成文本的编辑功能，<em>命令模式</em>下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入<em>命令模式</em>。从<em>编辑模式</em>切换到<em>命令模式</em>使用<code>esc</code>键，从<em>命令模式</em>切换到<em>编辑模式</em>使用<code>A</code>,<code>a</code>,<code>O</code>,<code>o</code>,<code>I</code>,<code>i</code>键。</h5><hr>
-<h3 id="命令模式下">命令模式下</h3><ul>
-<li><h5 id="游标操作">游标操作</h5></li>
+<h5 id="vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A-a-O-o-I-i键。"><a href="#vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A-a-O-o-I-i键。" class="headerlink" title="vi编辑器支持编辑模式和命令模式，编辑模式下可以完成文本的编辑功能，命令模式下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入命令模式。从编辑模式切换到命令模式使用esc键，从命令模式切换到编辑模式使用A,a,O,o,I,i键。"></a>vi编辑器支持<em>编辑模式</em>和<em>命令模式</em>，<em>编辑模式</em>下可以完成文本的编辑功能，<em>命令模式</em>下可以完成对文件的操作命令，要正确使用vi编辑器就必须熟练掌握两种模式的切换。默认情况下，打开vi编辑器后自动进入<em>命令模式</em>。从<em>编辑模式</em>切换到<em>命令模式</em>使用<code>esc</code>键，从<em>命令模式</em>切换到<em>编辑模式</em>使用<code>A</code>,<code>a</code>,<code>O</code>,<code>o</code>,<code>I</code>,<code>i</code>键。</h5><hr>
+<h3 id="命令模式下"><a href="#命令模式下" class="headerlink" title="命令模式下"></a>命令模式下</h3><ul>
+<li><h5 id="游标操作"><a href="#游标操作" class="headerlink" title="游标操作"></a>游标操作</h5></li>
 </ul>
 <table>
 <thead>
@@ -1025,7 +1171,7 @@
 </tbody>
 </table>
 <ul>
-<li><h5 id="切换编辑模式">切换编辑模式</h5></li>
+<li><h5 id="切换编辑模式"><a href="#切换编辑模式" class="headerlink" title="切换编辑模式"></a>切换编辑模式</h5></li>
 </ul>
 <table>
 <thead>
@@ -1070,7 +1216,7 @@
 </tbody>
 </table>
 <ul>
-<li><h5 id="内容编辑">内容编辑</h5></li>
+<li><h5 id="内容编辑"><a href="#内容编辑" class="headerlink" title="内容编辑"></a>内容编辑</h5></li>
 </ul>
 <table>
 <thead>
@@ -1135,7 +1281,7 @@
 </tbody>
 </table>
 <ul>
-<li><h5 id="文件操作">文件操作</h5></li>
+<li><h5 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h5></li>
 </ul>
 <table>
 <thead>
@@ -1228,11 +1374,11 @@
 </tbody>
 </table>
 <hr>
-<h3 id="编辑模式">编辑模式</h3><blockquote>
+<h3 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h3><blockquote>
 <p>该模式下就是文件的常规编写，输入任意字符进行编辑</p>
 </blockquote>
 <ul>
-<li><h5 id="切换命令模式">切换命令模式</h5></li>
+<li><h5 id="切换命令模式"><a href="#切换命令模式" class="headerlink" title="切换命令模式"></a>切换命令模式</h5></li>
 </ul>
 <table>
 <thead>
@@ -1248,162 +1394,8 @@
 </tr>
 </tbody>
 </table>
-<h5 id="上述命令可进行命令模式下的文件操作">上述命令可进行命令模式下的文件操作</h5><h2 id="致谢">致谢</h2><p><a href="http://man.linuxde.net/vi" target="_blank" rel="external">vi命令</a><br><a href="http://www.cnblogs.com/junw_china/articles/1708967.html" target="_blank" rel="external">常用vi编辑器命令行</a></p>
+<h5 id="上述命令可进行命令模式下的文件操作"><a href="#上述命令可进行命令模式下的文件操作" class="headerlink" title="上述命令可进行命令模式下的文件操作"></a>上述命令可进行命令模式下的文件操作</h5><h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p><a href="http://man.linuxde.net/vi" target="_blank" rel="noopener">vi命令</a><br><a href="http://www.cnblogs.com/junw_china/articles/1708967.html" target="_blank" rel="noopener">常用vi编辑器命令行</a></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/11/04/iTerm2-Command-highlighter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="code4a">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蒋彦涛的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/iTerm2-Command-highlighter/" itemprop="url">iTerm2语法高亮配置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T10:00:58+08:00">
-                2017-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="iTerm2_语法高亮">iTerm2 语法高亮</h2><h5 id="假如你没有配置过iTerm2可以参考Mac_下_iTerm2的安装及配置完成其安装和配置">假如你没有配置过<code>iTerm2</code>可以参考<a href="http://www.code4a.com/2017/10/24/iTerm2-install-configuration/">Mac 下 iTerm2的安装及配置</a>完成其安装和配置</h5><blockquote>
-<p>安装完<code>iTerm2</code>发现之前配置过得命令都找不到了，像<code>brew</code>,<code>npm</code>等命令，此时只需要更新一下<code>.bash_profile</code>文件即可</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开配置文件</span></span><br><span class="line">sudo vi <span class="class">.bash_profile</span></span><br><span class="line"><span class="comment">// 添加如下路径，保存退出</span></span><br><span class="line">export PATH=/usr/local/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">// 更新配置</span></span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<h3 id="语法高亮配置">语法高亮配置</h3><ol>
-<li>使用homebrew安装 zsh-syntax-highlighting 插件。</li>
-</ol>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<ol>
-<li>配置.zshrc文件，插入一行。</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/usr/</span>local<span class="regexp">/share/</span>zsh-syntax-highlighting<span class="regexp">/zsh-syntax-highlighting.zsh</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>更新配置</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1492,7 +1484,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
