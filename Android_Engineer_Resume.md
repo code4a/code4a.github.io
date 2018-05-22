@@ -9,7 +9,7 @@
 # 个人信息
 
 - 蒋彦涛/男/1991
-- 专科/河南科技大学信息工程系/软件工程专业
+- 专科/河南科技大学/软件工程专业
 - 工作年限：5年
 - Google+：[Jiang Yantao](https://plus.google.com/+jiangyantao8)
 - 技术博客：http://www.code4a.com ( ``` Hexo + Github ```  )
@@ -25,6 +25,11 @@
 
 
 ## 文思海辉技术有限公司 （ 2014年8月 ~ 至今 ）
+
+### 项目职责
+
+独立完成Android客户端的架构设计，模块的划分，网络引擎(Retrofit+OKHttp+RxJava)的封装演进，业务逻辑的编写，页面实现，自定义控件编写使用，代码优化，性能调优，疑难问题(WiFi/AP模式自动切换/连接，SDK自身bug)的攻关解决，三方SDK(JPush/信鸽推送，bugly，友盟，微信/QQ/微博分享/开源SDK/厂商SDK)的研究集成，新功能的预研迭代引入。项目的重构，service的保活，6.0权限/系统/屏幕适配，语音控制，语音问答等功能的实现。代码git版本控制，分支创建，code review，jenkins自动构建等工作。
+
 
 ### IotHub项目
 
@@ -89,12 +94,14 @@
 - [JLibrary](https://github.com/code4a/JLibraryDemo)：此项目是一个开源的Android库，提供了一些界面的基类和工具类，包含crash日志本地化，crash重启，修改状态栏颜色等功能，项目在不断完善更新中！
 - [BatScript](https://github.com/code4a/BatScript)：这是一个批处理，旨在简化开发环境的配置，如java、sdk等，通过批处理批量添加配置，解决每次换环境一堆配置的麻烦，拷贝，运行轻松搞定！
 - [UpdateManager](https://github.com/code4a/UpdateManager)：这是一个支持多线程下载的Library，支持解析json和xml，断点续传等功能
+- [RectLoading](https://github.com/code4a/RectLoading): 自定义四个方块旋转Loading,方块内容可自己定义，自己修改。
 - [CustomView](https://github.com/code4a/CustomView)：这是自定义控件，包含扇形进度条（常用于时速表盘，压力表盘等），和带刻度柱状图（常用于流量计等）
 
 ## 技术文章
 
 - [使用NanoHTTPD在Android上建立本地服务器](http://www.code4a.com/2016/03/11/NanoHTTPD-Simple-Use/)
 - [百度DuerOS Android平台接入流程](http://www.code4a.com/2018/01/31/dueros-android-import/)
+- [自建服务器证书](http://www.code4a.com/2017/12/26/creat-server-certificate/)
 - [Centos7系统安装配置](http://www.code4a.com/2017/10/27/centos7-install-config/)
 
 

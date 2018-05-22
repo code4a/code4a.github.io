@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.code4a.com/"/>
-  <updated>2018-03-14T09:41:08.933Z</updated>
+  <updated>2018-04-18T02:45:40.970Z</updated>
   <id>http://www.code4a.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React Native 问题记录</title>
+    <link href="http://www.code4a.com/2018/04/18/react-native-record/"/>
+    <id>http://www.code4a.com/2018/04/18/react-native-record/</id>
+    <published>2018-04-18T01:59:05.000Z</published>
+    <updated>2018-04-18T02:45:40.970Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="React-Native开发笔记"><a href="#React-Native开发笔记" class="headerlink" title="React Native开发笔记"></a>React Native开发笔记</h2><blockquote><p>详细的环境配置和文档说明请查看 <strong><a href="https://reactnative.cn/docs/0.51/getting-started.html" target="_blank" rel="noopener">React Native中文文档</a></strong></p></blockquote><h3 id="命令行连接设备"><a href="#命令行连接设备" class="headerlink" title="命令行连接设备"></a>命令行连接设备</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb devices <span class="comment">// 查看当前是否连接设备且只能有一个设备</span></span><br><span class="line">adb reverse <span class="string">tcp:</span><span class="number">8081</span> <span class="string">tcp:</span><span class="number">8081</span></span><br></pre></td></tr></table></figure><h3 id="测试安装项目"><a href="#测试安装项目" class="headerlink" title="测试安装项目"></a>测试安装项目</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">react-<span class="keyword">native</span> init ProjectName</span><br><span class="line">cd ProjectName</span><br><span class="line">react-<span class="keyword">native</span> run-android <span class="comment">// 如果是ios 请用react-native  run-ios</span></span><br></pre></td></tr></table></figure><h3 id="文档中的电影示例存在的问题"><a href="#文档中的电影示例存在的问题" class="headerlink" title="文档中的电影示例存在的问题"></a>文档中的电影示例存在的问题</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: <span class="string">'undefined'</span> <span class="keyword">is</span> <span class="keyword">not</span> an <span class="keyword">object</span> (evaluating <span class="string">'movie.posters.thumbnail'</span>)</span><br></pre></td></tr></table></figure><p><strong>问题待分析</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;React-Native开发笔记&quot;&gt;&lt;a href=&quot;#React-Native开发笔记&quot; class=&quot;headerlink&quot; title=&quot;React Native开发笔记&quot;&gt;&lt;/a&gt;React Native开发笔记&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;详
+      
+    
+    </summary>
+    
+      <category term="React Native" scheme="http://www.code4a.com/categories/React-Native/"/>
+    
+    
+      <category term="React Native" scheme="http://www.code4a.com/tags/React-Native/"/>
+    
+  </entry>
   
   <entry>
     <title>mac环境下使用nvm管理node版本</title>

@@ -314,6 +314,287 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2015/11/16/better-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/16/better-java/" itemprop="url">Better Java(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-16T21:04:04+08:00">
+                2015-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="教你编写现代化的java程式"><a href="#教你编写现代化的java程式" class="headerlink" title="教你编写现代化的java程式"></a>教你编写现代化的java程式</h2><blockquote>
+<p>Java是目前世界上最流行的编程语言之一，自从java8正式发布之后，原有的编程习惯方式发生了一些转变。</p>
+</blockquote>
+<h3 id="Style-样式"><a href="#Style-样式" class="headerlink" title="Style(样式)"></a><strong>Style(样式)</strong></h3><ul>
+<li>传统而言，java是习惯以冗长的javaBean方式定义某个数据对象，新的样式可能会更清晰和保证准确性</li>
+</ul>
+<h4 id="Structs-结构体"><a href="#Structs-结构体" class="headerlink" title="Structs(结构体)"></a>Structs(结构体)</h4><ul>
+<li><h5 id="常规用法"><a href="#常规用法" class="headerlink" title="常规用法"></a>常规用法</h5><pre><code>public class DataBean {
+
+  private String data;
+
+  public DataBean(){};
+
+  public void setData(String data){
+    this.data = data;
+  }
+
+  public String getData(){
+    return this.data;
+  }
+}
+</code></pre></li>
+<li><h5 id="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："><a href="#不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据：" class="headerlink" title="不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考C风格里的结构体样式去编写这种容器数据："></a>不过这种方式是冗长并且浪费资源的，即便你的编辑器能自动生成这种代码。作为替代方法，可以参考<code>C</code>风格里的结构体样式去编写这种容器数据：</h5><pre><code>public class DataBean {
+    public final String data;
+
+    public DataBean(String data) {
+        this.data = data;
+    }
+}
+</code></pre></li>
+<li><h5 id="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"><a href="#这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。" class="headerlink" title="这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。"></a>这种方式几乎可以使得代码行数减半，除此之外，这种类还是不可变得类，所以在某些情况下我们可以放心的使用它。如果你是希望用Map或者List这些结构体去存储对象而使得修改变得简单点，可以使用ImmuTableMap或者ImmuTableList。这个后边会讨论。</h5></li>
+</ul>
+<h4 id="Builder模式"><a href="#Builder模式" class="headerlink" title="Builder模式"></a>Builder模式</h4><ul>
+<li><h5 id="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："><a href="#如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：" class="headerlink" title="如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变："></a>如果你的数据元结构比较复杂，那么你可以考虑如下Builder模式。Builder模式在数据类构造器中定义了一个子类，使用可变状态，不过一旦创建之后就会变得不可改变：</h5><pre><code>public class ComplicatedDataBean {
+    public final String data;
+    public fianl int num;
+    // lots more fields and a constructor
+    private ComplicatedDataBean(Builder builder){
+        this.data = builder.data;
+        this.num = builder.num;
+    }
+
+    public static class Builder {
+        private String data;
+        private int num;
+
+        public Builder data(String data) {
+            this.data = data;
+            return this;
+        }
+
+        public Builder num(int num){
+            this.num = num;
+            return this;
+        }
+
+        public ComplicatedDataBean build(){
+            return new ComplicatedDataBean(this); // etc
+        }
+    }
+}
+</code></pre></li>
+<li><h5 id="然后可以按照如下方式使用："><a href="#然后可以按照如下方式使用：" class="headerlink" title="然后可以按照如下方式使用："></a>然后可以按照如下方式使用：</h5><pre><code>final ComplicatedDataBean cda = new ComplicatedDataBean.builder().data(&quot;她已经&quot;).num(22).build();
+</code></pre></li>
+</ul>
+<h4 id="Dependency-Injection-依赖注入"><a href="#Dependency-Injection-依赖注入" class="headerlink" title="Dependency Injection(依赖注入)"></a>Dependency Injection(依赖注入)</h4><ul>
+<li><h5 id="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"><a href="#依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。" class="headerlink" title="依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。"></a>依赖注入更多的从属于软件工程的范畴而并非java的范畴，但是去撰写可测试的软件的最好方式就是使用依赖注入。因为java强烈推荐OO的设计方式，为了使软件具有较好的可测试性，可以去使用依赖注入。</h5></li>
+<li><h5 id="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google-和-Square的Dagger库或者Google’s-Guice"><a href="#在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google-和-Square的Dagger库或者Google’s-Guice" class="headerlink" title="在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice."></a>在java领域，最经典的DI框架当属Spring，它提供了基于代码的注入以及基于xml配置的注入方式。不过Spring确实有些繁琐，如果只是单纯的想使用依赖注入这个功能，可以选择使用Google 和 Square的Dagger库或者Google’s Guice.</h5></li>
+</ul>
+<h4 id="避免空指针"><a href="#避免空指针" class="headerlink" title="避免空指针"></a>避免空指针</h4><ul>
+<li><h5 id="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"><a href="#尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。" class="headerlink" title="尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。"></a>尽可能的避免使用空指针。特别是在可能返回空的集合的情况下，务必返回一个内容为空的集合而不是null。如果使用的是java8，可以使用新的Optional类型来避免可能的空指针。</h5><pre><code>public class FooWidget {
+    private final String data;
+    private final Optional&lt;Bar&gt; bar;
+
+    public FooWidget(String data){
+        this(data, Optional.empty());
+    }
+
+    public FooWidget(String data, Optional&lt;Bar&gt; bar){
+        this.data = data;
+        this.bar = bar;
+    }
+
+    public Optional&lt;Bar&gt; getBar(){
+        return bar;
+    }
+}
+</code></pre></li>
+<li><h5 id="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present-存在-的"><a href="#根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present-存在-的" class="headerlink" title="根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的"></a>根据上述代码可知道，返回的数据肯定不会为null类型，不过bar不一定是present(存在)的</h5><pre><code>final Optional&lt;FooWidget&gt; fooWidget = maybeGetFooWidget();
+final Baz baz = fooWidget.flatMap(FooWidget::getBar).flatMap(BarWidget::getBaz).orElse(defaultBaz);
+</code></pre></li>
+</ul>
+<h4 id="ImmuTable-by-default-默认不可变"><a href="#ImmuTable-by-default-默认不可变" class="headerlink" title="ImmuTable-by-default(默认不可变)"></a>ImmuTable-by-default(默认不可变)</h4><blockquote>
+<p>java-advantages-of-of-immutable-objects-in-examples</p>
+</blockquote>
+<ul>
+<li><h5 id="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："><a href="#除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：" class="headerlink" title="除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变："></a>除非有特殊的原因，否则变量，类，集合应该默认设置为不可变。其中变量类型可以使用final关键字设置不可变：</h5><pre><code>final FooWidget fooWidget;
+if(condition()){
+    fooWidget = getWidget();
+}else{
+    try{
+        fooWidget = cachedFooWidget.get();
+    }catch(CachingException e){
+        throw e;
+    }
+}
+</code></pre><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture1.png" alt="ImmuTable-by-default"></p>
+</li>
+</ul>
+<h4 id="Avoid-lots-of-Util-Classes-避免使用大量工具类"><a href="#Avoid-lots-of-Util-Classes-避免使用大量工具类" class="headerlink" title="Avoid lots of Util Classes(避免使用大量工具类)"></a>Avoid lots of Util Classes(避免使用大量工具类)</h4><ul>
+<li><h5 id="一不注意，就会发现自己写了N多的工具类，譬如："><a href="#一不注意，就会发现自己写了N多的工具类，譬如：" class="headerlink" title="一不注意，就会发现自己写了N多的工具类，譬如："></a>一不注意，就会发现自己写了N多的工具类，譬如：</h5><pre><code>public class MiscUtil {
+  public static String frobnicateString(String base, int times){
+  // ... etc
+  }
+}
+</code></pre></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture2.png" alt="ImmuTable-by-default"></p>
+<pre><code>public interface Thrower {
+    default void throwIfCondition(boolean condition, String msg) {
+        // ...
+    }
+}
+</code></pre><ul>
+<li><h5 id="这样每个需要使用这些接口的类可以方便的进行自定义"><a href="#这样每个需要使用这些接口的类可以方便的进行自定义" class="headerlink" title="这样每个需要使用这些接口的类可以方便的进行自定义"></a>这样每个需要使用这些接口的类可以方便的进行自定义</h5></li>
+</ul>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p><img src="https://raw.githubusercontent.com/code4a/code4a.github.io/master/bimg/better-java-picture3.png" alt="ImmuTable-by-default"></p>
+<h4 id="javaDoc"><a href="#javaDoc" class="headerlink" title="javaDoc"></a>javaDoc</h4><ul>
+<li><h5 id="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using-examples"><a href="#为你的代码添加javaDoc同样非常重要，可以参考这个示例：using-examples" class="headerlink" title="为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples"></a>为你的代码添加javaDoc同样非常重要，可以参考这个示例：using examples</h5></li>
+</ul>
+<h4 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h4><ul>
+<li><h5 id="java-8-提供了非常nice的-stream-api可以用如下的写法："><a href="#java-8-提供了非常nice的-stream-api可以用如下的写法：" class="headerlink" title="java 8 提供了非常nice的 stream api可以用如下的写法："></a>java 8 提供了非常nice的 stream api可以用如下的写法：</h5><pre><code>final List&lt;String&gt; filtered = list.stream().filter(s-&gt;s.startsWith(&quot;s&quot;)).map(s-&gt;s.toUpperCase()).collect(Collectors.toList());
+</code></pre></li>
+<li><h5 id="来替代："><a href="#来替代：" class="headerlink" title="来替代："></a>来替代：</h5><pre><code>final List&lt;String&gt; filtered = new ArrayList&lt;&gt;();
+for (String str : list){
+    if(str.startsWith(&quot;s&quot;)){
+        filtered.add(str.toUpperCase());
+    }
+}
+</code></pre></li>
+<li><h5 id="这样可以帮助你写更多的高可读性，流畅性的代码。"><a href="#这样可以帮助你写更多的高可读性，流畅性的代码。" class="headerlink" title="这样可以帮助你写更多的高可读性，流畅性的代码。"></a>这样可以帮助你写更多的高可读性，流畅性的代码。</h5></li>
+</ul>
+<h2 id="本文来自：SegmentFault-版权归属原作者"><a href="#本文来自：SegmentFault-版权归属原作者" class="headerlink" title="本文来自：SegmentFault 版权归属原作者"></a>本文来自：SegmentFault 版权归属原作者</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2015/11/15/WheelView-Android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1515,7 +1796,7 @@ public class WheelView extends View implements GestureDetector.OnGestureListener
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1526,7 +1807,7 @@ public class WheelView extends View implements GestureDetector.OnGestureListener
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1537,7 +1818,7 @@ public class WheelView extends View implements GestureDetector.OnGestureListener
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
