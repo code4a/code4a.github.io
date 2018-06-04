@@ -16,7 +16,7 @@
 - GitHub：https://github.com/code4a
 
 - 期望职位：Android高级工程师
-- 期望薪资：税前月薪17k~20k，特别喜欢的公司可例外
+- 期望薪资：税前月薪18k~20k，特别喜欢的公司可例外
 - 期望城市：北京
 
 ---
@@ -89,7 +89,7 @@
 ## 开源项目
 
 - [百度Dueros平台](https://github.com/code4a/dcs-sdk-java-master)：此项目是一套把DuerOS的智能语音交互能力向所有设备开放的API，进行封装一下，方便在android平台下，作为library进行快速移植，并且使用。
-- [RetrofitUtil](https://github.com/code4a/NbaEvent)：此项目是对Retrofit + OKHttp + RxJava 简单二次封装，支持Http/Https请求，支持自己定义SSL解析，请求结果可以是String类型也可以是解析好的bean对象！
+- [RetrofitUtil](https://github.com/code4a/NbaEvent)：此项目是对Retrofit + OKHttp + RxJava 简单二次封装，支持Http/Https请求，支持自己定义SSL解析，拥有默认的缓存策略，支持自建缓存策略，请求结果可以是String类型也可以是解析好的bean对象！
 - [WiFiConnectLib](https://github.com/code4a/WiFiConnectLibrary)：此项目是一个将Android手机WiFi连接到指定热点的开源的Android库，可以很方便的通过程序操作手机的WiFi！
 - [JLibrary](https://github.com/code4a/JLibraryDemo)：此项目是一个开源的Android库，提供了一些界面的基类和工具类，包含crash日志本地化，crash重启，修改状态栏颜色等功能，项目在不断完善更新中！
 - [BatScript](https://github.com/code4a/BatScript)：这是一个批处理，旨在简化开发环境的配置，如java、sdk等，通过批处理批量添加配置，解决每次换环境一堆配置的麻烦，拷贝，运行轻松搞定！
@@ -110,19 +110,19 @@
 
 以下均为我熟练使用的技能
 
-- 扎实的Java基础，熟练掌握面向对象（OOP）思想，熟悉java序列化机制实现Android下IPC的机制。
+- 扎实的Java基础，熟练掌握面向对象（OOP）思想，熟悉java序列化机制实现Android下进程间通信(IPC)的机制。
 - 熟练使用集合、IO流及多线程断点上传下载,和线程池的使用。
 - 熟练掌握Android四大组件（Activity，Service与intentService，LocalBroadcastManager的BroadcastReceiver，ContentProvider）
 - 熟练使用Android下常用的布局设计，新版本Material Design布局和设计，熟练自定义控件和一些主流的第三方控件的使用等。
-- 熟悉掌握MVC/MVP模式，单例、工厂，观察者，适配器等设计模式。
-- 熟悉Android下的Handler消息机制（Handler，Message，MessageQueen，Looper，HandlerThread），并能熟练使用Handler和熟悉使用EventBus 和RXandroid机制。
+- 熟悉掌握MVC/MVP模式，单例(懒汉/饿汉)、工厂(简单工厂/工厂/抽象工厂)，观察者，适配器，构造器等设计模式。
+- 熟悉Android下的Handler消息机制（Handler，Message，MessageQueen，Looper，HandlerThread），并能熟练使用Handler和熟练使用EventBus 和RXandroid机制。
 - 熟悉Android中的动画，选择器，样式和主题的使用，能够实现市面上大多数动画效果。
 - 掌握OOM、ANR异常和各类友盟统计上的BUG的处理和熟练处理App全局Crash异常处理，并可以对应用进行相应的优化。
 - 熟悉Android开发的数据（图片，文字，文件等）的缓存技术，并且能够对图片的优化进行相应的处理，熟悉ASimpleCache，LruCache缓存和DiskLruCache缓存使用。
 - 熟练并能独立解决市面上各种Android机型屏幕的适配（图片适配，Dimens适配和AutoLayout适配等等）。
 - 熟练使用Git/SVN等版本控制工具。
 - 熟练使用Android Studio、Eclipse、Vim、XShell、iTerm2、Dash、Volecity、Beyond Compare、Markdown、谷歌浏览器、科学上网、等开发利器
-- 熟悉XML/JSON数据解析和生成JSON/XML，以及Android下SQLiter数据库存储方式（greendao，ormlite）。
+- 熟悉XML/JSON数据解析和生成JSON/XML，以及Android下SQLite数据库存储方式（greendao，ormlite）。
 - 熟悉android 的JNI/NDK开发，通过JNI实现JAVA与C程序间的调用及回调数据通信。
 - 熟悉掌握RecyclerView，ListView等重要控件的使用和优化及（AsyncTask）异步任务加载网络数据
 - 熟悉使用支付宝，微信支付的SDK和银行的卡SDK的接入，为App增加支付模块。
