@@ -314,6 +314,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2018/06/05/Mac下git多用户管理配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/Mac下git多用户管理配置/" itemprop="url">Mac下git多用户管理配置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T09:20:47+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Mac下git多用户管理配置，并且配置Android-Studio正确引用"><a href="#Mac下git多用户管理配置，并且配置Android-Studio正确引用" class="headerlink" title="Mac下git多用户管理配置，并且配置Android Studio正确引用"></a>Mac下git多用户管理配置，并且配置Android Studio正确引用</h2><h3 id="git全局账户邮箱清理，如果没有配置可以忽略这一步"><a href="#git全局账户邮箱清理，如果没有配置可以忽略这一步" class="headerlink" title="git全局账户邮箱清理，如果没有配置可以忽略这一步"></a>git全局账户邮箱清理，如果没有配置可以忽略这一步</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global --unset user.name <span class="string">"username"</span></span><br><span class="line">git<span class="built_in"> config </span>--global --unset user.email <span class="string">"email address"</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.name</span><br><span class="line"><span class="comment">#全局配置账户已经移除</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email</span><br><span class="line"><span class="comment">#全局配置邮箱已经移除</span></span><br></pre></td></tr></table></figure>
+<h3 id="进入对应的代码仓库配置对应的用户名和邮箱"><a href="#进入对应的代码仓库配置对应的用户名和邮箱" class="headerlink" title="进入对应的代码仓库配置对应的用户名和邮箱"></a>进入对应的代码仓库配置对应的用户名和邮箱</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// github 配置</span></span><br><span class="line">cd github-repository/</span><br><span class="line">git config user<span class="selector-class">.name</span> githubAccount</span><br><span class="line">git config user<span class="selector-class">.email</span> githubEmail</span><br><span class="line"><span class="comment">// 修改后查看配置</span></span><br><span class="line">git config user.name</span><br><span class="line">#githubAccount</span><br><span class="line">git config user.email</span><br><span class="line">#githubEmail</span><br><span class="line"></span><br><span class="line"><span class="comment">// gitlab 配置同上</span></span><br></pre></td></tr></table></figure>
+<h3 id="生成邮箱对应的公钥和私钥"><a href="#生成邮箱对应的公钥和私钥" class="headerlink" title="生成邮箱对应的公钥和私钥"></a>生成邮箱对应的公钥和私钥</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成github对应的公钥和私钥</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"github对应的邮箱"</span></span><br><span class="line">Enter <span class="keyword">file</span> <span class="keyword">in</span> <span class="keyword">which</span> to <span class="keyword">save</span> the key (/Users/Accout(你的用户名)/.ssh/id_rsa): id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成gitlab对应的公钥和私钥</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"gitlab对应的邮箱"</span></span><br><span class="line">Enter <span class="keyword">file</span> <span class="keyword">in</span> <span class="keyword">which</span> to <span class="keyword">save</span> the key (/Users/Accout(你的用户名)/.ssh/id_rsa): id_rsa_gitlab</span><br></pre></td></tr></table></figure>
+<h3 id="拷贝对应的公钥内容到对应平台的ssh-key"><a href="#拷贝对应的公钥内容到对应平台的ssh-key" class="headerlink" title="拷贝对应的公钥内容到对应平台的ssh key"></a>拷贝对应的公钥内容到对应平台的ssh key</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// github ssh key 配置</span></span><br><span class="line">cat .ssh/id_rsa_github.pub <span class="comment">// 复制内容</span></span><br><span class="line"><span class="function"><span class="title">settings</span> -&gt;</span> SSH <span class="function"><span class="title">and</span> GPG keys -&gt;</span> New SSH key</span><br><span class="line"></span><br><span class="line"><span class="comment">// gitlab ssh key 配置</span></span><br><span class="line">cat .ssh/id_rsa_gitlab.pub <span class="comment">// 复制内容</span></span><br><span class="line"><span class="function"><span class="title">profile</span> settings -&gt;</span> SSH <span class="function"><span class="title">keys</span> -&gt;</span> Add SSH Key</span><br></pre></td></tr></table></figure>
+<h3 id="在-ssh根目录创建cinfig文件，添加内容"><a href="#在-ssh根目录创建cinfig文件，添加内容" class="headerlink" title="在.ssh根目录创建cinfig文件，添加内容"></a>在.ssh根目录创建cinfig文件，添加内容</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">vim config</span><br><span class="line"><span class="comment"># github email address</span></span><br><span class="line">Host github</span><br><span class="line">HostName github.com</span><br><span class="line"><span class="keyword">User</span> <span class="title">git</span> // 尝试只有用户名为git时才能测试通过</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="comment"># gitlab email address</span></span><br><span class="line">Host gitlab</span><br><span class="line">HostName git.corp.company.cn // 你公司的gitlab地址</span><br><span class="line"><span class="keyword">User</span> <span class="title">git</span></span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
+<h3 id="ssh-add-K-私钥名"><a href="#ssh-add-K-私钥名" class="headerlink" title="ssh-add -K 私钥名"></a>ssh-add -K 私钥名</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">add</span><span class="bash"> -D // 删除所有密钥，请根据自己的情况执行命令</span></span><br><span class="line"><span class="bash">ssh-add -K id_rsa_github //存储密钥到钥匙串</span></span><br><span class="line"><span class="bash">ssh-add -K id_rsa_gitlab</span></span><br><span class="line"><span class="bash">ssh-add -L // 查看所有公钥参数 -l 查看所有公钥指纹</span></span><br></pre></td></tr></table></figure>
+<h3 id="ssh-vT-git-域名-检测"><a href="#ssh-vT-git-域名-检测" class="headerlink" title="ssh -vT git@域名 检测"></a>ssh -vT git@域名 检测</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试github是否配置成功</span></span><br><span class="line">ssh -T github <span class="comment">// github 是 Host 的值，此处可以替换为自己的</span></span><br><span class="line">Hi username! You've successfully authenticated, but GitHub does <span class="keyword">not</span> provide <span class="built_in">shell</span> access.</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试gitlab是否配置成功</span></span><br><span class="line">ssh -T gitlab <span class="comment">// 同上</span></span><br><span class="line">Welcome to GitLab, username!</span><br></pre></td></tr></table></figure>
+<p><strong>以上如果不通的话，可以通过ssh -vT Host查看log信息</strong></p>
+<h3 id="as中配置git-选择相同版本，-ssh选择native"><a href="#as中配置git-选择相同版本，-ssh选择native" class="headerlink" title="as中配置git 选择相同版本， ssh选择native"></a>as中配置git 选择相同版本， ssh选择native</h3><ul>
+<li>此处如果使用android studio的话需要在设置中进行指定使用的git版本和git配置，因为android stuido会读取自己的配置信息</li>
+<li>修改android stuido的配置</li>
+</ul>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改路径</span></span><br><span class="line">P<span class="function"><span class="title">references</span> -&gt;</span> V<span class="function"><span class="title">ersion</span> Control -&gt;</span> Git </span><br><span class="line"><span class="comment">// 匹配Path to Git executable路径和你命令行的git路径一致</span></span><br><span class="line"><span class="comment">// 修改SSH executable 为Native</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2018/04/18/react-native-record/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1038,158 +1189,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2017/11/22/sublime-text-install-package-control/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="code4a">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蒋彦涛的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/22/sublime-text-install-package-control/" itemprop="url">Sublime Text Install Package Control</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T12:47:31+08:00">
-                2017-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Sublime-Text-安装Package-Control"><a href="#Sublime-Text-安装Package-Control" class="headerlink" title="Sublime Text 安装Package Control"></a>Sublime Text 安装Package Control</h2><p>输入如下命令</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,<span class="built_in">os</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="built_in">open</span>(<span class="built_in">os</span>.<span class="built_in">path</span>.join(ipp, pf), <span class="string">'wb'</span>).<span class="built_in">write</span>(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).<span class="built_in">read</span>())</span><br></pre></td></tr></table></figure>
-<p>提示如下错误</p>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Error </span>loading /Users/xxx/Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package: File is not a zip file</span><br></pre></td></tr></table></figure>
-<p>此时需要参考<a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">Package Control</a>输入最新的安装命令即可解决该问题</p>
-<ul>
-<li>Sublime Text3</li>
-</ul>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Sublime Text2</li>
-</ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib2,<span class="built_in">os</span>,hashlib; h = <span class="string">'6f4c264a24d933ce70df5dedcf1dcaee'</span> + <span class="string">'ebe013ee18cced0ef93d5f746d80ef60'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); <span class="built_in">os</span>.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">os</span>.<span class="built_in">path</span>.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(by).hexdigest(); <span class="built_in">open</span>( <span class="built_in">os</span>.<span class="built_in">path</span>.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> None; <span class="built_in">print</span>(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string">'Please restart Sublime Text to finish installation'</span>)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1244,7 +1243,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1255,7 +1254,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1266,7 +1265,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
