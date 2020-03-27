@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Annomation," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蒋彦涛的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="按照处理时期，注解分为两种类型，一种是运行时注解，另一种是编译时注解。   编译时注解的核心依赖APT(Annotation Processing Tools)实现，对应的处理流程为：  在某些代码元素上（如类型、函数、字段等）添加注解； 编译时编译器会检查AbstractProcessor的子类，然后将添加了注解的所有元素都传递到该类的process函数中； 使得开发人员可以在编译器进行相应的">
+<meta name="keywords" content="Annomation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AbstractProcessor：利用注解动态生成代码">
+<meta property="og:url" content="http://www.code4a.com/2020/03/27/AbstractProcessor：利用注解动态生成代码/index.html">
+<meta property="og:site_name" content="蒋彦涛的个人博客">
+<meta property="og:description" content="按照处理时期，注解分为两种类型，一种是运行时注解，另一种是编译时注解。   编译时注解的核心依赖APT(Annotation Processing Tools)实现，对应的处理流程为：  在某些代码元素上（如类型、函数、字段等）添加注解； 编译时编译器会检查AbstractProcessor的子类，然后将添加了注解的所有元素都传递到该类的process函数中； 使得开发人员可以在编译器进行相应的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-27T09:21:30.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AbstractProcessor：利用注解动态生成代码">
+<meta name="twitter:description" content="按照处理时期，注解分为两种类型，一种是运行时注解，另一种是编译时注解。   编译时注解的核心依赖APT(Annotation Processing Tools)实现，对应的处理流程为：  在某些代码元素上（如类型、函数、字段等）添加注解； 编译时编译器会检查AbstractProcessor的子类，然后将添加了注解的所有元素都传递到该类的process函数中； 使得开发人员可以在编译器进行相应的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.code4a.com/2020/03/27/AbstractProcessor：利用注解动态生成代码/"/>
+
+
+
+
+
+  <title>AbstractProcessor：利用注解动态生成代码 | 蒋彦涛的个人博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?10a6f47c8748e79b467735e352158e22";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蒋彦涛的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Code 4 Android / ...</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-琴谱">
+          <a href="/chessbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            琴谱
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-宝典">
+          <a href="/opensrc/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            宝典
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-秘籍">
+          <a href="/cheats/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            秘籍
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-软文">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            软文
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.code4a.com/2020/03/27/AbstractProcessor：利用注解动态生成代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="code4a">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蒋彦涛的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">AbstractProcessor：利用注解动态生成代码</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-27T17:17:51+08:00">
+                2020-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">访问次数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>按照处理时期，注解分为两种类型，一种是运行时注解，另一种是编译时注解。</p>
+</blockquote>
+<blockquote>
+<p>编译时注解的核心依赖APT(Annotation Processing Tools)实现，对应的处理流程为：</p>
+<ol>
+<li>在某些代码元素上（如类型、函数、字段等）添加注解；</li>
+<li>编译时编译器会检查AbstractProcessor的子类，然后将添加了注解的所有元素都传递到该类的process函数中；</li>
+<li>使得开发人员可以在编译器进行相应的处理。例如，使用注解生成新的Java类，这也就是EventBus、Retrofit、Dragger等开源库的基本原理。</li>
+</ol>
+</blockquote>
+<h3 id="1-创建Java-Library"><a href="#1-创建Java-Library" class="headerlink" title="1. 创建Java Library"></a>1. 创建Java Library</h3><blockquote>
+<p>Java API已经提供了扫描源码并解析注解的框架，我们只需继承AbstractProcessor类来实现解析注解相关的逻辑。</p>
+</blockquote>
+<ol>
+<li>创建Java Library <strong>sim-annotation</strong>，自动生成的 <code>build.gradle</code>内容如下：</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'java-library'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 解决兼容性的问题</span></span><br><span class="line"><span class="keyword">sourceCompatibility</span> = <span class="string">"7"</span></span><br><span class="line"><span class="keyword">targetCompatibility</span> = <span class="string">"7"</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建一个注解类：</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.code4a.sim.<span class="keyword">annotation</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.<span class="keyword">annotation</span>.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.<span class="keyword">annotation</span>.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.<span class="keyword">annotation</span>.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.<span class="keyword">annotation</span>.Target;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 注解示例代码</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Create by jiang&lt;a href="mailto:jiangyantaodev@163.com"&gt;Contact me.&lt;/a&gt; on 2020/3/26</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Version: 1.0.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 元素类型为字段</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.FIELD&#125;)</span></span><br><span class="line"><span class="comment">// 编译时注解</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.CLASS)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Sima &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 标记参数名称或者服务名称</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 名称，默认为空</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String name() <span class="keyword">default</span> <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果必须，当值为null时会导致app崩溃，此时默认值为false</span></span><br><span class="line"><span class="comment">     * 原始类型不会被检查</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否必须，默认为否</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    boolean required() <span class="keyword">default</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字段描述</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 描述，默认为空</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String desc() <span class="keyword">default</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建Java Library <strong>sim-compiler</strong>，自动生成 <code>build.gradle</code>并添加依赖<code>sim-annotation</code>内容如下：</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'java-library'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</span><br><span class="line">    implementation <span class="keyword">project</span>(path: <span class="string">':sim-annotation'</span>)</span><br><span class="line">    <span class="comment">// AutoService注解处理器是Google开发的，用来生成 META-INF/services/javax.annotation.processing.Processor 文件的，</span></span><br><span class="line">    <span class="comment">// 你只需要在你定义的注解处理器上添加 @AutoService(Processor.class) 就可以了</span></span><br><span class="line">    implementation <span class="string">'com.google.auto.service:auto-service:1.0-rc6'</span></span><br><span class="line">    <span class="comment">// 在Gradle Wrapper 5.0将忽略compile classpath中的annotation processor，需要手动添加到annotation processor path</span></span><br><span class="line">    annotationProcessor <span class="string">'com.google.auto.service:auto-service:1.0-rc6'</span></span><br><span class="line">    <span class="comment">// 可以高效的生成java代码，替代StringBuilder方案</span></span><br><span class="line">    implementation <span class="string">'com.squareup:javapoet:1.12.1'</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">sourceCompatibility</span> = <span class="string">"7"</span></span><br><span class="line"><span class="keyword">targetCompatibility</span> = <span class="string">"7"</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>首先创建一个注解器基类：</li>
+</ol>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.code4a.sim.compiler.processor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.Consts;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.Logger;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.MapUtils;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.StringUtils;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.TypeUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.AbstractProcessor;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.Filer;</span><br><span class="line"><span class="keyword">import</span> javax.annotation.processing.ProcessingEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.SourceVersion;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.Elements;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.util.Types;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 注解处理器基类，汇总一些公共方法和操作</span></span><br><span class="line"><span class="comment"> * &lt;p/&gt;每一个注解处理器类都必须有一个空的构造函数。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Create by jiang&lt;a href="mailto:jiangyantaodev@163.com"&gt;Contact me.&lt;/a&gt; on 2020/3/26</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Version: 1.0.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Filer mFiler;</span><br><span class="line">    Logger logger;</span><br><span class="line">    Types types;</span><br><span class="line">    Elements elementUtils;</span><br><span class="line">    TypeUtils typeUtils;</span><br><span class="line">    <span class="comment">// Module name, maybe its 'app' or others</span></span><br><span class="line">    String moduleName = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// If need generate sim doc</span></span><br><span class="line">    <span class="keyword">boolean</span> generateDoc;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每个注解处理器类都有一个特殊的init()方法，他会被注解处理工具调用，并传入&#123;<span class="doctag">@link</span> ProcessingEnvironment&#125;参数.</span></span><br><span class="line"><span class="comment">     * ProcessingEnvironment提供很多有用的工具类&#123;<span class="doctag">@link</span> javax.lang.model.util.Elements&#125;、&#123;<span class="doctag">@link</span> javax.lang.model.util.Types&#125;、&#123;<span class="doctag">@link</span> javax.annotation.processing.Filer&#125;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> processingEnv</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnv)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.init(processingEnv);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取ProcessingEnvironment提供的工具类</span></span><br><span class="line">        mFiler = processingEnv.getFiler();</span><br><span class="line">        types = processingEnv.getTypeUtils();</span><br><span class="line">        elementUtils = processingEnv.getElementUtils();</span><br><span class="line">        typeUtils = <span class="keyword">new</span> TypeUtils(types, elementUtils);</span><br><span class="line">        logger = <span class="keyword">new</span> Logger(processingEnv.getMessager());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Attempt to get user configuration [moduleName]</span></span><br><span class="line">        Map&lt;String, String&gt; options = processingEnv.getOptions();</span><br><span class="line">        <span class="keyword">if</span> (MapUtils.isNotEmpty(options)) &#123;</span><br><span class="line">            moduleName = options.get(Consts.KEY_MODULE_NAME);</span><br><span class="line">            generateDoc = Consts.VALUE_ENABLE.equals(options.get(Consts.KEY_GENERATE_DOC_NAME));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(moduleName)) &#123;</span><br><span class="line">            moduleName = moduleName.replaceAll(<span class="string">"[^0-9a-zA-Z_]+"</span>, <span class="string">""</span>);</span><br><span class="line">            logger.info(<span class="string">"The user has configuration the module name, it was ["</span> + moduleName + <span class="string">"]"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            logger.<span class="keyword">error</span>(Consts.NO_MODULE_NAME_TIPS);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Sim::Compiler &gt;&gt;&gt; No module name, for more information, look at gradle log."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用来指定你使用的Java版本。通常这里返回SourceVersion.latestSupported()。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java 最新支持版本</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function">SourceVersion <span class="title">getSupportedSourceVersion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> SourceVersion.<span class="title">latestSupported</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取支持的配置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 支持的配置字段</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Set&lt;String&gt; getSupportedOptions() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HashSet&lt;String&gt;() &#123;&#123;</span><br><span class="line">            <span class="keyword">this</span>.add(Consts.KEY_MODULE_NAME);</span><br><span class="line">            <span class="keyword">this</span>.add(Consts.KEY_GENERATE_DOC_NAME);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建<code>com.code4a.sim.annotation.Sima</code>注解对应的注解处理器</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.code4a.sim.compiler.processor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.<span class="keyword">annotation</span>.Sima;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.CollectionUtils;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.Consts;</span><br><span class="line"><span class="keyword">import</span> com.code4a.sim.compiler.utils.MapUtils;</span><br><span class="line"><span class="keyword">import</span> com.google.auto.service.AutoService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.<span class="keyword">annotation</span>.processing.ProcessingEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="keyword">annotation</span>.processing.Processor;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="keyword">annotation</span>.processing.RoundEnvironment;</span><br><span class="line"><span class="keyword">import</span> javax.<span class="keyword">annotation</span>.processing.SupportedAnnotationTypes;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Element;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.Modifier;</span><br><span class="line"><span class="keyword">import</span> javax.lang.model.element.TypeElement;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: Processor used to create sima helper</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;SupportedAnnotationTypes指定该注解处理器可以解决的类型，需要完整的包名+类命&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Create by jiang&lt;a href="mailto:jiangyantaodev@163.com"&gt;Contact me.&lt;/a&gt; on 2020/3/26</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Version: 1.0.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// AutoService用来生成 META-INF/services/javax.annotation.processing.Processor 文件</span></span><br><span class="line"><span class="meta">@AutoService(Processor.class)</span></span><br><span class="line"><span class="meta">@SupportedAnnotationTypes(&#123;Consts.ANNOTATION_TYPE_SIMA&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimaProcessor</span> <span class="title">extends</span> <span class="title">BaseProcessor</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Contain field need sima and his super class.</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;TypeElement, List&lt;Element&gt;&gt; parentAndChild = new HashMap&lt;&gt;();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> synchronized void init(ProcessingEnvironment processingEnv) &#123;</span><br><span class="line">        <span class="keyword">super</span>.init(processingEnv);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">"&gt;&gt;&gt; SimaProcessor init. &lt;&lt;&lt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注解处理器入口类。</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;在这里写你的扫描、评估和处理注解的代码，以及生成Java文件&lt;/p&gt;</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> annotations 需要处理的注释类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> roundEnv    可以查询出包含特定注解的被注解元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 该注解处理器是否声明一组注释类型。</span></span><br><span class="line"><span class="comment">     * 如果返回 true，则这些注解已声明并且不要求后续 Processor 处理它们；</span></span><br><span class="line"><span class="comment">     * 如果返回 false，则这些注解未声明并且可能要求后续 Processor 处理它们</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> boolean process(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv) &#123;</span><br><span class="line">        <span class="keyword">if</span> (CollectionUtils.isNotEmpty(annotations)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                logger.info(<span class="string">"&gt;&gt;&gt; Found Sima field, start... &lt;&lt;&lt;"</span>);</span><br><span class="line">                <span class="comment">// 获取所有被注解了@Sima的元素列表，并进行筛选分类</span></span><br><span class="line">                categories(roundEnv.getElementsAnnotatedWith(Sima.<span class="keyword">class</span>));</span><br><span class="line">                generateHelper();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                logger.error(e);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成java代码帮助方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> void generateHelper() &#123;</span><br><span class="line">        <span class="comment">// 模版类接口</span></span><br><span class="line">        TypeElement type_ISyringe = elementUtils.getTypeElement(Consts.ISYRINGE);</span><br><span class="line">        TypeElement type_JsonService = elementUtils.getTypeElement(Consts.JSON_SERVICE);</span><br><span class="line">        TypeMirror iProvider = elementUtils.getTypeElement(Consts.IPROVIDER).asType();</span><br><span class="line">        TypeMirror activityTm = elementUtils.getTypeElement(Consts.ACTIVITY).asType();</span><br><span class="line">        TypeMirror fragmentTm = elementUtils.getTypeElement(Consts.FRAGMENT).asType();</span><br><span class="line">        TypeMirror fragmentTmV4 = elementUtils.getTypeElement(Consts.FRAGMENT_V4).asType();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构建Object类型的公共参数target</span></span><br><span class="line">        ParameterSpec objectParamSpec = ParameterSpec.builder(TypeName.OBJECT, <span class="string">"target"</span>).build();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (MapUtils.isNotEmpty(parentAndChild)) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Map.Entry&lt;TypeElement, List&lt;Element&gt;&gt; entry : parentAndChild.entrySet()) &#123;</span><br><span class="line">                <span class="comment">// 构建inject方法</span></span><br><span class="line">                MethodSpec.Builder injectMethodBuilder = MethodSpec.methodBuilder(Consts.METHOD_INJECT)</span><br><span class="line">                        .addAnnotation(Override.<span class="keyword">class</span>)</span><br><span class="line">                        .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                        .addParameter(objectParamSpec);</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">                TypeElement parent = entry.getKey();</span><br><span class="line">                List&lt;Element&gt; childs = entry.getValue();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 返回此类型元素的完全限定名称。更准确地说，返回规范 名称。</span></span><br><span class="line">                <span class="comment">// 对于没有规范名称的局部类和匿名类，返回一个空名称。此处拿到的是全类名。</span></span><br><span class="line">                String qualifiedName = parent.getQualifiedName().toString();</span><br><span class="line">                String packageName = qualifiedName.substring(<span class="number">0</span>, qualifiedName.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">                String fileName = parent.getSimpleName() + Consts.NAME_OF_SIMA;</span><br><span class="line">                <span class="comment">// logger.info("&gt;&gt;&gt; qualifiedName " + qualifiedName + " packageName " + packageName + " fileName " + fileName + " ... &lt;&lt;&lt;");</span></span><br><span class="line">                logger.info(<span class="string">"&gt;&gt;&gt; Start process "</span> + childs.size() + <span class="string">" field in "</span> + parent.getSimpleName() + <span class="string">" ... &lt;&lt;&lt;"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 构建类</span></span><br><span class="line">                TypeSpec.Builder helper = TypeSpec.classBuilder(fileName)</span><br><span class="line">                        .addJavadoc(Consts.WARNING_TIPS)</span><br><span class="line">                        .addSuperinterface(ClassName.<span class="keyword">get</span>(type_ISyringe))</span><br><span class="line">                        .addModifiers(Modifier.PUBLIC);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 构建字段</span></span><br><span class="line">                FieldSpec jsonServiceField = FieldSpec.builder(TypeName.<span class="keyword">get</span>(type_JsonService.asType()), <span class="string">"serializationService"</span>, Modifier.PRIVATE).build();</span><br><span class="line">                helper.addField(jsonServiceField);</span><br><span class="line"></span><br><span class="line">                injectMethodBuilder.addStatement(<span class="string">"serializationService = <span class="variable">$T</span>.getInstance().navigation(<span class="variable">$T</span>.class)"</span>, SimClass, ClassName.<span class="keyword">get</span>(type_JsonService));</span><br><span class="line">                injectMethodBuilder.addStatement(<span class="string">"<span class="variable">$T</span> substitute = (<span class="variable">$T</span>)target"</span>, ClassName.<span class="keyword">get</span>(parent), ClassName.<span class="keyword">get</span>(parent));</span><br><span class="line">                <span class="comment">// 在inject方法中构建方法体</span></span><br><span class="line">                <span class="keyword">for</span> (Element element : childs) &#123;</span><br><span class="line">                    Sima fieldConfig = element.getAnnotation(Sima.<span class="keyword">class</span>);</span><br><span class="line">                    String fieldName = element.getSimpleName().toString();</span><br><span class="line">                    <span class="keyword">if</span> (types.isSubtype(element.asType(), iProvider)) &#123;  <span class="comment">// It's provider</span></span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// It's normal intent value</span></span><br><span class="line">                        String originalValue = <span class="string">"substitute."</span> + fieldName;</span><br><span class="line">                        String statement = <span class="string">"substitute."</span> + fieldName + <span class="string">" = "</span> + buildCastCode(element) + <span class="string">"substitute."</span>;</span><br><span class="line">                        boolean isActivity = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">if</span> (types.isSubtype(parent.asType(), activityTm)) &#123;  <span class="comment">// Activity, then use getIntent()</span></span><br><span class="line">                            isActivity = <span class="literal">true</span>;</span><br><span class="line">                            statement += <span class="string">"getIntent()."</span>;</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (types.isSubtype(parent.asType(), fragmentTm) || types.isSubtype(parent.asType(), fragmentTmV4)) &#123;   <span class="comment">// Fragment, then use getArguments()</span></span><br><span class="line">                            statement += <span class="string">"getArguments()."</span>;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">throw</span> new IllegalAccessException(<span class="string">"The field ["</span> + fieldName + <span class="string">"] need autowired from intent, its parent must be activity or fragment!"</span>);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        statement = buildStatement(originalValue, statement, typeUtils.typeExchange(element), isActivity);</span><br><span class="line">                        <span class="keyword">if</span> (statement.startsWith(<span class="string">"serializationService."</span>)) &#123;   <span class="comment">// Not mortals</span></span><br><span class="line">                            injectMethodBuilder.beginControlFlow(<span class="string">"if (null != serializationService)"</span>);</span><br><span class="line">                            injectMethodBuilder.addStatement(</span><br><span class="line">                                    <span class="string">"substitute."</span> + fieldName + <span class="string">" = "</span> + statement,</span><br><span class="line">                                    (StringUtils.isEmpty(fieldConfig.name()) ? fieldName : fieldConfig.name()),</span><br><span class="line">                                    ClassName.<span class="keyword">get</span>(element.asType())</span><br><span class="line">                            );</span><br><span class="line">                            injectMethodBuilder.nextControlFlow(<span class="string">"else"</span>);</span><br><span class="line">                            injectMethodBuilder.addStatement(</span><br><span class="line">                                    <span class="string">"<span class="variable">$T</span>.e(\""</span> + Consts.TAG + <span class="string">"\", \"You want automatic inject the field '"</span> + fieldName + <span class="string">"' in class '<span class="variable">$T</span>' , then you should implement 'SerializationService' to support object auto inject!\")"</span>, AndroidLog, ClassName.<span class="keyword">get</span>(parent));</span><br><span class="line">                            injectMethodBuilder.endControlFlow();</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            injectMethodBuilder.addStatement(statement, StringUtils.isEmpty(fieldConfig.name()) ? fieldName : fieldConfig.name());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                helper.addMethod(injectMethodBuilder.build());</span><br><span class="line"></span><br><span class="line">                <span class="comment">// Generate autowire helper</span></span><br><span class="line">                JavaFile.builder(packageName, helper.build()).build().writeTo(mFiler);</span><br><span class="line"></span><br><span class="line">                logger.info(<span class="string">"&gt;&gt;&gt; "</span> + parent.getSimpleName() + <span class="string">" has been processed, "</span> + fileName + <span class="string">" has been generated. &lt;&lt;&lt;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            logger.info(<span class="string">"&gt;&gt;&gt; Sima processor stop. &lt;&lt;&lt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String buildStatement(String originalValue, String statement, int type, boolean isActivity) &#123;</span><br><span class="line">        switch (TypeKind.values()[type]) &#123;</span><br><span class="line">            case BOOLEAN:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getBooleanExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getBoolean(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case BYTE:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getByteExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getByte(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case SHORT:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getShortExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getShort(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case INT:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getIntExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getInt(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case LONG:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getLongExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getLong(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case CHAR:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getCharExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getChar(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case FLOAT:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getFloatExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getFloat(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case DOUBLE:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getDoubleExtra(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getDouble(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case STRING:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getExtras() == null ? "</span> + originalValue + <span class="string">" : substitute.getIntent().getExtras().getString(<span class="variable">$S</span>, "</span> + originalValue + <span class="string">")"</span>) : (<span class="string">"getString(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case SERIALIZABLE:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getSerializableExtra(<span class="variable">$S</span>)"</span>) : (<span class="string">"getSerializable(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case PARCELABLE:</span><br><span class="line">                statement += (isActivity ? (<span class="string">"getParcelableExtra(<span class="variable">$S</span>)"</span>) : (<span class="string">"getParcelable(<span class="variable">$S</span>)"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            case OBJECT:</span><br><span class="line">                statement = <span class="string">"serializationService.parseObject(substitute."</span> + (isActivity ? <span class="string">"getIntent()."</span> : <span class="string">"getArguments()."</span>) + (isActivity ? <span class="string">"getStringExtra(<span class="variable">$S</span>)"</span> : <span class="string">"getString(<span class="variable">$S</span>)"</span>) + <span class="string">", new "</span> + Consts.TYPE_WRAPPER + <span class="string">"&lt;<span class="variable">$T</span>&gt;()&#123;&#125;.getType())"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> statement;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String buildCastCode(Element element) &#123;</span><br><span class="line">        <span class="keyword">if</span> (typeUtils.typeExchange(element) == TypeKind.SERIALIZABLE.ordinal()) &#123;</span><br><span class="line">            <span class="keyword">return</span> CodeBlock.builder().add(<span class="string">"(<span class="variable">$T</span>) "</span>, ClassName.<span class="keyword">get</span>(element.asType())).build().toString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据父元素类型，进行元素字段筛选分类</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> elements 有注解的元素集合</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> void categories(Set&lt;? extends Element&gt; elements) throws IllegalAccessException &#123;</span><br><span class="line">        <span class="keyword">if</span> (CollectionUtils.isNotEmpty(elements)) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">                <span class="comment">// 返回封装此元素的最里层元素，如果此元素的声明在词法上直接封装在另一个元素的声明中，则返回那个封装元素；</span></span><br><span class="line">                <span class="comment">// 如果此元素是顶层类型，则返回它的包如果此元素是一个包，则返回 null； 如果此元素是一个泛型参数，则返回 null.</span></span><br><span class="line">                TypeElement enclosingElement = (TypeElement) element.getEnclosingElement();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 检查被注解的元素是否被私有化</span></span><br><span class="line">                <span class="keyword">if</span> (element.getModifiers().contains(Modifier.PRIVATE)) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> new IllegalAccessException(<span class="string">"The inject fields CAN NOT BE 'private'!!! please check field ["</span></span><br><span class="line">                            + element.getSimpleName() + <span class="string">"] in class ["</span> + enclosingElement.getQualifiedName() + <span class="string">"]"</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (parentAndChild.containsKey(enclosingElement)) &#123; <span class="comment">// Has categries</span></span><br><span class="line">                    parentAndChild.<span class="keyword">get</span>(enclosingElement).add(element);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    List&lt;Element&gt; childs = new ArrayList&lt;&gt;();</span><br><span class="line">                    childs.add(element);</span><br><span class="line">                    parentAndChild.put(enclosingElement, childs);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            logger.info(<span class="string">"categories finished."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在Android应用中引用注解</li>
+</ol>
+<ul>
+<li><p>首先在应用级别的<code>build.gradle</code>中添加依赖</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">annotationProcessor</span> <span class="selector-tag">project</span>(<span class="attribute">path</span>: <span class="string">':sim-compiler'</span>)</span><br><span class="line"><span class="selector-tag">implementation</span> <span class="selector-tag">project</span>(<span class="attribute">path</span>: <span class="string">':sim-annotation'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后可在Acitivty中的字段上添加<code>@Sima</code>注解</p>
+</li>
+</ul>
+<p>运行代码后可在Build Output中查看注解相关类中打印的log<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注: Sim::Compiler The<span class="built_in"> user </span>has configuration the module name, it was [app]</span><br><span class="line">注: Sim::Compiler &gt;&gt;&gt; SimaProcessor init. &lt;&lt;&lt;</span><br><span class="line">注: Sim::Compiler &gt;&gt;&gt; Found Sima field, start<span class="built_in">..</span>. &lt;&lt;&lt;</span><br><span class="line">注: Sim::Compiler categories finished.</span><br><span class="line">注: Sim::Compiler &gt;&gt;&gt; Start process 1 field <span class="keyword">in</span> MainActivity <span class="built_in">..</span>. &lt;&lt;&lt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注：<a href="https://github.com/square/javapoet" target="_blank" rel="noopener">javapoet</a>是用来生成java代码</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Annomation/" rel="tag"># Annomation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/18/modbus-function-code/" rel="next" title="Modbus通信协议功能码">
+                <i class="fa fa-chevron-left"></i> Modbus通信协议功能码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="code4a" />
+            
+              <p class="site-author-name" itemprop="name">code4a</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/code4a" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:jiangyantao8@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/isprots" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.zhihu.com/people/code4s" target="_blank" title="Zhihu">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Zhihu</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/+jiangyantao8" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/jiangyantao" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情连接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coderq.com,一个面向程序员交流分享的新一代社区" title="码农圈" target="_blank">码农圈</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuchong.me" title="Jark's Blog" target="_blank">Jark's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wsgzao.github.io/" title="HelloDog" target="_blank">HelloDog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.aswifter.com/" title="APP开发者" target="_blank">APP开发者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://audiebantzhan.github.io/" title="audiebant" target="_blank">audiebant</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liuling123.com/" title="残剑博客" target="_blank">残剑博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建Java-Library"><span class="nav-number">1.</span> <span class="nav-text">1. 创建Java Library</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">code4a</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人数
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">查看次数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"code4a"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
